@@ -99,7 +99,8 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-          //  MessageBox.Show("Hello Cristina");
+        
+          //  MessageBox.Show(currentDirectory);
         }
 
         private void button4_MouseCaptureChanged(object sender, EventArgs e)

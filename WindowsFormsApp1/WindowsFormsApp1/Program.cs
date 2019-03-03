@@ -48,7 +48,9 @@ namespace ClassForExcelFunction
         public static void ReadExcelCell(int row,int col,int sheetnr)
         {
             Excel.Application excel = new Excel.Application();
-            Excel.Workbook wb = excel.Workbooks.Open(@"C:\\Users\\nazir\\Desktop\\UtilityC#ForWork\\UtilityExcel.xlsx");
+            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
             Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
             var LastEntryNumber = ((Excel.Range)sheet.Cells[row, col]);
             string strLastEntryNumber;
@@ -61,7 +63,9 @@ namespace ClassForExcelFunction
         public static void WriteExcelCell(int row, int col, int sheetnr, string data )
         {
             Excel.Application excel = new Excel.Application();
-            Excel.Workbook wb = excel.Workbooks.Open(@"C:\\Users\\nazir\\Desktop\\UtilityC#ForWork\\UtilityExcel.xlsx");
+            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
             Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
             ((Excel.Range)sheet.Cells[row, col]).Value = data;
             wb.Save();
