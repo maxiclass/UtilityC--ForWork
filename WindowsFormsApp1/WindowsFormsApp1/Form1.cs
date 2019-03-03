@@ -99,8 +99,10 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-        
-          //  MessageBox.Show(currentDirectory);
+
+            progressBar1.Maximum = 100;
+            progressBar1.Step = 1;
+            progressBar1.Value = 5;
         }
 
         private void button4_MouseCaptureChanged(object sender, EventArgs e)
