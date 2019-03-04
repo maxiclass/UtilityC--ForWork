@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -44,16 +37,23 @@ namespace WindowsFormsApp1
         //read
         private void button3_Click(object sender, EventArgs e)
         {
-            ClassForExcelFunction.ClassForExcelFunction.ReadExcelCell(1, 1, 1);
+            ClassForExcelFunction.ClassForExcelFunction.ReadExcelCell(6, 5, 2);
         }
 
         //Write 
         private void button4_Click(object sender, EventArgs e)
         {
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(7 ,4 ,1, DateTime.Now.ToString("h:mm:ss tt"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(8, 4, 1, DateTime.Now.ToString("HH:mm"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(9, 4, 1, DateTime.Now.ToString("hh:mm tt"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(10, 4, 1, DateTime.Now.ToString("H:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(8, 5, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(8, 6, 1, DateTime.Now.ToString("dd/M/yyyy"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(9, 5, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(9, 6, 1, DateTime.Now.ToString("dd/M/yyyy"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(10, 5, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(10, 6, 1, DateTime.Now.ToString("dd/M/yyyy"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(11, 5, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(11, 6, 1, DateTime.Now.ToString("dd/M/yyyy"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(12, 5, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(12, 6, 1, DateTime.Now.ToString("dd/M/yyyy"));
+
             MessageBox.Show("Your message was write successfuly");
         }
 

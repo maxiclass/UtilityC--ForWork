@@ -53,6 +53,11 @@
             this.button7 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -198,7 +203,10 @@
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.somethingToolStripMenuItem,
-            this.somethingElseToolStripMenuItem});
+            this.somethingElseToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.generateReportToolStripMenuItem,
+            this.toolStripMenuItem7});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(439, 24);
@@ -207,9 +215,12 @@
             // 
             // somethingToolStripMenuItem
             // 
+            this.somethingToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.somethingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator2,
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.toolStripSeparator3,
+            this.loadUserToolStripMenuItem});
             this.somethingToolStripMenuItem.Name = "somethingToolStripMenuItem";
             this.somethingToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.somethingToolStripMenuItem.Text = "Menu";
@@ -217,13 +228,13 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Text = "New User";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // somethingElseToolStripMenuItem
@@ -233,8 +244,8 @@
             this.toolStripMenuItem1,
             this.toolStripSeparator1});
             this.somethingElseToolStripMenuItem.Name = "somethingElseToolStripMenuItem";
-            this.somethingElseToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.somethingElseToolStripMenuItem.Text = "something else";
+            this.somethingElseToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.somethingElseToolStripMenuItem.Text = "  Edit   ";
             this.somethingElseToolStripMenuItem.Click += new System.EventHandler(this.somethingElseToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -290,6 +301,38 @@
             this.button8.Text = "Start";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.StartButton_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.searchToolStripMenuItem.Text = "Search";
+            // 
+            // generateReportToolStripMenuItem
+            // 
+            this.generateReportToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
+            this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.generateReportToolStripMenuItem.Text = "Generate Report";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem7.Text = "Help";
+            // 
+            // loadUserToolStripMenuItem
+            // 
+            this.loadUserToolStripMenuItem.Name = "loadUserToolStripMenuItem";
+            this.loadUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadUserToolStripMenuItem.Text = "Load User";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // classforProgressBarBindingSource
             // 
@@ -355,6 +398,11 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem loadUserToolStripMenuItem;
     }
 }
 

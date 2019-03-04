@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime.InteropServices;
 using System.IO;
 
 namespace WindowsFormsApp1
@@ -54,9 +49,9 @@ namespace ClassForExcelFunction
             Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
             var LastEntryNumber = ((Excel.Range)sheet.Cells[row, col]);
             string strLastEntryNumber;
-            strLastEntryNumber = LastEntryNumber.Text;
-           // wb.Save();
-           // wb.Close();
+            //ClassForStorageContainers.StorageClassExcel.doubleEntryNumber = LastEntryNumber; //Int32.Parse(LastEntryNumber.text);
+            // wb.Save();
+            // wb.Close();
             excel.Quit();
            // return strLastEntryNumber;
         }
@@ -87,32 +82,18 @@ namespace ClassForExcelFunction
 
 namespace ClassForStorageContainers
 {
-    public class IntegerStorageClassExcel
+    public class StorageClassExcel
     {
-        int inttempvar;
-            public int intTempvar { get => inttempvar; set => inttempvar = value; }
-    }
+        //int inttempvar;
+            public static int intEntryNumber { get => intEntryNumber; set => intEntryNumber = value; }
+            public int intWorkDayTime { get => intWorkDayTime; set => intWorkDayTime = value; }
+            public static double doubleEntryNumber{ get => doubleEntryNumber; set => doubleEntryNumber = value; }
+}
 
-
-    public class StringStorageClassExcel
-    {
-        string strtempvar;
-        public string strTempvar { get => strtempvar; set => strtempvar = value; }
-    }
-
-    public static class VectorStorageClassExcel
-    {
-        /* to be done*/
-    }
-
-    public static class MatrixStorageClassExcel
-    {
-        /* to be done*/
-    }
     public class ExcelDirectoryClass
     {
         static string currentDirectory = System.IO.Directory.GetCurrentDirectory();
-        static string excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+        static string excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
         public static string ExcelPath
         { get  
             {
@@ -127,6 +108,7 @@ namespace ClassforProgressBar
     public  class ClassforProgressBar
     {
         /* to be done*/
+ 
         public int testprogress = 50;
 
         public int Testprogress { get => testprogress; set => testprogress = value; }
