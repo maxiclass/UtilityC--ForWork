@@ -50,10 +50,10 @@ namespace WindowsFormsApp1
         //Write 
         private void button4_Click(object sender, EventArgs e)
         {
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(5 ,5 ,1, DateTime.Now.ToString("h:mm:ss tt"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(6, 5, 1, DateTime.Now.ToString("HH:mm"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(7, 5, 1, DateTime.Now.ToString("hh:mm tt"));
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(8, 5, 1, DateTime.Now.ToString("H:mm")); 
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(7 ,4 ,1, DateTime.Now.ToString("h:mm:ss tt"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(8, 4, 1, DateTime.Now.ToString("HH:mm"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(9, 4, 1, DateTime.Now.ToString("hh:mm tt"));
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(10, 4, 1, DateTime.Now.ToString("H:mm"));
             MessageBox.Show("Your message was write successfuly");
         }
 
@@ -113,6 +113,18 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e) //button used for opening Excel file
+        {
+            System.Diagnostics.Process.Start(ClassForStorageContainers.ExcelDirectoryClass.ExcelPath);
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            progressBar1.Maximum = 480;
+            progressBar1.Step = 1;
+            progressBar1.Value = 5; // final time - current time - pause;
         }
     }
 }

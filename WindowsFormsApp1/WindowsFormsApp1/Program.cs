@@ -55,8 +55,8 @@ namespace ClassForExcelFunction
             var LastEntryNumber = ((Excel.Range)sheet.Cells[row, col]);
             string strLastEntryNumber;
             strLastEntryNumber = LastEntryNumber.Text;
-            wb.Save();
-            wb.Close();
+           // wb.Save();
+           // wb.Close();
             excel.Quit();
            // return strLastEntryNumber;
         }
@@ -108,6 +108,17 @@ namespace ClassForStorageContainers
     public static class MatrixStorageClassExcel
     {
         /* to be done*/
+    }
+    public class ExcelDirectoryClass
+    {
+        static string currentDirectory = System.IO.Directory.GetCurrentDirectory();
+        static string excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+        public static string ExcelPath
+        { get  
+            {
+                return excelFileLocation;
+            }
+        }
     }
 }
 

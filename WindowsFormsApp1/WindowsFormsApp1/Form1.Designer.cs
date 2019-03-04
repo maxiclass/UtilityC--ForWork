@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -49,65 +50,76 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button1.Location = new System.Drawing.Point(42, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Load cnf";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button2.Location = new System.Drawing.Point(147, 57);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Record Data&Time";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.button3.Location = new System.Drawing.Point(42, 88);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
             this.button3.Text = "Read";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button4.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.button4.Location = new System.Drawing.Point(147, 88);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "Write";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseCaptureChanged += new System.EventHandler(this.button4_MouseCaptureChanged);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(343, 214);
+            this.button5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button5.Location = new System.Drawing.Point(364, 212);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 4;
             this.button5.Text = "Exit";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // progressBar1
             // 
+            this.progressBar1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.progressBar1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.classforProgressBarBindingSource, "Testprogress", true));
             this.progressBar1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.classforProgressBarBindingSource, "Testprogress", true));
             this.progressBar1.Location = new System.Drawing.Point(270, 40);
@@ -160,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(312, 219);
+            this.label1.Location = new System.Drawing.Point(402, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 10;
@@ -182,6 +194,8 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AutoSize = false;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.somethingToolStripMenuItem,
             this.somethingElseToolStripMenuItem});
@@ -236,13 +250,46 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(149, 175);
+            this.button6.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button6.Location = new System.Drawing.Point(149, 166);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(73, 21);
             this.button6.TabIndex = 13;
             this.button6.Text = "Test";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button7.Location = new System.Drawing.Point(155, 214);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(151, 21);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "Open Excel";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 235);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(439, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button8.Location = new System.Drawing.Point(233, 166);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(73, 21);
+            this.button8.TabIndex = 16;
+            this.button8.Text = "Start";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // classforProgressBarBindingSource
             // 
@@ -252,7 +299,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(439, 298);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
@@ -264,6 +314,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -271,6 +322,7 @@
             this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,6 +352,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.BindingSource classforProgressBarBindingSource;
         public System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button8;
     }
 }
 
