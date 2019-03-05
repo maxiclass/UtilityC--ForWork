@@ -37,7 +37,8 @@ namespace WindowsFormsApp1
         //read
         private void button3_Click(object sender, EventArgs e)
         {
-            ClassForExcelFunction.ClassForExcelFunction.ReadExcelCell(6, 5, 2);
+           string message = ClassForExcelFunction.ClassForExcelFunction.ReadExcelCell(6, 5, 2);
+            MessageBox.Show(message);
         }
 
         //Write 

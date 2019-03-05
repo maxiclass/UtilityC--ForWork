@@ -40,20 +40,29 @@ namespace ClassForExcelFunction
     public static class ClassForExcelFunction
     {
 
-        public static void ReadExcelCell(int row,int col,int sheetnr)
+        public static string ReadExcelCell(int row,int col,int sheetnr)
         {
+            string StringReadValue;
             Excel.Application excel = new Excel.Application();
             var currentDirectory = System.IO.Directory.GetCurrentDirectory();
             var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
             Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
             Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
-            var LastEntryNumber = ((Excel.Range)sheet.Cells[row, col]);
-            string strLastEntryNumber;
+            if (typeof(double) == sheet.Cells[row, col].Value.GetType())
+            {
+              StringReadValue = sheet.Cells[row, col].Value.ToString();
+            }
+            else
+            {
+                StringReadValue = sheet.Cells[row, col].Value;
+            }
+            object LastEntryNumber = (Excel.Range)sheet.Cells[row, col];
             //ClassForStorageContainers.StorageClassExcel.doubleEntryNumber = LastEntryNumber; //Int32.Parse(LastEntryNumber.text);
-            // wb.Save();
-            // wb.Close();
+            wb.Save();
+            wb.Close();
             excel.Quit();
-           // return strLastEntryNumber;
+            return StringReadValue;
+
         }
         public static void WriteExcelCell(int row, int col, int sheetnr, string data )
         {
@@ -76,6 +85,14 @@ namespace ClassForExcelFunction
             /* to be done*/
         }
 
+        struct ExcelConfigurationTemplate
+        {
+            public char cUserName;
+            public int intEntryNumber;
+            public int intWorkingHours;
+            public int intDayOfTheWeek;
+             /* to be continued */ 
+        }
     }
 
 }
