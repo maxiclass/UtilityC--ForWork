@@ -104,6 +104,8 @@ namespace WindowsFormsApp1
             progressBar1.Maximum = 100;
             progressBar1.Step = 1;
             progressBar1.Value = 5;
+            MessageBox.Show(ClassForConfiguration.ClassLoadConfiguration.LoadConfiguration());
+            //ClassForConfiguration.ClassLoadConfiguraiton.LoadConfiguration();
         }
 
         private void button4_MouseCaptureChanged(object sender, EventArgs e)
@@ -126,6 +128,13 @@ namespace WindowsFormsApp1
             progressBar1.Maximum = 480;
             progressBar1.Step = 1;
             progressBar1.Value = 5; // final time - current time - pause;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ClassForConfiguration.ClassLoadConfiguration.LoadConfiguration();
+            MessageBox.Show("Done");
+            
         }
     }
 }

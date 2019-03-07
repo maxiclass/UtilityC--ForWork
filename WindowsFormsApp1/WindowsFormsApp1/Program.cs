@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using ClassForExcelFunction;
+using ClassForPanelUtility;
 
 namespace WindowsFormsApp1
 {
@@ -16,6 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            //ClassForExcelFunction.ClassForExcelFunction.ExcelConfigurationTemplate ExcelConf;
         }
     }
 }
@@ -67,7 +70,7 @@ namespace ClassForExcelFunction
         public static void WriteExcelCell(int row, int col, int sheetnr, string data )
         {
             Excel.Application excel = new Excel.Application();
-            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            var currentDirectory = Directory.GetCurrentDirectory();
             var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
             Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
             Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
@@ -85,14 +88,18 @@ namespace ClassForExcelFunction
             /* to be done*/
         }
 
-        struct ExcelConfigurationTemplate
+#pragma warning disable 0649
+        public struct ExcelConfigurationTemplate
         {
-            public char cUserName;
+
+            public string sUserName;
             public int intEntryNumber;
-            public int intWorkingHours;
+            public int intWorkingMinutes;
+            public int intBrakeTime;
             public int intDayOfTheWeek;
-             /* to be continued */ 
+            /* to be continued */
         }
+#pragma warning restore 0649
     }
 
 }
@@ -133,3 +140,41 @@ namespace ClassforProgressBar
     }
 }
 
+namespace ClassForConfiguration
+{
+    class ClassLoadConfiguration
+    {
+
+        public static string LoadConfiguration()
+        {
+           var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+           var UserConfiguration = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
+           string allText = File.ReadAllText(UserConfiguration);
+
+          //abandon
+            return allText;
+        }
+    }
+
+
+    static class  LoadExcelConfiguration
+    {
+      
+        public static void  LoadExcelConfigurationFunction ()
+      {
+           ClassForExcelFunction.ClassForExcelFunction.ExcelConfigurationTemplate ExcelConf;
+            Excel.Application excel = new Excel.Application();
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
+            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[2];
+            //load configuration in the folowing struct
+            ExcelConf.sUserName = sheet.Cells[10, 10].Value.ToString();
+            ExcelConf.intEntryNumber = sheet.Cells[11, 10].Value;
+            ExcelConf.intWorkingMinutes = sheet.Cells[12, 10].Value;
+            ExcelConf.intBrakeTime = sheet.Cells[13, 10].Value;
+            ExcelConf.intDayOfTheWeek = sheet.Cells[14, 10].Value;
+            MessageBox.Show(ExcelConf.sUserName);
+        }
+}
+} 

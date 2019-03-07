@@ -20,3 +20,5 @@ C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsA
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Database1.mdf
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Database1_log.ldf
