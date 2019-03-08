@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
 
         }
 
-        //Load Configuration
+        //Load Cfg
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -104,8 +104,8 @@ namespace WindowsFormsApp1
             progressBar1.Maximum = 100;
             progressBar1.Step = 1;
             progressBar1.Value = 5;
-            MessageBox.Show(ClassForConfiguration.ClassLoadConfiguration.LoadConfiguration());
-            //ClassForConfiguration.ClassLoadConfiguraiton.LoadConfiguration();
+            MessageBox.Show(ClassForCfg.ClassLoadCfg.LoadCfg());
+            //ClassForCfg.ClassLoadConfiguraiton.LoadCfg();
         }
 
         private void button4_MouseCaptureChanged(object sender, EventArgs e)
@@ -132,8 +132,10 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            ClassForConfiguration.ClassLoadConfiguration.LoadConfiguration();
-            MessageBox.Show("Done");
+            ClassForCfg.ClassLoadCfg.LoadCfg();
+            MessageBox.Show(ClassForCfg.LoadExcelCfg.LoadExcelCfgFunction());
+            
+            MessageBox.Show(DateTime.Now.ToString("HH:mm"));
             
         }
     }

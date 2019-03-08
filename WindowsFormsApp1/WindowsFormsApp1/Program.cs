@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            //ClassForExcelFunction.ClassForExcelFunction.ExcelConfigurationTemplate ExcelConf;
+            //ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
         }
     }
 }
@@ -89,7 +89,7 @@ namespace ClassForExcelFunction
         }
 
 #pragma warning disable 0649
-        public struct ExcelConfigurationTemplate
+        public struct ExcelCfgTemplate
         {
 
             public string sUserName;
@@ -140,16 +140,16 @@ namespace ClassforProgressBar
     }
 }
 
-namespace ClassForConfiguration
+namespace ClassForCfg
 {
-    class ClassLoadConfiguration
+    class ClassLoadCfg
     {
 
-        public static string LoadConfiguration()
+        public static string LoadCfg()
         {
            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
-           var UserConfiguration = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
-           string allText = File.ReadAllText(UserConfiguration);
+           var UserCfg = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
+           string allText = File.ReadAllText(UserCfg);
 
           //abandon
             return allText;
@@ -157,24 +157,35 @@ namespace ClassForConfiguration
     }
 
 
-    static class  LoadExcelConfiguration
+    static class  LoadExcelCfg
     {
-      
-        public static void  LoadExcelConfigurationFunction ()
-      {
-           ClassForExcelFunction.ClassForExcelFunction.ExcelConfigurationTemplate ExcelConf;
-            Excel.Application excel = new Excel.Application();
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
-            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
-            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[2];
-            //load configuration in the folowing struct
-            ExcelConf.sUserName = sheet.Cells[10, 10].Value.ToString();
-            ExcelConf.intEntryNumber = sheet.Cells[11, 10].Value;
-            ExcelConf.intWorkingMinutes = sheet.Cells[12, 10].Value;
-            ExcelConf.intBrakeTime = sheet.Cells[13, 10].Value;
-            ExcelConf.intDayOfTheWeek = sheet.Cells[14, 10].Value;
-            MessageBox.Show(ExcelConf.sUserName);
+
+        public static string LoadExcelCfgFunction ()
+        {
+
+                ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
+                Excel.Application excel = new Excel.Application();
+                var currentDirectory = Directory.GetCurrentDirectory();
+                var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+                Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
+                Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[2];
+
+                //load Cfg in the folowing struct
+                ExcelConf.sUserName = sheet.Cells[10, 10].Value.ToString();
+                ExcelConf.intEntryNumber = Convert.ToInt32(sheet.Cells[11, 10].Value);
+                ExcelConf.intWorkingMinutes = Convert.ToInt32(sheet.Cells[12, 10].Value);
+                ExcelConf.intBrakeTime = Convert.ToInt32(sheet.Cells[13, 10].Value);
+                ExcelConf.intDayOfTheWeek = Convert.ToInt32(sheet.Cells[14, 10].Value);
+
+            //Update Cfg in Excel
+            ExcelConf.intEntryNumber++;
+            ((Excel.Range)sheet.Cells[11, 10]).Value = ExcelConf.intEntryNumber;
+            //WorkingMinutes.
+            MessageBox.Show(ExcelConf.sUserName + " " + ExcelConf.intEntryNumber);
+            wb.Save();  
+            wb.Close();
+            excel.Quit();
+            return "ok";
+            }
         }
-}
-} 
+    }

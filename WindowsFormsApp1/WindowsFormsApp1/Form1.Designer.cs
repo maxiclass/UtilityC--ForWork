@@ -36,8 +36,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.WorkingMinutes = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,10 +59,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
+            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -138,17 +138,13 @@
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             this.progressBar1.SystemColorsChanged += new System.EventHandler(this.progressBar1_SystemColorsChanged);
             // 
-            // classforProgressBarBindingSource
+            // WorkingMinutes
             // 
-            this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.Location = new System.Drawing.Point(270, 69);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(136, 23);
-            this.progressBar2.TabIndex = 6;
-            this.progressBar2.Value = 30;
+            this.WorkingMinutes.Location = new System.Drawing.Point(270, 69);
+            this.WorkingMinutes.Name = "WorkingMinutes";
+            this.WorkingMinutes.Size = new System.Drawing.Size(136, 23);
+            this.WorkingMinutes.TabIndex = 6;
+            this.WorkingMinutes.Value = 30;
             // 
             // progressBar3
             // 
@@ -350,6 +346,10 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // classforProgressBarBindingSource
+            // 
+            this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,7 +365,7 @@
             this.Controls.Add(this.progressBar4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.progressBar3);
-            this.Controls.Add(this.progressBar2);
+            this.Controls.Add(this.WorkingMinutes);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox1);
@@ -375,11 +375,11 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,7 +392,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        public System.Windows.Forms.ProgressBar WorkingMinutes;
         private System.Windows.Forms.ProgressBar progressBar3;
         private System.Windows.Forms.ProgressBar progressBar4;
         private System.Windows.Forms.GroupBox groupBox1;
