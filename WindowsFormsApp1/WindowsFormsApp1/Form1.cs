@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataManipulation;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -31,7 +32,15 @@ namespace WindowsFormsApp1
         //bar4
         private void progressBar4_Click(object sender, EventArgs e)
         {
+            DateTime NowTime = DateTime.Now;
+            DateTime StartTime = DateTime.Parse(ClassCfgData.SEntryTime);
+            TimeSpan timeDifference = NowTime.Subtract(StartTime);
 
+            progressBar4.Maximum = ClassCfgData.IntWorkingMinutesDay;
+            progressBar4.Step = 1;
+            progressBar4.Value = Convert.ToInt32(timeDifference.TotalMinutes);
+
+            MessageBox.Show("Time Difference (minutes): " + Math.Round(timeDifference.TotalMinutes));
         }
         
         //read
@@ -134,7 +143,7 @@ namespace WindowsFormsApp1
         {
            // Operations.ClassLoadCfg.LoadCfg();
             MessageBox.Show(Operations.ExcelOperations.LoadExcelCfgFunction());
-            
+            MessageBox.Show(ClassCfgData.IntEntryNumber.ToString());
             MessageBox.Show(DateTime.Now.ToString("HH:mm"));
             
         }

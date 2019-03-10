@@ -16,10 +16,15 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
+            //Load Configuration
+            Operations.ExcelOperations.LoadExcelCfgFunction();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
             //ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
+
         }
     }
 }
@@ -89,32 +94,13 @@ namespace ClassForExcelFunction
             /* to be done*/
         }
 
-#pragma warning disable 0649
-        public struct ExcelCfgTemplate
-        {
 
-            public string sUserName;
-            public int intEntryNumber;
-            public int intWorkingMinutes;
-            public int intBrakeTime;
-            public int intDayOfTheWeek;
-            /* to be continued */
-        }
-#pragma warning restore 0649
     }
 
 }
 
 namespace ClassForStorageContainers
 {
-    public class StorageClassExcel
-    {
-        //int inttempvar;
-            public static int intEntryNumber { get => intEntryNumber; set => intEntryNumber = value; }
-            public int intWorkDayTime { get => intWorkDayTime; set => intWorkDayTime = value; }
-            public static double doubleEntryNumber{ get => doubleEntryNumber; set => doubleEntryNumber = value; }
-}
-
     public class ExcelDirectoryClass
     {
         static string currentDirectory = System.IO.Directory.GetCurrentDirectory();
@@ -165,20 +151,27 @@ namespace Operations
         public static  string LoadExcelCfgFunction ()
         {
 
-                ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
                 Excel.Application excel = new Excel.Application();
                 var currentDirectory = Directory.GetCurrentDirectory();
                 var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
                 Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
                 Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[2];
 
-            //load Cfg in the folowing struct
-            ClassCfgData.SUserName = sheet.Cells[10, 10].Value.ToString();
+            //load Cfg in the folowing class members
+
+            ClassCfgData.SEntryTime = sheet.Cells[10, 10].Value.ToString();
+            
             ClassCfgData.IntEntryNumber = Convert.ToInt32(sheet.Cells[11, 10].Value);
-            ClassCfgData.IntWorkingMinutes = Convert.ToInt32(sheet.Cells[12, 10].Value);
+            ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(sheet.Cells[12, 10].Value);
             ClassCfgData.IntBrakeTime = Convert.ToInt32(sheet.Cells[13, 10].Value);
             ClassCfgData.IntDayOfTheWeek = Convert.ToInt32(sheet.Cells[14, 10].Value);
-       
+
+            ClassCfgData.SEntryTime = DateTime.Now.ToString("HH:mm");
+            sheet.Cells[15, 10].Value = ClassCfgData.SEntryTime;
+
+            ClassCfgData.STodayData = DateTime.Today.ToString("dd / MM / yyyy");
+            sheet.Cells[16, 10].Value = ClassCfgData.STodayData;
+
             wb.Save();  
             wb.Close();
             excel.Quit();
@@ -187,7 +180,28 @@ namespace Operations
 
         public static string RecordEntry()
         {
-            return "ok";
+            Excel.Application excel = new Excel.Application();
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
+            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[1];
+            Excel.Worksheet sheet2 = (Excel.Worksheet)wb.Sheets[2];
+
+
+            ++ClassCfgData.IntEntryNumber;
+            sheet.Cells[(ClassCfgData.IntEntryNumber + 6), 3].value = ClassCfgData.IntEntryNumber;
+            sheet2.Cells[11, 10].value = ClassCfgData.IntEntryNumber;
+
+            sheet.Cells[(ClassCfgData.IntEntryNumber + 6), 4].value = DateTime.Now.ToString("HH:mm");
+
+            sheet.Cells[(ClassCfgData.IntEntryNumber + 6), 5].value = DateTime.Today.ToString("dd / MM / yyyy");
+
+
+
+            wb.Save();
+            wb.Close();
+            excel.Quit();
+            return ClassCfgData.IntEntryNumber.ToString();
         }
     }
 
@@ -197,15 +211,19 @@ namespace Operations
 namespace DataManipulation
 
 {
-
     public class ClassCfgData
     {
 
         public static  string SUserName{ get; set; } 
         public static int IntEntryNumber { get; set; }
-        public static int IntWorkingMinutes { get; set; }
+        public static string SEntryTime { get; set; }
+        public static int IntWorkingMinutesDay { get; set; }
         public static int IntBrakeTime { get; set; }
         public static int IntDayOfTheWeek { get; set; }
+        public static int IntTimeLeftDay { get; set; }
+        public static int IntTimeLeftWeek { get; set; }
+        public static int IntTimeLeftMonth { get; set; }
+        public static string STodayData{ get; set; }
 
         /* to be continued */
     }
