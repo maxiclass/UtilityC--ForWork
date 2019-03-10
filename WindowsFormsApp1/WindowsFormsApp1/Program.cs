@@ -4,6 +4,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using ClassForExcelFunction;
 using ClassForPanelUtility;
+using DataManipulation;
 
 namespace WindowsFormsApp1
 {
@@ -140,8 +141,9 @@ namespace ClassforProgressBar
     }
 }
 
-namespace ClassForCfg
-{
+namespace Operations
+{ 
+
     class ClassLoadCfg
     {
 
@@ -151,16 +153,16 @@ namespace ClassForCfg
            var UserCfg = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
            string allText = File.ReadAllText(UserCfg);
 
-          //abandon
+          //abandon was used to read configuration from .txt format
             return allText;
         }
     }
 
 
-    static class  LoadExcelCfg
+     class ExcelOperations
     {
 
-        public static string LoadExcelCfgFunction ()
+        public static  string LoadExcelCfgFunction ()
         {
 
                 ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
@@ -170,22 +172,41 @@ namespace ClassForCfg
                 Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
                 Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[2];
 
-                //load Cfg in the folowing struct
-                ExcelConf.sUserName = sheet.Cells[10, 10].Value.ToString();
-                ExcelConf.intEntryNumber = Convert.ToInt32(sheet.Cells[11, 10].Value);
-                ExcelConf.intWorkingMinutes = Convert.ToInt32(sheet.Cells[12, 10].Value);
-                ExcelConf.intBrakeTime = Convert.ToInt32(sheet.Cells[13, 10].Value);
-                ExcelConf.intDayOfTheWeek = Convert.ToInt32(sheet.Cells[14, 10].Value);
-
-            //Update Cfg in Excel
-            ExcelConf.intEntryNumber++;
-            ((Excel.Range)sheet.Cells[11, 10]).Value = ExcelConf.intEntryNumber;
-            //WorkingMinutes.
-            MessageBox.Show(ExcelConf.sUserName + " " + ExcelConf.intEntryNumber);
+            //load Cfg in the folowing struct
+            ClassCfgData.SUserName = sheet.Cells[10, 10].Value.ToString();
+            ClassCfgData.IntEntryNumber = Convert.ToInt32(sheet.Cells[11, 10].Value);
+            ClassCfgData.IntWorkingMinutes = Convert.ToInt32(sheet.Cells[12, 10].Value);
+            ClassCfgData.IntBrakeTime = Convert.ToInt32(sheet.Cells[13, 10].Value);
+            ClassCfgData.IntDayOfTheWeek = Convert.ToInt32(sheet.Cells[14, 10].Value);
+       
             wb.Save();  
             wb.Close();
             excel.Quit();
             return "ok";
-            }
+        }
+
+        public static string RecordEntry()
+        {
+            return "ok";
         }
     }
+
+ 
+}
+
+namespace DataManipulation
+
+{
+
+    public class ClassCfgData
+    {
+
+        public static  string SUserName{ get; set; } 
+        public static int IntEntryNumber { get; set; }
+        public static int IntWorkingMinutes { get; set; }
+        public static int IntBrakeTime { get; set; }
+        public static int IntDayOfTheWeek { get; set; }
+
+        /* to be continued */
+    }
+}

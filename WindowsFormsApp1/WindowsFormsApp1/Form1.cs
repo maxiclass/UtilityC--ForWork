@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-            // provide information.
+            MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             progressBar1.Maximum = 100;
             progressBar1.Step = 1;
             progressBar1.Value = 5;
-            MessageBox.Show(ClassForCfg.ClassLoadCfg.LoadCfg());
+            MessageBox.Show(Operations.ClassLoadCfg.LoadCfg());
             //ClassForCfg.ClassLoadConfiguraiton.LoadCfg();
         }
 
@@ -132,11 +132,17 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            ClassForCfg.ClassLoadCfg.LoadCfg();
-            MessageBox.Show(ClassForCfg.LoadExcelCfg.LoadExcelCfgFunction());
+           // Operations.ClassLoadCfg.LoadCfg();
+            MessageBox.Show(Operations.ExcelOperations.LoadExcelCfgFunction());
             
             MessageBox.Show(DateTime.Now.ToString("HH:mm"));
             
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Operations.ExcelOperations.RecordEntry());
+                
         }
     }
 }
