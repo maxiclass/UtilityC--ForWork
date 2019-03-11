@@ -1,6 +1,7 @@
 ﻿using DataManipulation;
 using System;
 using System.Windows.Forms;
+using ClassForPanelUtility;
 
 namespace WindowsFormsApp1
 {
@@ -9,6 +10,17 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            Timer My45minTimer = new Timer();
+            My45minTimer.Interval = (45 * 60 * 1000); // 45 mins
+            My45minTimer.Tick += new EventHandler(timer1_Tick);
+            My45minTimer.Start();
+
+            Timer My1minTimer = new Timer();
+            My45minTimer.Interval = (45 * 60 * 1000); // 45 mins
+            My45minTimer.Tick += new EventHandler(timer1_Tick);
+            My45minTimer.Start();
+
         }
 
         //Exit button
@@ -32,15 +44,18 @@ namespace WindowsFormsApp1
         //bar4
         private void progressBar4_Click(object sender, EventArgs e)
         {
-            DateTime NowTime = DateTime.Now;
-            DateTime StartTime = DateTime.Parse(ClassCfgData.SEntryTime);
-            TimeSpan timeDifference = NowTime.Subtract(StartTime);
+
+
+            ModifyProgressBarColor.SetState(progressBar4, 2);
+           // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
 
             progressBar4.Maximum = ClassCfgData.IntWorkingMinutesDay;
             progressBar4.Step = 1;
-            progressBar4.Value = Convert.ToInt32(timeDifference.TotalMinutes);
+            progressBar4.Value = Convert.ToInt32(ClassCfgData.IntOnlineTime);
 
-            MessageBox.Show("Time Difference (minutes): " + Math.Round(timeDifference.TotalMinutes));
+            MessageBox.Show("Time Difference (minutes): " + ClassCfgData.IntOnlineTime);
+
+
         }
         
         //read
@@ -162,6 +177,24 @@ namespace WindowsFormsApp1
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Operations.ExcelOperations.ResetData());
+        }
+
+        private void classforProgressBarBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show(" 45 Minutes pass since this app is open");
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            ClassCfgData.IntOnlineTime++;
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(17, 10, 2, ClassCfgData.IntOnlineTime.ToString());
+            MessageBox.Show(" 1 Minute pass since this app is open");
         }
     }
 }
