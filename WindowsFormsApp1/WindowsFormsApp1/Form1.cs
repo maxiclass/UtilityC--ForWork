@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
         //Exit button
         private void button5_Click(object sender, EventArgs e) 
         {
-            ClassForPanelUtility.ClassForPanelUtility.ExitAplication();
+            System.Windows.Forms.Application.Exit();
         }
 
         //record Data&Time
@@ -152,6 +152,16 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show(Operations.ExcelOperations.RecordEntry());
                 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Operations.ExcelOperations.ResetData());
         }
     }
 }

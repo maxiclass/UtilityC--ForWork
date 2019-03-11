@@ -139,7 +139,7 @@ namespace Operations
            var UserCfg = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
            string allText = File.ReadAllText(UserCfg);
 
-          //abandon was used to read configuration from .txt format
+          //abandon -> this method was used to read configuration from .txt format
             return allText;
         }
     }
@@ -203,6 +203,31 @@ namespace Operations
             excel.Quit();
             return ClassCfgData.IntEntryNumber.ToString();
         }
+
+        public static string ResetData()
+        {
+            Excel.Application excel = new Excel.Application();
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
+            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[1];
+            Excel.Worksheet sheet2 = (Excel.Worksheet)wb.Sheets[2];
+
+            int i;
+            for (i = 6; i <= ClassCfgData.IntEntryNumber + 6; i++)
+            {
+                sheet.Cells[(i), 4].value = null;
+                sheet.Cells[(i), 5].value = null;
+                sheet.Cells[(i), 3].value = null;
+                ClassCfgData.IntEntryNumber = 0;
+                sheet2.Cells[11, 10].value = ClassCfgData.IntEntryNumber;
+            }
+
+            wb.Save();
+            wb.Close();
+            excel.Quit();
+            return "Records has been deleted successfully";
+        }
     }
 
  
@@ -225,6 +250,7 @@ namespace DataManipulation
         public static int IntTimeLeftMonth { get; set; }
         public static string STodayData{ get; set; }
 
+       // (EndDate - StartDate).TotalDays
         /* to be continued */
     }
 }
