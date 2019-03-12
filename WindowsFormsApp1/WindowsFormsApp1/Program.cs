@@ -145,6 +145,16 @@ namespace Operations
     }
     class ExcelOperations
     {
+        public static void Exit()
+        {
+            Excel.Application excel = new Excel.Application();
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
+            wb.Save();
+            wb.Close();
+            excel.Quit();
+        }
         public static string LoadExcelCfgFunction()
         {
 
@@ -172,11 +182,13 @@ namespace Operations
             ClassCfgData.SCompareTodayDate = DateTime.Today.ToString("dd / MM / yyyy");
             if (ClassCfgData.SCompareTodayDate == ClassCfgData.STodayDate)
             {
-                ClassCfgData.IntOnlineTime = Convert.ToInt32(sheet.Cells[17, 10].Value);
+                ClassCfgData.IntOnlineTime = Convert.ToInt32(sheet.Cells[18, 10].Value);
+
             }
             else {
                 ClassCfgData.IntOnlineTime = 0;
-                sheet.Cells[16, 10].Value = ClassCfgData.IntOnlineTime;
+                sheet.Cells[18, 10].Value = ClassCfgData.IntOnlineTime;
+
             }
 
             wb.Save();

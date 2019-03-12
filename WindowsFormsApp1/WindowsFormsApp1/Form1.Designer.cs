@@ -65,8 +65,9 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.minute1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.process1 = new System.Diagnostics.Process();
             ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -182,9 +183,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(402, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(408, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 13);
+            this.label1.Size = new System.Drawing.Size(27, 15);
             this.label1.TabIndex = 10;
             this.label1.Text = "Info";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -314,6 +317,7 @@
             // generateReportToolStripMenuItem
             // 
             this.generateReportToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.generateReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
             this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             this.generateReportToolStripMenuItem.Text = "Generate Report";
@@ -321,6 +325,7 @@
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem7.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(44, 20);
             this.toolStripMenuItem7.Text = "Help";
@@ -394,28 +399,28 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
+            // minute1
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 60000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.minute1.Enabled = true;
+            this.minute1.Interval = 6000;
+            this.minute1.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // label2
+            // process1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "label2";
+            this.process1.StartInfo.Domain = "";
+            this.process1.StartInfo.LoadUserProfile = false;
+            this.process1.StartInfo.Password = null;
+            this.process1.StartInfo.StandardErrorEncoding = null;
+            this.process1.StartInfo.StandardOutputEncoding = null;
+            this.process1.StartInfo.UserName = "";
+            this.process1.SynchronizingObject = this;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(439, 298);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -431,6 +436,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -482,8 +488,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer minute1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Diagnostics.Process process1;
     }
 }
 

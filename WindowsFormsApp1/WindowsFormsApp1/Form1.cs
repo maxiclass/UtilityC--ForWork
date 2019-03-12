@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using ClassForPanelUtility;
+using Operations;
 
 namespace WindowsFormsApp1
 {
@@ -11,21 +12,12 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            Timer My45minTimer = new Timer();
-            My45minTimer.Interval = (45 * 60 * 1000); // 45 mins
-            My45minTimer.Tick += new EventHandler(timer1_Tick);
-            My45minTimer.Start();
-
-            Timer My1minTimer = new Timer();
-            My45minTimer.Interval = (45 * 60 * 1000); // 45 mins
-            My45minTimer.Tick += new EventHandler(timer1_Tick);
-            My45minTimer.Start();
-
         }
 
         //Exit button
         private void button5_Click(object sender, EventArgs e) 
         {
+            ExcelOperations.Exit();
             System.Windows.Forms.Application.Exit();
         }
 
@@ -192,9 +184,10 @@ namespace WindowsFormsApp1
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            progressBar4.Value = Convert.ToInt32(ClassCfgData.IntOnlineTime);
             ClassCfgData.IntOnlineTime++;
-            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(17, 10, 2, ClassCfgData.IntOnlineTime.ToString());
-            MessageBox.Show(" 1 Minute pass since this app is open");
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(18, 10, 2, ClassCfgData.IntOnlineTime.ToString());
+            MessageBox.Show(ClassCfgData.IntOnlineTime.ToString()+@" minutes pass since this app is open", "Time since app was open");
         }
     }
 }
