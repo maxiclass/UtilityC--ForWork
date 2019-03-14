@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Table]
 (
-	[Entry Number] INT NOT NULL PRIMARY KEY DEFAULT 1, 
-    [Day of the week] INT NULL DEFAULT 1, 
-    [Working hour] INT NULL DEFAULT 1, 
-    [Brake time] INT NULL DEFAULT 45
+	[var1] INT NOT NULL PRIMARY KEY DEFAULT 0, 
+    [var2] INT NOT NULL DEFAULT 0, 
+    [var3] NCHAR(10) NOT NULL DEFAULT 0, 
+    [var4] NCHAR(10) NOT NULL DEFAULT 0
 )

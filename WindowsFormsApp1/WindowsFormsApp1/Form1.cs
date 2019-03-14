@@ -3,6 +3,9 @@ using System;
 using System.Windows.Forms;
 using ClassForPanelUtility;
 using Operations;
+using System.Data.SqlClient;
+using System.Data;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -117,11 +120,9 @@ namespace WindowsFormsApp1
         private void button6_Click(object sender, EventArgs e)
         {
 
-            progressBar1.Maximum = 100;
-            progressBar1.Step = 1;
-            progressBar1.Value = 5;
-            MessageBox.Show(Operations.ClassLoadCfg.LoadCfg());
-            //ClassForCfg.ClassLoadConfiguraiton.LoadCfg();
+            //ClassLoadCfg.TimeKeeping();
+           // MessageBox.Show("connect with sql server");
+
         }
 
         private void button4_MouseCaptureChanged(object sender, EventArgs e)
@@ -178,7 +179,7 @@ namespace WindowsFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show(" 45 Minutes pass since this app is open");
+            MessageBox.Show(" 1 hour pass since this app is open", "Reminder");
 
         }
 
@@ -187,7 +188,80 @@ namespace WindowsFormsApp1
             progressBar4.Value = Convert.ToInt32(ClassCfgData.IntOnlineTime);
             ClassCfgData.IntOnlineTime++;
             ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(18, 10, 2, ClassCfgData.IntOnlineTime.ToString());
-            MessageBox.Show(ClassCfgData.IntOnlineTime.ToString()+@" minutes pass since this app is open", "Time since app was open");
+            MessageBox.Show(ClassCfgData.IntOnlineTime.ToString()+@" minutes pass since this app is open", "Reminder");
+
+            progressBar3.Value = 1;
+
+            progressBar2.Value = 1;
+
+            progressBar1.Value = 1;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+         ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(numericUpDown1.Value*60 + numericUpDown2.Value);
+           // MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "" || textBox1.Text != " ")
+            {
+                ClassCfgData.SCurrentTask = textBox1.Text;
+
+                ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(19, 10, 2, ClassCfgData.SCurrentTask);
+            }
+            else
+            {
+                MessageBox.Show("Link is incorrect", "Problem occurred");
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if( checkBox1.Checked == true)
+            { textBox1.Visible = true; }
+            else { textBox1.Visible = false; }
+        }
+
+        private void progressBar3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
+            MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
+        }
+
+
+        private void minute5_Tick(object sender, EventArgs e)
+        {
+            /*update ? */
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(12, 10, 2, ClassCfgData.IntWorkingMinutesDay.ToString());
+            progressBar4.Maximum = ClassCfgData.IntWorkingMinutesDay;
+            MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
         }
     }
 }

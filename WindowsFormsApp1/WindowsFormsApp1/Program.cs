@@ -6,6 +6,8 @@ using ClassForExcelFunction;
 using ClassForPanelUtility;
 using DataManipulation;
 using System.Runtime.InteropServices;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace WindowsFormsApp1
 {
@@ -21,7 +23,6 @@ namespace WindowsFormsApp1
             Operations.ExcelOperations.LoadExcelCfgFunction();
 
             Operations.ExcelOperations.CheckExcel();
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -138,9 +139,28 @@ namespace Operations
             var currentDirectory = System.IO.Directory.GetCurrentDirectory();
             var UserCfg = System.IO.Path.Combine(currentDirectory + "\\UserConfiguration.txt");
             string allText = File.ReadAllText(UserCfg);
-
             //abandon -> this method was used to read configuration from .txt format
             return allText;
+        }
+
+        public static void TimeKeeping()
+        {
+
+            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
+            var UserCfg = System.IO.Path.Combine(currentDirectory + "\\TimeKeeping.txt");
+
+            foreach (string line in File.ReadLines(UserCfg))
+            {
+                if (line.Contains("IntOnlineTime"))
+                {
+                   string[] lines = line.Split('=');
+                    ClassCfgData.IntOnlineTime = Convert.ToInt32(lines[1]);
+                    MessageBox.Show(ClassCfgData.IntOnlineTime.ToString());
+                   
+                }
+            }
+
+
         }
     }
     class ExcelOperations
@@ -178,6 +198,8 @@ namespace Operations
 
             ClassCfgData.STodayDate = DateTime.Today.ToString("dd / MM / yyyy");
             sheet.Cells[16, 10].Value = ClassCfgData.STodayDate;
+
+            ClassCfgData.SCurrentTask = sheet.Cells[19, 10].Value;
 
             ClassCfgData.SCompareTodayDate = DateTime.Today.ToString("dd / MM / yyyy");
             if (ClassCfgData.SCompareTodayDate == ClassCfgData.STodayDate)
@@ -290,6 +312,7 @@ namespace DataManipulation
         public static string SCompareTodayDate { get; set; }
         public static int IntEntryDate { get; set; }
         public static int IntOnlineTime{ get; set; }
+        public static string SCurrentTask { get; set; }
         /* to be continued */
     }
 }
