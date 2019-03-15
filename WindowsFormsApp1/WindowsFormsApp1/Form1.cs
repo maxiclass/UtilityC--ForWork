@@ -14,7 +14,11 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-
+            ModifyProgressBarColor.SetState(progressBar4, 2);
+            ModifyProgressBarColor.SetState(progressBar3, 1);
+            ModifyProgressBarColor.SetState(progressBar2, 3);
+            ModifyProgressBarColor.SetState(progressBar1, 3);
+            // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
         }
 
         //Exit button
@@ -42,14 +46,6 @@ namespace WindowsFormsApp1
 
 
             ModifyProgressBarColor.SetState(progressBar4, 2);
-           // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
-
-            progressBar4.Maximum = ClassCfgData.IntWorkingMinutesDay;
-            progressBar4.Step = 1;
-            progressBar4.Value = Convert.ToInt32(ClassCfgData.IntOnlineTime);
-
-            MessageBox.Show("Time Difference (minutes): " + ClassCfgData.IntOnlineTime);
-
 
         }
         
@@ -119,9 +115,9 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            timer2_Tick(sender,e);
             //ClassLoadCfg.TimeKeeping();
-           // MessageBox.Show("connect with sql server");
+            // MessageBox.Show("connect with sql server");
 
         }
 
@@ -142,9 +138,7 @@ namespace WindowsFormsApp1
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            progressBar1.Maximum = 480;
-            progressBar1.Step = 1;
-            progressBar1.Value = 5; // final time - current time - pause;
+            ClassCfgData.IntBrakeTimeEnable = 1;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -185,12 +179,47 @@ namespace WindowsFormsApp1
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            if (ClassCfgData.IntBrakeTimeEnable == 1)
+            { ClassCfgData.IntBrakeTime--;
+                if (ClassCfgData.IntBrakeTime <= 1)
+                {
+                    ClassCfgData.IntBrakeTimeEnable = 0;
+                    progressBar3.Value = 0;
+                    ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(13, 10, 2, ClassCfgData.IntBrakeTime.ToString());
+                }
+
+            }
+            else
+            { ClassCfgData.IntOnlineTime++; }
+
             progressBar4.Value = Convert.ToInt32(ClassCfgData.IntOnlineTime);
-            ClassCfgData.IntOnlineTime++;
+            progressBar3.Value = Convert.ToInt32(ClassCfgData.IntBrakeTime);
             ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(18, 10, 2, ClassCfgData.IntOnlineTime.ToString());
             MessageBox.Show(ClassCfgData.IntOnlineTime.ToString()+@" minutes pass since this app is open", "Reminder");
+            label4.Text = Math.Round(((Convert.ToDouble(progressBar4.Value) / Convert.ToDouble(progressBar4.Maximum)) * 100), 1).ToString() + "%";
+            label3.Text = Math.Round(((Convert.ToDouble(progressBar3.Value) / Convert.ToDouble(progressBar3.Maximum)) * 100), 1).ToString() + "%";
 
-            progressBar3.Value = 1;
+            if (((Convert.ToDouble(progressBar4.Value) / Convert.ToDouble(progressBar4.Maximum)) * 100) > 35)
+            {
+                if (((Convert.ToDouble(progressBar4.Value) / Convert.ToDouble(progressBar4.Maximum)) * 100) < 65)
+                {
+                    ModifyProgressBarColor.SetState(progressBar4, 3);
+                }
+                else
+                {
+                    ModifyProgressBarColor.SetState(progressBar4, 1);
+                }
+            }
+            else
+            { }
+
+
+
+
+            progressBar3.Step = 1;
+            progressBar4.Step = 1;
+            progressBar2.Step = 1;
+            progressBar1.Step = 1;
 
             progressBar2.Value = 1;
 
@@ -204,7 +233,7 @@ namespace WindowsFormsApp1
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-         ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(numericUpDown1.Value*60 + numericUpDown2.Value);
+      
            // MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
         }
 
@@ -246,8 +275,8 @@ namespace WindowsFormsApp1
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
-            MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
+            
+            //MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
         }
 
 
@@ -259,9 +288,39 @@ namespace WindowsFormsApp1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            
+             ClassCfgData.IntWorkingMinutesDay = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
+             ClassCfgData.IntBrakeTime = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
+
             ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(12, 10, 2, ClassCfgData.IntWorkingMinutesDay.ToString());
+            ClassForExcelFunction.ClassForExcelFunction.WriteExcelCell(13, 10, 2, ClassCfgData.IntBrakeTime.ToString());
             progressBar4.Maximum = ClassCfgData.IntWorkingMinutesDay;
-            MessageBox.Show(ClassCfgData.IntWorkingMinutesDay.ToString());
+            progressBar4.Value = ClassCfgData.IntOnlineTime;
+
+            progressBar3.Maximum = ClassCfgData.IntBrakeTime;
+            progressBar3.Value= ClassCfgData.IntBrakeTime;
+           
+           label4.Text = Math.Round(((Convert.ToDouble(progressBar4.Value) / Convert.ToDouble(progressBar4.Maximum)) * 100), 1).ToString() + "%";
+            label3.Text = Math.Round(((Convert.ToDouble(progressBar3.Value) / Convert.ToDouble(progressBar3.Maximum)) * 100),1).ToString() + "%";
+
+            MessageBox.Show("Working hours : "+ClassCfgData.IntWorkingMinutesDay.ToString()+" minutes"+"\nBrake Time: "+ ClassCfgData.IntBrakeTime+ " minutes", "Today Plan");
+
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

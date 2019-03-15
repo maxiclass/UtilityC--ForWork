@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button5 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
@@ -55,6 +54,23 @@
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -71,13 +87,18 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
             this.minute5 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -86,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -106,7 +128,7 @@
             this.progressBar1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.progressBar1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.classforProgressBarBindingSource, "Testprogress", true));
             this.progressBar1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.classforProgressBarBindingSource, "Testprogress", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.progressBar1.Location = new System.Drawing.Point(313, 37);
+            this.progressBar1.Location = new System.Drawing.Point(313, 39);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(136, 23);
             this.progressBar1.Step = 1;
@@ -116,14 +138,9 @@
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             this.progressBar1.SystemColorsChanged += new System.EventHandler(this.progressBar1_SystemColorsChanged);
             // 
-            // classforProgressBarBindingSource
-            // 
-            this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
-            this.classforProgressBarBindingSource.CurrentChanged += new System.EventHandler(this.classforProgressBarBindingSource_CurrentChanged);
-            // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(313, 66);
+            this.progressBar2.Location = new System.Drawing.Point(313, 71);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(136, 23);
             this.progressBar2.TabIndex = 6;
@@ -132,7 +149,7 @@
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(313, 95);
+            this.progressBar3.Location = new System.Drawing.Point(313, 104);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(136, 23);
             this.progressBar3.TabIndex = 7;
@@ -142,7 +159,7 @@
             // progressBar4
             // 
             this.progressBar4.BackColor = System.Drawing.Color.Red;
-            this.progressBar4.Location = new System.Drawing.Point(313, 124);
+            this.progressBar4.Location = new System.Drawing.Point(313, 136);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(136, 23);
             this.progressBar4.Step = 1;
@@ -176,11 +193,16 @@
             this.searchToolStripMenuItem,
             this.generateReportToolStripMenuItem,
             this.navigateToolStripMenuItem,
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem15,
+            this.toolStripMenuItem14,
+            this.toolStripMenuItem12,
+            this.toolStripMenuItem5,
             this.toolStripMenuItem7});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(460, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(517, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -273,9 +295,12 @@
             // 
             // searchToolStripMenuItem
             // 
+            this.searchToolStripMenuItem.AutoSize = false;
             this.searchToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.searchToolStripMenuItem.Text = "Search";
             // 
             // generateReportToolStripMenuItem
@@ -308,12 +333,141 @@
             this.navigateToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.navigateToolStripMenuItem.Text = "Navigate";
             // 
+            // toolStripMenuItem20
+            // 
+            this.toolStripMenuItem20.AutoSize = false;
+            this.toolStripMenuItem20.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+            this.toolStripMenuItem20.Size = new System.Drawing.Size(94, 20);
+            this.toolStripMenuItem20.Text = "Help";
+            // 
+            // toolStripMenuItem15
+            // 
+            this.toolStripMenuItem15.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem15.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem16,
+            this.toolStripMenuItem17});
+            this.toolStripMenuItem15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(114, 20);
+            this.toolStripMenuItem15.Text = "Generate Report";
+            // 
+            // toolStripMenuItem16
+            // 
+            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(111, 22);
+            this.toolStripMenuItem16.Text = "Print";
+            // 
+            // toolStripMenuItem17
+            // 
+            this.toolStripMenuItem17.Name = "toolStripMenuItem17";
+            this.toolStripMenuItem17.Size = new System.Drawing.Size(111, 22);
+            this.toolStripMenuItem17.Text = "Export";
+            // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.AutoSize = false;
+            this.toolStripMenuItem14.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(60, 20);
+            this.toolStripMenuItem14.Text = "Search";
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.AutoSize = false;
+            this.toolStripMenuItem12.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem12.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem13,
+            this.toolStripSeparator8});
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(80, 20);
+            this.toolStripMenuItem12.Text = "  Edit   ";
+            this.toolStripMenuItem12.Click += new System.EventHandler(this.somethingElseToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(189, 22);
+            this.toolStripMenuItem13.Text = "toolStripMenuItem1";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(186, 6);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.AutoSize = false;
+            this.toolStripMenuItem5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem8,
+            this.toolStripSeparator6,
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10,
+            this.toolStripSeparator7,
+            this.toolStripMenuItem11});
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(60, 20);
+            this.toolStripMenuItem5.Text = "Menu";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(132, 6);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem6.Text = "New User";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem8.Text = "Load User";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(132, 6);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem9.Text = "Save All";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem10.Text = "Reset Data";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(132, 6);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(135, 22);
+            this.toolStripMenuItem11.Text = "Exit";
+            this.toolStripMenuItem11.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem7
             // 
+            this.toolStripMenuItem7.AutoSize = false;
             this.toolStripMenuItem7.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.toolStripMenuItem7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(45, 20);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(94, 20);
             this.toolStripMenuItem7.Text = "Help";
             // 
             // button6
@@ -321,9 +475,9 @@
             this.button6.BackColor = System.Drawing.SystemColors.MenuText;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button6.Location = new System.Drawing.Point(23, 18);
+            this.button6.Location = new System.Drawing.Point(12, 19);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(73, 21);
+            this.button6.Size = new System.Drawing.Size(104, 21);
             this.button6.TabIndex = 13;
             this.button6.Text = "Test";
             this.button6.UseVisualStyleBackColor = false;
@@ -347,21 +501,21 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 235);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(460, 71);
+            this.pictureBox1.Size = new System.Drawing.Size(509, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.SystemColors.MenuText;
+            this.button8.BackColor = System.Drawing.Color.Black;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button8.Location = new System.Drawing.Point(23, 45);
+            this.button8.Location = new System.Drawing.Point(12, 46);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(73, 21);
+            this.button8.Size = new System.Drawing.Size(104, 21);
             this.button8.TabIndex = 16;
-            this.button8.Text = "Start";
+            this.button8.Text = "Break";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.StartButton_Click);
             // 
@@ -370,9 +524,9 @@
             this.button9.BackColor = System.Drawing.SystemColors.MenuText;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button9.Location = new System.Drawing.Point(23, 96);
+            this.button9.Location = new System.Drawing.Point(12, 97);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(81, 21);
+            this.button9.Size = new System.Drawing.Size(104, 21);
             this.button9.TabIndex = 17;
             this.button9.Text = "Load Conf";
             this.button9.UseVisualStyleBackColor = false;
@@ -383,7 +537,7 @@
             this.button10.BackColor = System.Drawing.SystemColors.MenuText;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.Location = new System.Drawing.Point(12, 69);
+            this.button10.Location = new System.Drawing.Point(12, 70);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(104, 21);
             this.button10.TabIndex = 18;
@@ -417,7 +571,7 @@
             // 
             this.numericUpDown1.AllowDrop = true;
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(16, 40);
+            this.numericUpDown1.Location = new System.Drawing.Point(17, 28);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             12,
             0,
@@ -436,7 +590,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(74, 40);
+            this.numericUpDown2.Location = new System.Drawing.Point(75, 28);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             60,
             0,
@@ -502,12 +656,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.MenuText;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.Location = new System.Drawing.Point(17, 81);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(116, 27);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "Update";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // numericUpDown4
             // 
             this.numericUpDown4.AllowDrop = true;
             this.numericUpDown4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown4.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.numericUpDown4.Location = new System.Drawing.Point(74, 68);
+            this.numericUpDown4.Location = new System.Drawing.Point(75, 56);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             60,
             0,
@@ -527,7 +694,7 @@
             this.numericUpDown3.AllowDrop = true;
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.numericUpDown3.Location = new System.Drawing.Point(16, 68);
+            this.numericUpDown3.Location = new System.Drawing.Point(17, 56);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             6,
             0,
@@ -543,45 +710,99 @@
             this.groupBox2.Controls.Add(this.button8);
             this.groupBox2.Controls.Add(this.button10);
             this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Location = new System.Drawing.Point(185, 27);
+            this.groupBox2.Location = new System.Drawing.Point(179, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(122, 125);
+            this.groupBox2.Size = new System.Drawing.Size(128, 125);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
-            // 
-            // progressBar5
-            // 
-            this.progressBar5.Location = new System.Drawing.Point(324, 170);
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(100, 23);
-            this.progressBar5.TabIndex = 28;
             // 
             // minute5
             // 
             this.minute5.Interval = 36000;
             this.minute5.Tick += new System.EventHandler(this.minute5_Tick);
             // 
-            // button2
+            // notifyIcon1
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.MenuText;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.Location = new System.Drawing.Point(16, 93);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 27);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Confirm";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(455, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 16);
+            this.label3.TabIndex = 28;
+            this.label3.Text = " x";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(455, 143);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 16);
+            this.label4.TabIndex = 29;
+            this.label4.Text = " x";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(455, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 16);
+            this.label2.TabIndex = 30;
+            this.label2.Text = " x";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(455, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 16);
+            this.label5.TabIndex = 31;
+            this.label5.Text = " x";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
+            // 
+            // classforProgressBarBindingSource
+            // 
+            this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
+            this.classforProgressBarBindingSource.CurrentChanged += new System.EventHandler(this.classforProgressBarBindingSource_CurrentChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(457, 298);
-            this.Controls.Add(this.progressBar5);
+            this.ClientSize = new System.Drawing.Size(506, 298);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBox1);
@@ -589,19 +810,18 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar4);
             this.Controls.Add(this.progressBar3);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.progressBar4);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -611,6 +831,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -660,10 +881,32 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.ProgressBar progressBar5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Timer minute5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem20;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem16;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem17;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
     }
 }
 
