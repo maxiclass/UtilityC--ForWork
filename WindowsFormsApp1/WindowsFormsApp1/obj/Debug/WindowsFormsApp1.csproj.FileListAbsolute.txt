@@ -3,7 +3,6 @@ C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsA
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache
-C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
@@ -22,3 +21,4 @@ C:\Users\nazir\Desktop\UtilityC#ForWork\WindowsFormsApp1\WindowsFormsApp1\obj\De
 C:\Users\nazir\Desktop\UtilityC#ForWork\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\nazir\Desktop\UtilityC#ForWork\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\nazir\Desktop\UtilityC#ForWork\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ContiApp.resources

@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             ClassCfgData.IntBrakeTimeEnable = 0;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ContiApp());
             //ClassForExcelFunction.ClassForExcelFunction.ExcelCfgTemplate ExcelConf;
 
         }
@@ -107,7 +107,7 @@ namespace ClassForStorageContainers
         static string currentDirectory = System.IO.Directory.GetCurrentDirectory();
         static string excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
         public static string ExcelPath
-        { get  
+        { get
             {
                 return excelFileLocation;
             }
