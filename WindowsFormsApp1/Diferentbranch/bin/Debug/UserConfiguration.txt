@@ -1,0 +1,13 @@
+
+User_ Name = Adrian Marian Naziru;
+
+Entry_Number = 1;
+
+Day_Of_The_Week = 5;
+
+Brake_Time = 45;
+
+Working_Time = 480;
+
+
+

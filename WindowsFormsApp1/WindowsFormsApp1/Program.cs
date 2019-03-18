@@ -8,6 +8,7 @@ using DataManipulation;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 using System.Data;
+using ExcelInit;
 
 namespace WindowsFormsApp1
 {
@@ -61,39 +62,25 @@ namespace ClassForExcelFunction
         public static string ReadExcelCell(int row,int col,int sheetnr)
         {
             string StringReadValue;
-            Excel.Application excel = new Excel.Application();
-            var currentDirectory = System.IO.Directory.GetCurrentDirectory();
-            var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
-            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
-            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
-            if (typeof(double) == sheet.Cells[row, col].Value.GetType())
+            if (typeof(double) == ((Excel.Range)ExcelOpen.Sheet.Cells[row, col]).Value.Cells[row, col].Value.GetType())
             {
-              StringReadValue = sheet.Cells[row, col].Value.ToString();
+              StringReadValue = ((Excel.Range)ExcelOpen.Sheet.Cells[row, col]).Value.Cells[row, col].Value.ToString();
             }
             else
             {
-                StringReadValue = sheet.Cells[row, col].Value;
+                StringReadValue = ((Excel.Range)ExcelOpen.Sheet.Cells[row, col]).Value.Cells[row, col].Value;
             }
-            object LastEntryNumber = (Excel.Range)sheet.Cells[row, col];
+            object LastEntryNumber = ((Excel.Range)ExcelOpen.Sheet.Cells[row, col]).Value.Cells[row, col];
             //ClassForStorageContainers.StorageClassExcel.doubleEntryNumber = LastEntryNumber; //Int32.Parse(LastEntryNumber.text);
-            wb.Save();
-            wb.Close();
-            excel.Quit();
+            ExcelOpen.Workbooks.Save();
             return StringReadValue;
 
         }
         public static void WriteExcelCell(int row, int col, int sheetnr, string data )
         {
-            Excel.Application excel = new Excel.Application();
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var excelFileLocation = System.IO.Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
-            Excel.Workbook wb = excel.Workbooks.Open(excelFileLocation);
-            Excel.Worksheet sheet = (Excel.Worksheet)wb.Sheets[sheetnr];
-            ((Excel.Range)sheet.Cells[row, col]).Value = data;
-            wb.Save();
-            wb.Close();
-            excel.Quit();
-            excel.Quit();
+            ((Excel.Range)ExcelOpen.Sheet.Cells[row, col]).Value = data;
+            ExcelOpen.Workbooks.Save();
+
         }
 
     }
@@ -115,15 +102,4 @@ namespace ClassForStorageContainers
     }
 }
 
-namespace ClassforProgressBar
-{
-    public  class ClassforProgressBar
-    {
-        /* to be done*/
- 
-        public int testprogress = 50;
 
-        public int Testprogress { get => testprogress; set => testprogress = value; }
-
-    }
-}

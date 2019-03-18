@@ -1,0 +1,10 @@
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.exe.config
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.exe
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.pdb
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.FirstForm.resources
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.Properties.Resources.resources
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.csproj.GenerateResource.cache
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.csproj.CoreCompileInputs.cache
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.exe
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.pdb
+C:\Users\uia93155\Desktop\UtilityC-ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.csproj.ResolveComReference.cache

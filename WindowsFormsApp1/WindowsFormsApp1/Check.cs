@@ -13,10 +13,28 @@ namespace Check
 {
     class Check
         {
-        public void vCheck()
+        public static string vCheck()
         {
-
+          var currentDirectory = Directory.GetCurrentDirectory();
+          var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            return excelFileLocation;
         }
+    }
+
+}
+
+namespace ExcelInit
+{
+    class ExcelOpen
+    {
+        public void Excel ()
+        {
+        }
+        public static Excel.Application excel = new Excel.Application();
+        public static Excel.Workbook Workbooks = excel.Workbooks.Open(Check.Check.vCheck());
+        public static Excel.Worksheet Sheet = (Excel.Worksheet)Workbooks.Sheets[1];
+        public static Excel.Worksheet Sheet2 = (Excel.Worksheet)Workbooks.Sheets[2];
+
     }
 
 }

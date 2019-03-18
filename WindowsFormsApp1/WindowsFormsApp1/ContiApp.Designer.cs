@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiApp));
             this.button5 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.progressBar3 = new System.Windows.Forms.ProgressBar();
             this.progressBar4 = new System.Windows.Forms.ProgressBar();
@@ -82,7 +83,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.classforProgressBarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -91,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -121,6 +121,11 @@
             this.progressBar1.Value = 10;
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             this.progressBar1.SystemColorsChanged += new System.EventHandler(this.progressBar1_SystemColorsChanged);
+            // 
+            // classforProgressBarBindingSource
+            // 
+      //      this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
+      //      this.classforProgressBarBindingSource.CurrentChanged += new System.EventHandler(this.classforProgressBarBindingSource_CurrentChanged);
             // 
             // progressBar2
             // 
@@ -650,11 +655,6 @@
             this.label5.Text = " x";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // classforProgressBarBindingSource
-            // 
-            this.classforProgressBarBindingSource.DataSource = typeof(ClassforProgressBar.ClassforProgressBar);
-            this.classforProgressBarBindingSource.CurrentChanged += new System.EventHandler(this.classforProgressBarBindingSource_CurrentChanged);
-            // 
             // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,6 +684,7 @@
             this.Name = "ContiApp";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -693,7 +694,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.classforProgressBarBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
