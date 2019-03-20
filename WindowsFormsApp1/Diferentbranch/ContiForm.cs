@@ -143,7 +143,7 @@ namespace Differentbranch
             StorageClassData.IntWorkingMinutes = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
             StorageClassData.IntBreakMinutes = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
             groupBox1.Visible = false;
-
+            pictureBox1.BringToFront();
             pictureBox1.Visible = true;
         }
     }
