@@ -32,6 +32,7 @@ namespace Differentbranch
             BreakTimeBar.Step = 1;
             TaskTimeBar.Step = 1;
 
+            if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
             ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
             BreakTimeBar.Value = StorageClassData.IntLogoffTime;
             TaskTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
@@ -109,9 +110,21 @@ namespace Differentbranch
 
         private void timer1minute_Tick(object sender, EventArgs e)
         {
-            if (EnableClassData.bEnableOnlineTime)
+            if (EnableClassData.bEnableOvertime)
+            {
+                EnableClassData.bEnableOnlineTime = false;
+                ++StorageClassData.IntOnlineTime;
+
+                Overtime_label.Visible = true;
+                Overtime_label.BringToFront();
+                Overtime_label.Text= (StorageClassData.IntOnlineTime - StorageClassData.IntWorkingMinutes).ToString() + "min";
+                ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
+            }
+
+            if (EnableClassData.bEnableOnlineTime == true && EnableClassData.bEnableOvertime == false)
             {
                 ++StorageClassData.IntOnlineTime;
+                if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
                 ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
                 ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
                 ActiveTimeProcent.Text = Math.Round(((Convert.ToDouble(ActiveTimeBar.Value) / Convert.ToDouble(ActiveTimeBar.Maximum)) * 100), 1).ToString() + "%";
@@ -129,8 +142,13 @@ namespace Differentbranch
                 else
                 { ModifyProgressBarColor.SetState(ActiveTimeBar, 1); }
 
+                /* Enable overtime counting */
+                if (StorageClassData.IntOnlineTime >= StorageClassData.IntWorkingMinutes)
+                { EnableClassData.bEnableOvertime = true; }
+                else { }
+
             }
-           // label3.Text = Math.Round(((Convert.ToDouble(progressBar3.Value) / Convert.ToDouble(progressBar3.Maximum)) * 100), 1).ToString() + "%";
+
         }
 
         private void TaskTime_Click(object sender, EventArgs e)
@@ -142,9 +160,23 @@ namespace Differentbranch
         {
             StorageClassData.IntWorkingMinutes = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
             StorageClassData.IntBreakMinutes = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
+            ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
+            BreakTimeBar.Maximum = StorageClassData.IntBreakMinutes;
             groupBox1.Visible = false;
-            pictureBox1.BringToFront();
-            pictureBox1.Visible = true;
+            ExcelDefine.Sheet2.Cells[12, 10].Value=StorageClassData.IntWorkingMinutes;
+            ExcelDefine.Sheet2.Cells[13, 10].Value= StorageClassData.IntBreakMinutes;
+            ExcelDefine.Workbooks.Save();
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void timer5minutes(object sender, EventArgs e)
+        {
+
         }
     }
 }

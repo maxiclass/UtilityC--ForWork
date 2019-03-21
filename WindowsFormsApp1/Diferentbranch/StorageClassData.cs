@@ -31,6 +31,7 @@ namespace Differentbranch
     /* class used to create and store online data about user activity */
     public class EnableClassData
     {
+        public static bool bEnableOvertime { get; set; }
         public static bool bEnableOnlineTime { get; set; }
         public static bool bEnableBreakTime { get; set; }
         public static bool bEnableLogoffTime { get; set; }

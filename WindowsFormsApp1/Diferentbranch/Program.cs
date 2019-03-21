@@ -76,6 +76,7 @@ namespace Differentbranch
         public static void SecondStepInit()
         {
             EnableClassData.bEnableOnlineTime = true;
+            EnableClassData.bEnableOvertime = false;
         }
 
         /* This Step will load ContiForm with current configuration*/
