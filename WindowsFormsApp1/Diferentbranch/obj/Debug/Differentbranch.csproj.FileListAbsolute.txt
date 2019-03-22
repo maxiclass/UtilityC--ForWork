@@ -30,3 +30,4 @@ C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbran
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csproj.CoreCompileInputs.cache
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.exe
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.pdb
+C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csprojAssemblyReference.cache

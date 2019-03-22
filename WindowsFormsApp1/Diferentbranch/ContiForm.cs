@@ -203,7 +203,8 @@ namespace Differentbranch
 
         private void RecordEvent_Click(object sender, EventArgs e)
         {
-            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber+4, 3] = StorageClassData.IntEntryNumber;
+            ++StorageClassData.IntEntryNumber;
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
             ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
 
             if (StorageClassData.STodayDate != DateTime.Today.ToString("dd / MM / yyyy"))
@@ -211,9 +212,20 @@ namespace Differentbranch
             else {/* do nothing for now */ }
                
 
-            StorageClassData.IntEntryNumber++;
+            
             ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CommentBox_Changed(object sender, EventArgs e)
+        {
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] =CommentBox.Text;
+        }
+
     }
 }
