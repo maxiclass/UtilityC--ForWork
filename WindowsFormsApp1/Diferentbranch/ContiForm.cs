@@ -37,7 +37,7 @@ namespace Differentbranch
             BreakTimeBar.Value = StorageClassData.IntLogoffTime;
             TaskTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
 
-            MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
+            //MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
 
 
         }
@@ -93,14 +93,6 @@ namespace Differentbranch
         private void button6_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-            ExcelDefine.Exit();
-            System.Diagnostics.Process.Start(ExcelDefine.ExcelLocation());
-           
         }
 
         private void ContiForm_Load(object sender, EventArgs e)
@@ -176,6 +168,51 @@ namespace Differentbranch
 
         private void timer5minutes(object sender, EventArgs e)
         {
+
+        }
+
+        private void OpenTools_Click(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
+            Process.Start("chrome.exe", "http://gerrit-p-eu:8080/#/q/status:open");
+            Process.Start("chrome.exe", "http://collab-p:4500/ui#");
+            Process.Start("outlook.exe");
+            Process.Start("lync.exe");
+            Process.Start("TOTALCMD64.EXE");
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            ExcelDefine.Workbooks.Save();
+            ExcelDefine.Workbooks.Close();
+            ExcelDefine.Exit();
+            CloseExcelProcess.CloseExcel();
+            Application.Exit();
+        }
+
+        private void OpenExcel_Click(object sender, EventArgs e)
+        {
+            timer1minute.Enabled = false;
+            ExcelDefine.Workbooks.Save();
+            ExcelDefine.Workbooks.Close();
+            ExcelDefine.Exit();
+            CloseExcelProcess.CloseExcel();
+            Application.Exit();
+            Process.Start(ExcelDefine.ExcelLocation());
+        }
+
+        private void RecordEvent_Click(object sender, EventArgs e)
+        {
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber+4, 3] = StorageClassData.IntEntryNumber;
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
+
+            if (StorageClassData.STodayDate != DateTime.Today.ToString("dd / MM / yyyy"))
+            { ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy"); }
+            else {/* do nothing for now */ }
+               
+
+            StorageClassData.IntEntryNumber++;
+            ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
 
         }
     }

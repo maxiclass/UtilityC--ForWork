@@ -51,9 +51,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.OpenExcel = new System.Windows.Forms.Button();
+            this.RecordEvent = new System.Windows.Forms.Button();
+            this.OpenTools = new System.Windows.Forms.Button();
             this.timer1minute = new System.Windows.Forms.Timer(this.components);
             this.Overtime_label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -294,7 +294,7 @@
             this.button5.TabIndex = 33;
             this.button5.Text = "Exit";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Exit_Click);
             // 
             // label7
             // 
@@ -312,9 +312,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button9);
+            this.groupBox2.Controls.Add(this.OpenExcel);
+            this.groupBox2.Controls.Add(this.RecordEvent);
+            this.groupBox2.Controls.Add(this.OpenTools);
             this.groupBox2.Location = new System.Drawing.Point(168, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(128, 136);
@@ -335,47 +335,49 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button8
+            // OpenExcel
             // 
-            this.button8.BackColor = System.Drawing.Color.Black;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button8.Location = new System.Drawing.Point(12, 49);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(104, 21);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "Open Excel";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.OpenExcel.BackColor = System.Drawing.Color.Black;
+            this.OpenExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenExcel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.OpenExcel.Location = new System.Drawing.Point(12, 49);
+            this.OpenExcel.Name = "OpenExcel";
+            this.OpenExcel.Size = new System.Drawing.Size(104, 21);
+            this.OpenExcel.TabIndex = 16;
+            this.OpenExcel.Text = "Open Excel";
+            this.OpenExcel.UseVisualStyleBackColor = false;
+            this.OpenExcel.Click += new System.EventHandler(this.OpenExcel_Click);
             // 
-            // button10
+            // RecordEvent
             // 
-            this.button10.BackColor = System.Drawing.SystemColors.MenuText;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button10.Location = new System.Drawing.Point(12, 76);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(104, 21);
-            this.button10.TabIndex = 18;
-            this.button10.Text = "RecordEvent";
-            this.button10.UseVisualStyleBackColor = false;
+            this.RecordEvent.BackColor = System.Drawing.SystemColors.MenuText;
+            this.RecordEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordEvent.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.RecordEvent.Location = new System.Drawing.Point(12, 76);
+            this.RecordEvent.Name = "RecordEvent";
+            this.RecordEvent.Size = new System.Drawing.Size(104, 21);
+            this.RecordEvent.TabIndex = 18;
+            this.RecordEvent.Text = "RecordEvent";
+            this.RecordEvent.UseVisualStyleBackColor = false;
+            this.RecordEvent.Click += new System.EventHandler(this.RecordEvent_Click);
             // 
-            // button9
+            // OpenTools
             // 
-            this.button9.BackColor = System.Drawing.SystemColors.MenuText;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button9.Location = new System.Drawing.Point(12, 103);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(104, 21);
-            this.button9.TabIndex = 17;
-            this.button9.Text = "Load Conf";
-            this.button9.UseVisualStyleBackColor = false;
+            this.OpenTools.BackColor = System.Drawing.SystemColors.MenuText;
+            this.OpenTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenTools.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.OpenTools.Location = new System.Drawing.Point(12, 103);
+            this.OpenTools.Name = "OpenTools";
+            this.OpenTools.Size = new System.Drawing.Size(104, 21);
+            this.OpenTools.TabIndex = 17;
+            this.OpenTools.Text = "Open Tools";
+            this.OpenTools.UseVisualStyleBackColor = false;
+            this.OpenTools.Click += new System.EventHandler(this.OpenTools_Click);
             // 
             // timer1minute
             // 
             this.timer1minute.Enabled = true;
-            this.timer1minute.Interval = 600;
+            this.timer1minute.Interval = 60000;
             this.timer1minute.Tick += new System.EventHandler(this.timer1minute_Tick);
             // 
             // Overtime_label
@@ -450,9 +452,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button OpenExcel;
+        private System.Windows.Forms.Button RecordEvent;
+        private System.Windows.Forms.Button OpenTools;
         private System.Windows.Forms.Timer timer1minute;
         private System.Windows.Forms.Label Overtime_label;
     }
