@@ -1,7 +1,0 @@
-﻿CREATE TABLE [dbo].[Table]
-(
-	[var1] INT NOT NULL PRIMARY KEY DEFAULT 0, 
-    [var2] INT NOT NULL DEFAULT 0, 
-    [var3] NCHAR(10) NOT NULL DEFAULT 0, 
-    [var4] NCHAR(10) NOT NULL DEFAULT 0
-)
