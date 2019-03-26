@@ -46,25 +46,22 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.OpenExcel = new System.Windows.Forms.Button();
-            this.RecordEvent = new System.Windows.Forms.Button();
             this.OpenTools = new System.Windows.Forms.Button();
+            this.RecordEvent = new System.Windows.Forms.Button();
             this.timer1minute = new System.Windows.Forms.Timer(this.components);
             this.Overtime_label = new System.Windows.Forms.Label();
             this.CommentBox = new System.Windows.Forms.RichTextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // TaskTimeBar
@@ -272,21 +269,6 @@
             this.numericUpDown2.TabIndex = 21;
             this.numericUpDown2.ThousandsSeparator = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "http://buhev-jira.conti.de:7090/browse/"});
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllUrl;
-            this.textBox1.Location = new System.Drawing.Point(99, 148);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(192, 20);
-            this.textBox1.TabIndex = 32;
-            this.textBox1.Visible = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Black;
@@ -315,6 +297,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.RecordEvent);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.OpenExcel);
             this.groupBox2.Controls.Add(this.OpenTools);
@@ -351,19 +334,6 @@
             this.OpenExcel.UseVisualStyleBackColor = false;
             this.OpenExcel.Click += new System.EventHandler(this.OpenExcel_Click);
             // 
-            // RecordEvent
-            // 
-            this.RecordEvent.BackColor = System.Drawing.SystemColors.MenuText;
-            this.RecordEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordEvent.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.RecordEvent.Location = new System.Drawing.Point(6, 19);
-            this.RecordEvent.Name = "RecordEvent";
-            this.RecordEvent.Size = new System.Drawing.Size(104, 21);
-            this.RecordEvent.TabIndex = 18;
-            this.RecordEvent.Text = "RecordEvent";
-            this.RecordEvent.UseVisualStyleBackColor = false;
-            this.RecordEvent.Click += new System.EventHandler(this.RecordEvent_Click);
-            // 
             // OpenTools
             // 
             this.OpenTools.BackColor = System.Drawing.SystemColors.MenuText;
@@ -376,6 +346,19 @@
             this.OpenTools.Text = "Open Tools";
             this.OpenTools.UseVisualStyleBackColor = false;
             this.OpenTools.Click += new System.EventHandler(this.OpenTools_Click);
+            // 
+            // RecordEvent
+            // 
+            this.RecordEvent.BackColor = System.Drawing.SystemColors.MenuText;
+            this.RecordEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordEvent.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.RecordEvent.Location = new System.Drawing.Point(12, 76);
+            this.RecordEvent.Name = "RecordEvent";
+            this.RecordEvent.Size = new System.Drawing.Size(104, 21);
+            this.RecordEvent.TabIndex = 18;
+            this.RecordEvent.Text = "RecordEvent";
+            this.RecordEvent.UseVisualStyleBackColor = false;
+            this.RecordEvent.Click += new System.EventHandler(this.RecordEvent_Click);
             // 
             // timer1minute
             // 
@@ -396,35 +379,23 @@
             // 
             // CommentBox
             // 
-            this.CommentBox.Location = new System.Drawing.Point(2, 63);
+            this.CommentBox.Location = new System.Drawing.Point(105, 148);
             this.CommentBox.Name = "CommentBox";
             this.CommentBox.Size = new System.Drawing.Size(192, 22);
             this.CommentBox.TabIndex = 38;
             this.CommentBox.Text = "";
             this.CommentBox.TextChanged += new System.EventHandler(this.CommentBox_Changed);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.CommentBox);
-            this.groupBox3.Controls.Add(this.RecordEvent);
-            this.groupBox3.Location = new System.Drawing.Point(487, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 118);
-            this.groupBox3.TabIndex = 40;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
-            // 
             // ContiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(781, 178);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(485, 178);
+            this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.ActiveTimeProcent);
             this.Controls.Add(this.BreakTimeProcent);
@@ -447,7 +418,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +442,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -483,6 +452,5 @@
         private System.Windows.Forms.Timer timer1minute;
         private System.Windows.Forms.Label Overtime_label;
         private System.Windows.Forms.RichTextBox CommentBox;
-        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

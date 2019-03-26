@@ -55,8 +55,8 @@ namespace Differentbranch
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
-            { textBox1.Visible = true; }
-            else { textBox1.Visible = false; }
+            { CommentBox.Visible = true; }
+            else { CommentBox.Visible = false; }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -183,11 +183,19 @@ namespace Differentbranch
 
         private void Exit_Click(object sender, EventArgs e)
         {
-            ExcelDefine.Workbooks.Save();
-            ExcelDefine.Workbooks.Close();
-            ExcelDefine.Exit();
-            CloseExcelProcess.CloseExcel();
-            Application.Exit();
+
+            try
+            {
+                ExcelDefine.Workbooks.Save();
+                ExcelDefine.Workbooks.Close();
+                ExcelDefine.Exit();
+                CloseExcelProcess.CloseExcel();
+                Application.Exit();
+            }
+            catch
+            {
+                MessageBox.Show("Excel file is in used. Close Excel file first");
+            }
         }
 
         private void OpenExcel_Click(object sender, EventArgs e)
@@ -206,14 +214,10 @@ namespace Differentbranch
             ++StorageClassData.IntEntryNumber;
             ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
             ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
-
-            if (StorageClassData.STodayDate != DateTime.Today.ToString("dd / MM / yyyy"))
-            { ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy"); }
-            else {/* do nothing for now */ }
-               
-
-            
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
+            ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] = CommentBox.Text;
             ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
+
 
         }
 
