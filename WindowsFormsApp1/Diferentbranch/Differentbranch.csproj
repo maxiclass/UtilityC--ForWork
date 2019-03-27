@@ -118,5 +118,10 @@
   <ItemGroup>
     <None Include="bin\Debug\conti3.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Conti.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
