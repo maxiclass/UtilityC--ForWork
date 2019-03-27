@@ -23,6 +23,7 @@ C:\Users\nazir\Desktop\UtilityC#ForWork\WindowsFormsApp1\Diferentbranch\obj\Debu
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.exe.config
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.exe
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\bin\Debug\Diferentbranch.pdb
+C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csprojAssemblyReference.cache
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csproj.ResolveComReference.cache
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.ContiForm.resources
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.Properties.Resources.resources
@@ -30,4 +31,3 @@ C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbran
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csproj.CoreCompileInputs.cache
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.exe
 C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Diferentbranch.pdb
-C:\Users\uia93155\Desktop\UtilityC--ForWork-master\WindowsFormsApp1\Diferentbranch\obj\Debug\Differentbranch.csprojAssemblyReference.cache

@@ -22,26 +22,26 @@ namespace Differentbranch
             // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
             ModifyProgressBarColor.SetState(ActiveTimeBar, 1);
             ModifyProgressBarColor.SetState(BreakTimeBar, 1);
-            ModifyProgressBarColor.SetState(TaskTimeBar, 1);
+            ModifyProgressBarColor.SetState(LockTimeBar, 1);
 
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
             BreakTimeBar.Maximum = StorageClassData.IntBreakMinutes;
-            TaskTimeBar.Maximum = StorageClassData.IntStoryPoints * 4 /* hours */ * 60/* minutes */ ;
+            LockTimeBar.Maximum = StorageClassData.IntStoryPoints * 4 /* hours */ * 60/* minutes */ ;
 
             ActiveTimeBar.Step = 1;
             BreakTimeBar.Step = 1;
-            TaskTimeBar.Step = 1;
+            LockTimeBar.Step = 1;
 
             if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
             ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
             BreakTimeBar.Value = StorageClassData.IntLogoffTime;
-            TaskTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
+            LockTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
 
             //MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
-
+        
 
         }
-
+       
         private void progressBar2_Click(object sender, EventArgs e)
         {
 
@@ -100,7 +100,7 @@ namespace Differentbranch
 
         }
 
-        private void timer1minute_Tick(object sender, EventArgs e)
+        public void timer1minute_Tick(object sender, EventArgs e)
         {
             if (EnableClassData.bEnableOvertime)
             {
@@ -116,6 +116,8 @@ namespace Differentbranch
             if (EnableClassData.bEnableOnlineTime == true && EnableClassData.bEnableOvertime == false)
             {
                 ++StorageClassData.IntOnlineTime;
+                TimePassed.Visible = true;
+                TimePassed.Text = StorageClassData.IntOnlineTime.ToString() + "min";
                 if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
                 ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
                 ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
@@ -209,7 +211,7 @@ namespace Differentbranch
             Process.Start(ExcelDefine.ExcelLocation());
         }
 
-        private void RecordEvent_Click(object sender, EventArgs e)
+        public void RecordEvent_Click(object sender, EventArgs e)
         {
             ++StorageClassData.IntEntryNumber;
             ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
@@ -226,10 +228,69 @@ namespace Differentbranch
 
         }
 
-        private void CommentBox_Changed(object sender, EventArgs e)
+        public void CommentBox_Changed(object sender, EventArgs e)
         {
             ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] =CommentBox.Text;
         }
 
+        private void ActiveTimeBar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InitiAppTimer(object sender, EventArgs e)
+        {
+            if (EnableClassData.bEnableOvertime)
+            {
+                EnableClassData.bEnableOnlineTime = false;
+                ++StorageClassData.IntOnlineTime;
+
+                Overtime_label.Visible = true;
+                Overtime_label.BringToFront();
+                Overtime_label.Text = (StorageClassData.IntOnlineTime - StorageClassData.IntWorkingMinutes).ToString() + "min";
+                ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
+            }
+
+            if (EnableClassData.bEnableOnlineTime == true && EnableClassData.bEnableOvertime == false)
+            {
+                ++StorageClassData.IntOnlineTime;
+                TimePassed.Visible = true;
+                TimePassed.Text = StorageClassData.IntOnlineTime.ToString() + "min";
+                if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
+                ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
+                ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
+                ActiveTimeProcent.Text = Math.Round(((Convert.ToDouble(ActiveTimeBar.Value) / Convert.ToDouble(ActiveTimeBar.Maximum)) * 100), 1).ToString() + "%";
+                if (((Convert.ToDouble(ActiveTimeBar.Value) / Convert.ToDouble(ActiveTimeBar.Maximum)) * 100) > 35)
+                {
+                    if (((Convert.ToDouble(ActiveTimeBar.Value) / Convert.ToDouble(ActiveTimeBar.Maximum)) * 100) < 65)
+                    {
+                        ModifyProgressBarColor.SetState(ActiveTimeBar, 3);
+                    }
+                    else
+                    {
+                        ModifyProgressBarColor.SetState(ActiveTimeBar, 2);
+                    }
+                }
+                else
+                { ModifyProgressBarColor.SetState(ActiveTimeBar, 1); }
+
+                /* Enable overtime counting */
+                if (StorageClassData.IntOnlineTime >= StorageClassData.IntWorkingMinutes)
+                { EnableClassData.bEnableOvertime = true; }
+                else { }
+
+            }
+            InitiTimer.Enabled = false;
+        }
+
+        private void EventsTimer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LockTimeBar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

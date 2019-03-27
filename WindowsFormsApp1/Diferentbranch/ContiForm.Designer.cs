@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.TaskTimeBar = new System.Windows.Forms.ProgressBar();
+            this.LockTimeBar = new System.Windows.Forms.ProgressBar();
             this.BreakTimeBar = new System.Windows.Forms.ProgressBar();
             this.ActiveTimeBar = new System.Windows.Forms.ProgressBar();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -49,13 +49,16 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RecordEvent = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.OpenExcel = new System.Windows.Forms.Button();
             this.OpenTools = new System.Windows.Forms.Button();
-            this.RecordEvent = new System.Windows.Forms.Button();
             this.timer1minute = new System.Windows.Forms.Timer(this.components);
             this.Overtime_label = new System.Windows.Forms.Label();
             this.CommentBox = new System.Windows.Forms.RichTextBox();
+            this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
+            this.InitiTimer = new System.Windows.Forms.Timer(this.components);
+            this.EventsTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -64,13 +67,13 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // TaskTimeBar
+            // LockTimeBar
             // 
-            this.TaskTimeBar.Location = new System.Drawing.Point(315, 109);
-            this.TaskTimeBar.Name = "TaskTimeBar";
-            this.TaskTimeBar.Size = new System.Drawing.Size(147, 21);
-            this.TaskTimeBar.TabIndex = 0;
-            this.TaskTimeBar.Click += new System.EventHandler(this.TaskTime_Click);
+            this.LockTimeBar.Location = new System.Drawing.Point(315, 109);
+            this.LockTimeBar.Name = "LockTimeBar";
+            this.LockTimeBar.Size = new System.Drawing.Size(147, 21);
+            this.LockTimeBar.TabIndex = 0;
+            this.LockTimeBar.Click += new System.EventHandler(this.LockTimeBar_Click);
             // 
             // BreakTimeBar
             // 
@@ -86,6 +89,7 @@
             this.ActiveTimeBar.Name = "ActiveTimeBar";
             this.ActiveTimeBar.Size = new System.Drawing.Size(147, 23);
             this.ActiveTimeBar.TabIndex = 2;
+            this.ActiveTimeBar.Click += new System.EventHandler(this.ActiveTimeBar_Click);
             // 
             // linkLabel1
             // 
@@ -109,7 +113,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Task Time";
+            this.label1.Text = "Lock Time";
             // 
             // label2
             // 
@@ -308,6 +312,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // RecordEvent
+            // 
+            this.RecordEvent.BackColor = System.Drawing.SystemColors.MenuText;
+            this.RecordEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordEvent.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.RecordEvent.Location = new System.Drawing.Point(12, 76);
+            this.RecordEvent.Name = "RecordEvent";
+            this.RecordEvent.Size = new System.Drawing.Size(104, 21);
+            this.RecordEvent.TabIndex = 18;
+            this.RecordEvent.Text = "RecordEvent";
+            this.RecordEvent.UseVisualStyleBackColor = false;
+            this.RecordEvent.Click += new System.EventHandler(this.RecordEvent_Click);
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.MenuText;
@@ -347,19 +364,6 @@
             this.OpenTools.UseVisualStyleBackColor = false;
             this.OpenTools.Click += new System.EventHandler(this.OpenTools_Click);
             // 
-            // RecordEvent
-            // 
-            this.RecordEvent.BackColor = System.Drawing.SystemColors.MenuText;
-            this.RecordEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordEvent.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.RecordEvent.Location = new System.Drawing.Point(12, 76);
-            this.RecordEvent.Name = "RecordEvent";
-            this.RecordEvent.Size = new System.Drawing.Size(104, 21);
-            this.RecordEvent.TabIndex = 18;
-            this.RecordEvent.Text = "RecordEvent";
-            this.RecordEvent.UseVisualStyleBackColor = false;
-            this.RecordEvent.Click += new System.EventHandler(this.RecordEvent_Click);
-            // 
             // timer1minute
             // 
             this.timer1minute.Enabled = true;
@@ -386,6 +390,23 @@
             this.CommentBox.Text = "";
             this.CommentBox.TextChanged += new System.EventHandler(this.CommentBox_Changed);
             // 
+            // TimePassed
+            // 
+            this.TimePassed.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TimePassed.BalloonTipTitle = "Info";
+            this.TimePassed.Visible = true;
+            // 
+            // InitiTimer
+            // 
+            this.InitiTimer.Enabled = true;
+            this.InitiTimer.Tick += new System.EventHandler(this.InitiAppTimer);
+            // 
+            // EventsTimer
+            // 
+            this.EventsTimer.Enabled = true;
+            this.EventsTimer.Interval = 300000;
+            this.EventsTimer.Tick += new System.EventHandler(this.EventsTimer_Tick);
+            // 
             // ContiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,7 +425,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.BreakTimeBar);
-            this.Controls.Add(this.TaskTimeBar);
+            this.Controls.Add(this.LockTimeBar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Overtime_label);
             this.Controls.Add(this.ActiveTimeBar);
@@ -425,7 +446,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar TaskTimeBar;
+        private System.Windows.Forms.ProgressBar LockTimeBar;
         private System.Windows.Forms.ProgressBar BreakTimeBar;
         private System.Windows.Forms.ProgressBar ActiveTimeBar;
         private System.Windows.Forms.LinkLabel linkLabel1;
@@ -447,10 +468,13 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button OpenExcel;
-        private System.Windows.Forms.Button RecordEvent;
         private System.Windows.Forms.Button OpenTools;
-        private System.Windows.Forms.Timer timer1minute;
         private System.Windows.Forms.Label Overtime_label;
-        private System.Windows.Forms.RichTextBox CommentBox;
+        private System.Windows.Forms.NotifyIcon TimePassed;
+        public System.Windows.Forms.Timer timer1minute;
+        private System.Windows.Forms.Timer InitiTimer;
+        private System.Windows.Forms.Timer EventsTimer;
+        public System.Windows.Forms.Button RecordEvent;
+        public System.Windows.Forms.RichTextBox CommentBox;
     }
 }

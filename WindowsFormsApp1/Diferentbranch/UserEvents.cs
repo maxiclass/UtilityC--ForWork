@@ -4,26 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Differentbranch;
 using Microsoft.Win32;
 
 
 namespace Diferentbranch
 {
-    class UserEvents
+    // Class used to define behavior in user event situations
+    public class UserEvents
     {
-        private static SessionSwitchEventHandler sseh;
-     
+        // Save times when Lock and Unlock event happens
+        public static void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
 
-void SystemEvents_SessionSwitch(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
         {
+
             if (e.Reason == SessionSwitchReason.SessionLock)
+
             {
-                MessageBox.Show("Excel file is in used. Close Excel file first");
+                ++StorageClassData.IntEntryNumber;
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "LOCK";
+                ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
+
             }
+
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
+
             {
-                //I returned to my desk
+                ++StorageClassData.IntEntryNumber;
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "UNLOCK";
+                ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
             }
+
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using Differentbranch;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using Diferentbranch;
 
 namespace Differentbranch
 {
@@ -23,6 +24,8 @@ namespace Differentbranch
 
            FirstInitClass.FirstStepInit();
             FirstInitClass.SecondStepInit();
+
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(UserEvents.SystemEvents_SessionSwitch);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
