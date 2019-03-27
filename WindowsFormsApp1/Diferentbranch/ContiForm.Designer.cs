@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiForm));
             this.LockTimeBar = new System.Windows.Forms.ProgressBar();
             this.BreakTimeBar = new System.Windows.Forms.ProgressBar();
             this.ActiveTimeBar = new System.Windows.Forms.ProgressBar();
@@ -393,8 +394,13 @@
             // TimePassed
             // 
             this.TimePassed.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TimePassed.BalloonTipText = "Info";
             this.TimePassed.BalloonTipTitle = "Info";
+            this.TimePassed.Icon = ((System.Drawing.Icon)(resources.GetObject("TimePassed.Icon")));
             this.TimePassed.Visible = true;
+            this.TimePassed.BalloonTipClicked += new System.EventHandler(this.TimePassed_BalloonTipClicked);
+            this.TimePassed.Click += new System.EventHandler(this.TimePassed_Click);
+            this.TimePassed.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TimePassed_MouseDoubleClick);
             // 
             // InitiTimer
             // 

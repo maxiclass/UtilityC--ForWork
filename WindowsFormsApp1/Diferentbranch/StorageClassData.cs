@@ -26,6 +26,9 @@ namespace Differentbranch
         public static int   IntStoryPointsLeft { get; set; }
 
         public static int IntBrakeTimeEnable { get; set; }
+
+        public static DateTime LockTimeStart { get; set; }
+        public static DateTime LockTimeFinish { get; set; }
         /* to be continued */
     }
     /* class used to create and store online data about user activity */

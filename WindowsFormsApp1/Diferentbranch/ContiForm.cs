@@ -92,7 +92,7 @@ namespace Differentbranch
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
 
         private void ContiForm_Load(object sender, EventArgs e)
@@ -116,8 +116,12 @@ namespace Differentbranch
             if (EnableClassData.bEnableOnlineTime == true && EnableClassData.bEnableOvertime == false)
             {
                 ++StorageClassData.IntOnlineTime;
+
+                //Create a notify icon on the buttom right of the screen
                 TimePassed.Visible = true;
                 TimePassed.Text = StorageClassData.IntOnlineTime.ToString() + "min";
+
+
                 if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
                 ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
                 ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
@@ -291,6 +295,28 @@ namespace Differentbranch
         private void LockTimeBar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TimePassed_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void TimePassed_BalloonTipClicked(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void TimePassed_Click(object sender, EventArgs e)
+        {
+
+            //Make form visible again
+            this.Show();
         }
     }
 }

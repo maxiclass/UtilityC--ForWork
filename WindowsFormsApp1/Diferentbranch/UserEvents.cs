@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Differentbranch;
 using Microsoft.Win32;
-
+using System.Runtime.InteropServices;
 
 namespace Diferentbranch
 {
@@ -24,20 +24,26 @@ namespace Diferentbranch
                 ++StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
+                StorageClassData.LockTimeStart = DateTime.Now;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "LOCK";
                 ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
+                
 
             }
-
+            // Save times when Lock and Unlock event happens
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
 
             {
                 ++StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
+                StorageClassData.LockTimeFinish = DateTime.Now;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "UNLOCK";
+                //Comment column
+                string BreakTotalTime = (StorageClassData.LockTimeFinish - StorageClassData.LockTimeStart).ToString("mm");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] = BreakTotalTime + " min break";
                 ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
             }
 
