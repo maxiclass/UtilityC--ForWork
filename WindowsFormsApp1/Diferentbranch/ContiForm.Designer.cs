@@ -59,6 +59,7 @@
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.InitiTimer = new System.Windows.Forms.Timer(this.components);
             this.EventsTimer = new System.Windows.Forms.Timer(this.components);
+            this.timer1minute2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -405,6 +406,12 @@
             this.EventsTimer.Interval = 300000;
             this.EventsTimer.Tick += new System.EventHandler(this.EventsTimer_Tick);
             // 
+            // timer1minute2
+            // 
+            this.timer1minute2.Enabled = true;
+            this.timer1minute2.Interval = 60000;
+            this.timer1minute2.Tick += new System.EventHandler(this.timer1minute2_Tick);
+            // 
             // ContiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,5 +479,6 @@
         private System.Windows.Forms.Timer EventsTimer;
         public System.Windows.Forms.Button RecordEvent;
         public System.Windows.Forms.RichTextBox CommentBox;
+        private System.Windows.Forms.Timer timer1minute2;
     }
 }

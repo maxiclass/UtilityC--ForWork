@@ -29,7 +29,7 @@ namespace Differentbranch
 
         public static DateTime LockTimeStart { get; set; }
         public static DateTime LockTimeFinish { get; set; }
-        public static string TotalDayBreakTime { get; set; }
+        public static int TotalDayBreakTime { get; set; }
         /* to be continued */
     }
     /* class used to create and store online data about user activity */

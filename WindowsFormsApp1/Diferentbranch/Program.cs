@@ -69,7 +69,7 @@ namespace Differentbranch
                 ExcelDefine.Sheet2.Cells[18, 10].Value = StorageClassData.IntLogoffTime;
 
                 ExcelDefine.Sheet2.Cells[25, 10].Value = 0;
-                StorageClassData.TotalDayBreakTime = ExcelDefine.Sheet2.Cells[25, 10].Value.ToString();
+                StorageClassData.TotalDayBreakTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[25, 10].Value());
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Differentbranch
 
             StorageClassData.IntStoryPoints = Convert.ToInt32(ExcelDefine.Sheet2.Cells[22, 10].Value());
             StorageClassData.IntStoryPointsLeft = Convert.ToInt32(ExcelDefine.Sheet2.Cells[23, 10].Value());
-            StorageClassData.TotalDayBreakTime = (ExcelDefine.Sheet2.Cells[25, 10].Value.ToString());
+            StorageClassData.TotalDayBreakTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[25, 10].Value());
 
         }
 

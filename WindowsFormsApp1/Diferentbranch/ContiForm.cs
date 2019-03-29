@@ -102,6 +102,7 @@ namespace Differentbranch
 
         public void timer1minute_Tick(object sender, EventArgs e)
         {
+            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
             if (EnableClassData.bEnableOvertime)
             {
                 EnableClassData.bEnableOnlineTime = false;
@@ -159,7 +160,7 @@ namespace Differentbranch
             StorageClassData.IntWorkingMinutes = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
             StorageClassData.IntBreakMinutes = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
-            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime;
+            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
             groupBox1.Visible = false;
             ExcelDefine.Sheet2.Cells[12, 10].Value=StorageClassData.IntWorkingMinutes;
             ExcelDefine.Sheet2.Cells[13, 10].Value= StorageClassData.IntBreakMinutes;
@@ -244,6 +245,7 @@ namespace Differentbranch
 
         private void InitiAppTimer(object sender, EventArgs e)
         {
+            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
             if (EnableClassData.bEnableOvertime)
             {
                 EnableClassData.bEnableOnlineTime = false;
@@ -324,6 +326,13 @@ namespace Differentbranch
 
         private void OfflineTotalTime_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void timer1minute2_Tick(object sender, EventArgs e)
+        {
+            StorageClassData.TotalDayBreakTime++;
+            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
 
         }
     }
