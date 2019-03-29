@@ -31,14 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiForm));
             this.LockTimeBar = new System.Windows.Forms.ProgressBar();
-            this.BreakTimeBar = new System.Windows.Forms.ProgressBar();
             this.ActiveTimeBar = new System.Windows.Forms.ProgressBar();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ActiveTimeProcent = new System.Windows.Forms.Label();
-            this.BreakTimeProcent = new System.Windows.Forms.Label();
+            this.OfflineTotalTime = new System.Windows.Forms.Label();
             this.TaskTimeProcent = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -76,14 +75,6 @@
             this.LockTimeBar.TabIndex = 0;
             this.LockTimeBar.Click += new System.EventHandler(this.LockTimeBar_Click);
             // 
-            // BreakTimeBar
-            // 
-            this.BreakTimeBar.Location = new System.Drawing.Point(315, 66);
-            this.BreakTimeBar.Name = "BreakTimeBar";
-            this.BreakTimeBar.Size = new System.Drawing.Size(147, 23);
-            this.BreakTimeBar.TabIndex = 1;
-            this.BreakTimeBar.Click += new System.EventHandler(this.progressBar2_Click);
-            // 
             // ActiveTimeBar
             // 
             this.ActiveTimeBar.Location = new System.Drawing.Point(315, 22);
@@ -120,11 +111,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(312, 48);
+            this.label2.Location = new System.Drawing.Point(314, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Break Time";
+            this.label2.Text = "Offline Time";
             // 
             // label3
             // 
@@ -147,15 +138,16 @@
             this.ActiveTimeProcent.TabIndex = 29;
             this.ActiveTimeProcent.Text = "procent";
             // 
-            // BreakTimeProcent
+            // OfflineTotalTime
             // 
-            this.BreakTimeProcent.AutoSize = true;
-            this.BreakTimeProcent.BackColor = System.Drawing.Color.Transparent;
-            this.BreakTimeProcent.Location = new System.Drawing.Point(427, 48);
-            this.BreakTimeProcent.Name = "BreakTimeProcent";
-            this.BreakTimeProcent.Size = new System.Drawing.Size(43, 13);
-            this.BreakTimeProcent.TabIndex = 28;
-            this.BreakTimeProcent.Text = "procent";
+            this.OfflineTotalTime.AutoSize = true;
+            this.OfflineTotalTime.BackColor = System.Drawing.Color.Transparent;
+            this.OfflineTotalTime.Location = new System.Drawing.Point(427, 59);
+            this.OfflineTotalTime.Name = "OfflineTotalTime";
+            this.OfflineTotalTime.Size = new System.Drawing.Size(43, 13);
+            this.OfflineTotalTime.TabIndex = 28;
+            this.OfflineTotalTime.Text = "procent";
+            this.OfflineTotalTime.Click += new System.EventHandler(this.OfflineTotalTime_Click);
             // 
             // TaskTimeProcent
             // 
@@ -425,12 +417,11 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.ActiveTimeProcent);
-            this.Controls.Add(this.BreakTimeProcent);
+            this.Controls.Add(this.OfflineTotalTime);
             this.Controls.Add(this.TaskTimeProcent);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.BreakTimeBar);
             this.Controls.Add(this.LockTimeBar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Overtime_label);
@@ -453,14 +444,13 @@
         #endregion
 
         private System.Windows.Forms.ProgressBar LockTimeBar;
-        private System.Windows.Forms.ProgressBar BreakTimeBar;
         private System.Windows.Forms.ProgressBar ActiveTimeBar;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label ActiveTimeProcent;
-        private System.Windows.Forms.Label BreakTimeProcent;
+        private System.Windows.Forms.Label OfflineTotalTime;
         private System.Windows.Forms.Label TaskTimeProcent;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox1;

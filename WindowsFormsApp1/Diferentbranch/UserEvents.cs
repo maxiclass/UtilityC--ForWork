@@ -41,8 +41,12 @@ namespace Diferentbranch
                 StorageClassData.LockTimeFinish = DateTime.Now;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "UNLOCK";
+
                 //Comment column
                 string BreakTotalTime = (StorageClassData.LockTimeFinish - StorageClassData.LockTimeStart).ToString("mm");
+                StorageClassData.TotalDayBreakTime = (StorageClassData.LockTimeFinish - StorageClassData.LockTimeStart).ToString("mm");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 8] = StorageClassData.TotalDayBreakTime + " min Offline";
+                ExcelDefine.Sheet2.Cells[25, 10].Value = StorageClassData.TotalDayBreakTime;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] = BreakTotalTime + " min break";
                 ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
             }

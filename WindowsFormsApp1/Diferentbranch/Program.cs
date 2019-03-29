@@ -61,10 +61,15 @@ namespace Differentbranch
             {
                 StorageClassData.STodayDate = DateTime.Today.ToString("dd / MM / yyyy");
                 ExcelDefine.Sheet2.Cells[16, 10].Value = StorageClassData.STodayDate;
+
                 StorageClassData.IntOnlineTime = 0;
                 ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;
+
                 StorageClassData.IntLogoffTime = 0;
                 ExcelDefine.Sheet2.Cells[18, 10].Value = StorageClassData.IntLogoffTime;
+
+                ExcelDefine.Sheet2.Cells[25, 10].Value = 0;
+                StorageClassData.TotalDayBreakTime = ExcelDefine.Sheet2.Cells[25, 10].Value.ToString();
             }
             else
             {
@@ -73,6 +78,7 @@ namespace Differentbranch
 
             StorageClassData.IntStoryPoints = Convert.ToInt32(ExcelDefine.Sheet2.Cells[22, 10].Value());
             StorageClassData.IntStoryPointsLeft = Convert.ToInt32(ExcelDefine.Sheet2.Cells[23, 10].Value());
+            StorageClassData.TotalDayBreakTime = (ExcelDefine.Sheet2.Cells[25, 10].Value.ToString());
 
         }
 

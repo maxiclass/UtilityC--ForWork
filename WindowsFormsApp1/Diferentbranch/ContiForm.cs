@@ -21,20 +21,20 @@ namespace Differentbranch
             /* this code will update current form with loaded configuration from init */
             // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
             ModifyProgressBarColor.SetState(ActiveTimeBar, 1);
-            ModifyProgressBarColor.SetState(BreakTimeBar, 1);
+         
             ModifyProgressBarColor.SetState(LockTimeBar, 1);
 
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
-            BreakTimeBar.Maximum = StorageClassData.IntBreakMinutes;
+            
             LockTimeBar.Maximum = StorageClassData.IntStoryPoints * 4 /* hours */ * 60/* minutes */ ;
 
             ActiveTimeBar.Step = 1;
-            BreakTimeBar.Step = 1;
+            
             LockTimeBar.Step = 1;
 
             if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
             ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
-            BreakTimeBar.Value = StorageClassData.IntLogoffTime;
+            
             LockTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
 
             //MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
@@ -159,7 +159,7 @@ namespace Differentbranch
             StorageClassData.IntWorkingMinutes = Convert.ToInt32(numericUpDown1.Value * 60 + numericUpDown2.Value);
             StorageClassData.IntBreakMinutes = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
-            BreakTimeBar.Maximum = StorageClassData.IntBreakMinutes;
+            OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime;
             groupBox1.Visible = false;
             ExcelDefine.Sheet2.Cells[12, 10].Value=StorageClassData.IntWorkingMinutes;
             ExcelDefine.Sheet2.Cells[13, 10].Value= StorageClassData.IntBreakMinutes;
@@ -278,6 +278,9 @@ namespace Differentbranch
                 else
                 { ModifyProgressBarColor.SetState(ActiveTimeBar, 1); }
 
+                // Offline Total Time Value label
+                OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime + " min" ;
+
                 /* Enable overtime counting */
                 if (StorageClassData.IntOnlineTime >= StorageClassData.IntWorkingMinutes)
                 { EnableClassData.bEnableOvertime = true; }
@@ -317,6 +320,11 @@ namespace Differentbranch
 
             //Make form visible again
             this.Show();
+        }
+
+        private void OfflineTotalTime_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
