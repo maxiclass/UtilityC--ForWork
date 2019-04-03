@@ -25,7 +25,7 @@ namespace Diferentbranch
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
                 StorageClassData.LockTimeStart = DateTime.Now;
-                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd/MM/yyyy");
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "LOCK";
                 ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
                 
@@ -39,7 +39,7 @@ namespace Diferentbranch
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = StorageClassData.IntEntryNumber;
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = DateTime.Now.ToString("HH:mm");
                 StorageClassData.LockTimeFinish = DateTime.Now;
-                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd / MM / yyyy");
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = DateTime.Today.ToString("dd/MM/yyyy");
                 ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "UNLOCK";
 
                 //Comment column

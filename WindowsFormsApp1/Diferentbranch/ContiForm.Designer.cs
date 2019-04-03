@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiForm));
-            this.LockTimeBar = new System.Windows.Forms.ProgressBar();
+            this.TaskTimeBar = new System.Windows.Forms.ProgressBar();
             this.ActiveTimeBar = new System.Windows.Forms.ProgressBar();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,21 +60,23 @@
             this.InitiTimer = new System.Windows.Forms.Timer(this.components);
             this.EventsTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1minute2 = new System.Windows.Forms.Timer(this.components);
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // LockTimeBar
+            // TaskTimeBar
             // 
-            this.LockTimeBar.Location = new System.Drawing.Point(315, 109);
-            this.LockTimeBar.Name = "LockTimeBar";
-            this.LockTimeBar.Size = new System.Drawing.Size(147, 21);
-            this.LockTimeBar.TabIndex = 0;
-            this.LockTimeBar.Click += new System.EventHandler(this.LockTimeBar_Click);
+            this.TaskTimeBar.Location = new System.Drawing.Point(315, 109);
+            this.TaskTimeBar.Name = "TaskTimeBar";
+            this.TaskTimeBar.Size = new System.Drawing.Size(147, 21);
+            this.TaskTimeBar.TabIndex = 0;
+            this.TaskTimeBar.Click += new System.EventHandler(this.LockTimeBar_Click);
             // 
             // ActiveTimeBar
             // 
@@ -104,9 +106,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(312, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Lock Time";
+            this.label1.Text = "Task ";
             // 
             // label2
             // 
@@ -143,7 +145,7 @@
             // 
             this.OfflineTotalTime.AutoSize = true;
             this.OfflineTotalTime.BackColor = System.Drawing.Color.Transparent;
-            this.OfflineTotalTime.Location = new System.Drawing.Point(427, 59);
+            this.OfflineTotalTime.Location = new System.Drawing.Point(427, 58);
             this.OfflineTotalTime.Name = "OfflineTotalTime";
             this.OfflineTotalTime.Size = new System.Drawing.Size(43, 13);
             this.OfflineTotalTime.TabIndex = 28;
@@ -159,6 +161,7 @@
             this.TaskTimeProcent.Size = new System.Drawing.Size(43, 13);
             this.TaskTimeProcent.TabIndex = 27;
             this.TaskTimeProcent.Text = "procent";
+            this.TaskTimeProcent.Click += new System.EventHandler(this.TaskTimeProcent_Click);
             // 
             // checkBox1
             // 
@@ -362,7 +365,7 @@
             // 
             this.timer1minute.Enabled = true;
             this.timer1minute.Interval = 60000;
-            this.timer1minute.Tick += new System.EventHandler(this.timer1minute_Tick);
+            this.timer1minute.Tick += new System.EventHandler(this.Timer1minute_Tick);
             // 
             // Overtime_label
             // 
@@ -412,12 +415,22 @@
             this.timer1minute2.Interval = 60000;
             this.timer1minute2.Tick += new System.EventHandler(this.timer1minute2_Tick);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.Location = new System.Drawing.Point(476, 8);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(19, 127);
+            this.trackBar1.TabIndex = 30;
+            // 
             // ContiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(485, 178);
+            this.ClientSize = new System.Drawing.Size(507, 178);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
@@ -429,7 +442,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.LockTimeBar);
+            this.Controls.Add(this.TaskTimeBar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Overtime_label);
             this.Controls.Add(this.ActiveTimeBar);
@@ -443,6 +456,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,7 +464,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar LockTimeBar;
+        private System.Windows.Forms.ProgressBar TaskTimeBar;
         private System.Windows.Forms.ProgressBar ActiveTimeBar;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label1;
@@ -480,5 +494,6 @@
         public System.Windows.Forms.Button RecordEvent;
         public System.Windows.Forms.RichTextBox CommentBox;
         private System.Windows.Forms.Timer timer1minute2;
+        public System.Windows.Forms.TrackBar trackBar1;
     }
 }

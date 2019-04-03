@@ -55,12 +55,21 @@ namespace Differentbranch
             StorageClassData.SEntryTime = DateTime.Now.ToString("HH:mm");
             ExcelDefine.Sheet2.Cells[15, 10].Value = StorageClassData.SEntryTime;
 
-            StorageClassData.STodayDate = ExcelDefine.Sheet2.Cells[16, 10].Value();
+            StorageClassData.STodayDate = ExcelDefine.Sheet2.Cells[16, 10].Value.ToString("dd/MM/yyyy");
             /* check if it's a new day */
-            if (StorageClassData.STodayDate != DateTime.Today.ToString("dd / MM / yyyy"))
+            if (StorageClassData.STodayDate != DateTime.Today.ToString("dd/MM/yyyy"))
             {
-                StorageClassData.STodayDate = DateTime.Today.ToString("dd / MM / yyyy");
-                ExcelDefine.Sheet2.Cells[16, 10].Value = StorageClassData.STodayDate;
+                ++StorageClassData.IntEntryNumber;
+                ExcelDefine.Sheet2.Cells[11, 10].Value = StorageClassData.IntEntryNumber;
+
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 3] = "----";
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 4] = "----";
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 5] = "New Day";
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 6] = "----";
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 7] = "----";
+                ExcelDefine.Sheet.Cells[StorageClassData.IntEntryNumber + 4, 8] = "----";
+                StorageClassData.STodayDate = DateTime.Today.ToString("dd/MM/yyyy");
+                ExcelDefine.Sheet2.Cells[16, 10].Value = DateTime.Today.ToString("dd/MM/yyyy");
 
                 StorageClassData.IntOnlineTime = 0;
                 ExcelDefine.Sheet2.Cells[19, 10].Value = StorageClassData.IntOnlineTime;

@@ -22,20 +22,20 @@ namespace Differentbranch
             // Note the second parameter in SetState, 1 = normal(green); 2 = error(red); 3 = warning(yellow).
             ModifyProgressBarColor.SetState(ActiveTimeBar, 1);
          
-            ModifyProgressBarColor.SetState(LockTimeBar, 1);
+            ModifyProgressBarColor.SetState(TaskTimeBar, 1);
 
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
             
-            LockTimeBar.Maximum = StorageClassData.IntStoryPoints * 4 /* hours */ * 60/* minutes */ ;
+            TaskTimeBar.Maximum = StorageClassData.IntStoryPoints * 4 /* hours */ * 60/* minutes */ ;
 
             ActiveTimeBar.Step = 1;
             
-            LockTimeBar.Step = 1;
+            TaskTimeBar.Step = 1;
 
             if (StorageClassData.IntOnlineTime >= ActiveTimeBar.Maximum) { ActiveTimeBar.Maximum = StorageClassData.IntOnlineTime; } else { }
             ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
             
-            LockTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
+            TaskTimeBar.Value = StorageClassData.IntStoryPointsLeft * 4 /* hours */ * 60/* minutes */ ;
 
             //MessageBox.Show("This application is developed by Adrian Naziru"); // provide information.
         
@@ -100,7 +100,7 @@ namespace Differentbranch
 
         }
 
-        public void timer1minute_Tick(object sender, EventArgs e)
+        public void Timer1minute_Tick(object sender, EventArgs e)
         {
             OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
             if (EnableClassData.bEnableOvertime)
@@ -161,10 +161,13 @@ namespace Differentbranch
             StorageClassData.IntBreakMinutes = Convert.ToInt32(numericUpDown3.Value * 60 + numericUpDown4.Value);
             ActiveTimeBar.Maximum = StorageClassData.IntWorkingMinutes;
             OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
-            groupBox1.Visible = false;
+            //groupBox1.Visible = false;
             ExcelDefine.Sheet2.Cells[12, 10].Value=StorageClassData.IntWorkingMinutes;
             ExcelDefine.Sheet2.Cells[13, 10].Value= StorageClassData.IntBreakMinutes;
             ExcelDefine.Workbooks.Save();
+            ActiveTimeBar.Value = StorageClassData.IntOnlineTime;
+            ActiveTimeProcent.Text = Math.Round(((Convert.ToDouble(ActiveTimeBar.Value) / Convert.ToDouble(ActiveTimeBar.Maximum)) * 100), 1).ToString() + "%";
+
 
         }
 
@@ -245,9 +248,13 @@ namespace Differentbranch
 
         private void InitiAppTimer(object sender, EventArgs e)
         {
+            TaskTimeBar.Value = StorageClassData.IntStoryPointsLeft * 10;
+            TaskTimeBar.Maximum = StorageClassData.IntStoryPoints * 10; 
             OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
+            StorageClassData.IntOnlineTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[19, 10].Value());
             if (EnableClassData.bEnableOvertime)
             {
+
                 EnableClassData.bEnableOnlineTime = false;
                 ++StorageClassData.IntOnlineTime;
 
@@ -333,6 +340,11 @@ namespace Differentbranch
         {
             StorageClassData.TotalDayBreakTime++;
             OfflineTotalTime.Text = StorageClassData.TotalDayBreakTime.ToString();
+
+        }
+
+        private void TaskTimeProcent_Click(object sender, EventArgs e)
+        {
 
         }
     }
