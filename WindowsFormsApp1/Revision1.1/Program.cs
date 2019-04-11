@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text;
-using Differentbranch;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 namespace UtilityApp
@@ -18,6 +17,10 @@ namespace UtilityApp
         [STAThread]
         static void Main()
         {
+            InitFunctions.InitFunctionStep1();
+
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(UserEvents.SystemEvents_SessionSwitch);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
@@ -49,8 +52,8 @@ namespace UtilityApp
         SCD.IntTotalOnlineTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[15, 4].Value());
         SCD.IntTotalOfflineTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[16, 4].Value());
 
-        SCD.StrTodayDate = ExcelDefine.Sheet2.Cells[18, 4].Value.ToString();
-        SCD.StrDayOfTheWeek = ExcelDefine.Sheet2.Cells[19, 4].Value.ToString();
+        //SCD.StrTodayDate = ExcelDefine.Sheet2.Cells[18, 4].Value.ToString();
+        //SCD.StrDayOfTheWeek = ExcelDefine.Sheet2.Cells[19, 4].Value.ToString();
 
         SCD.IntPlannedWorkingTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[21, 4].Value());
         SCD.IntPlannedBreakTime = Convert.ToInt32(ExcelDefine.Sheet2.Cells[22, 4].Value());

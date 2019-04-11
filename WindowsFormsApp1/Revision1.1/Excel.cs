@@ -16,7 +16,7 @@ namespace UtilityApp
         public static string ExcelLocation()
         {
             var currentDirectory = Directory.GetCurrentDirectory();
-            var excelFileLocation = Path.Combine(currentDirectory + "\\UtilityExcel.xlsx");
+            var excelFileLocation = Path.Combine(currentDirectory + "\\Revision.xlsx");
             return excelFileLocation;
         }
         public static Excel.Application excel = new Excel.Application();
@@ -53,7 +53,7 @@ namespace UtilityApp
     }
 }
 
-namespace Differentbranch
+namespace UtilityApp
 {
     static class CloseExcelProcess
     {

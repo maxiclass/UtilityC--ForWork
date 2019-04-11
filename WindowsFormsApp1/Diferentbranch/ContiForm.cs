@@ -47,11 +47,6 @@ namespace Differentbranch
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
@@ -346,6 +341,11 @@ namespace Differentbranch
         private void TaskTimeProcent_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CurrentTaskLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
         }
     }
 }
