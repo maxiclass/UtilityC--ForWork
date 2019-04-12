@@ -38,6 +38,8 @@ namespace UtilityApp
         public static bool bEnableBreakTime { get; set; }
         public static bool bEnableLogoffTime { get; set; }
         public static bool bEnableReport { get; set; }
+        public static bool bWinEventLock { get; set; }
+        public static bool bWinEventUnLock { get; set; }
     }
     /* class used to for panel features */
     public class PCD // ProcentClassData

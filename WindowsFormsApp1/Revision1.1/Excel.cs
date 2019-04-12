@@ -50,6 +50,11 @@ namespace UtilityApp
             Workbooks.Save();
 
         }
+        public static void Save()
+        {
+            Workbooks.Save();
+        }
+
     }
 }
 

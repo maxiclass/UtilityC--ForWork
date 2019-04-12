@@ -47,7 +47,6 @@ namespace UtilityApp
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentTaskLink = new System.Windows.Forms.LinkLabel();
@@ -60,6 +59,9 @@ namespace UtilityApp
             this.CheckTimer = new System.Windows.Forms.Timer(this.components);
             this.BreakButton = new System.Windows.Forms.CheckBox();
             this.Overtime = new System.Windows.Forms.Label();
+            this.Autosave = new System.Windows.Forms.Timer(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -78,9 +80,9 @@ namespace UtilityApp
             this.OfflineTotalTime.AutoSize = true;
             this.OfflineTotalTime.Location = new System.Drawing.Point(110, 45);
             this.OfflineTotalTime.Name = "OfflineTotalTime";
-            this.OfflineTotalTime.Size = new System.Drawing.Size(60, 13);
+            this.OfflineTotalTime.Size = new System.Drawing.Size(22, 13);
             this.OfflineTotalTime.TabIndex = 7;
-            this.OfflineTotalTime.Text = "OfflineTime";
+            this.OfflineTotalTime.Text = "OT";
             // 
             // label2
             // 
@@ -157,9 +159,9 @@ namespace UtilityApp
             this.ActiveTimeNr.BackColor = System.Drawing.Color.Transparent;
             this.ActiveTimeNr.Location = new System.Drawing.Point(108, 20);
             this.ActiveTimeNr.Name = "ActiveTimeNr";
-            this.ActiveTimeNr.Size = new System.Drawing.Size(60, 13);
+            this.ActiveTimeNr.Size = new System.Drawing.Size(21, 13);
             this.ActiveTimeNr.TabIndex = 43;
-            this.ActiveTimeNr.Text = "ActiveTime";
+            this.ActiveTimeNr.Text = "AT";
             // 
             // label6
             // 
@@ -247,7 +249,7 @@ namespace UtilityApp
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.sadsa);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
@@ -271,17 +273,6 @@ namespace UtilityApp
             this.label4.TabIndex = 51;
             this.label4.Text = "Task Status";
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(108, 70);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 13);
-            this.label8.TabIndex = 50;
-            this.label8.Text = "Status";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // button1
             // 
@@ -394,12 +385,52 @@ namespace UtilityApp
             this.Overtime.Size = new System.Drawing.Size(0, 13);
             this.Overtime.TabIndex = 61;
             // 
+            // Autosave
+            // 
+            this.Autosave.Enabled = true;
+            this.Autosave.Interval = 300000;
+            this.Autosave.Tick += new System.EventHandler(this.Autosave_Tick);
+            // 
+            // listBox1
+            // 
+            this.listBox1.AllowDrop = true;
+            this.listBox1.BackColor = System.Drawing.Color.White;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "To Do",
+            "In Progress",
+            "Commit",
+            "Review",
+            "Rework",
+            "Done"});
+            this.listBox1.Location = new System.Drawing.Point(432, 94);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(70, 56);
+            this.listBox1.TabIndex = 52;
+            this.listBox1.Tag = "StrCurrentTaskStatus";
+            this.listBox1.Visible = false;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.Enter += new System.EventHandler(this.listBox1_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(111, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 62;
+            this.label1.Text = "label1";
+            this.label1.ContextMenuStripChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(436, 180);
+            this.ClientSize = new System.Drawing.Size(536, 180);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Overtime);
             this.Controls.Add(this.BreakButton);
             this.Controls.Add(this.TotalTimeNr);
@@ -448,7 +479,6 @@ namespace UtilityApp
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NotifyIcon TimePassed;
         private System.Windows.Forms.LinkLabel CurrentTaskLink;
@@ -461,6 +491,9 @@ namespace UtilityApp
         private System.Windows.Forms.Timer CheckTimer;
         private System.Windows.Forms.CheckBox BreakButton;
         private System.Windows.Forms.Label Overtime;
+        private System.Windows.Forms.Timer Autosave;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }
 

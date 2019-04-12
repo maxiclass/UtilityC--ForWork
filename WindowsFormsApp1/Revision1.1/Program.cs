@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+
+
 namespace UtilityApp
 {
     static class Program
@@ -71,6 +73,7 @@ namespace UtilityApp
         {
             ECD.bEnableOnlineTime = true;
             ECD.bEnableBreakTime = false;
+            ECD.bWinEventLock = false;
         }
 
         public static void InitFunctionStep3()
@@ -80,4 +83,18 @@ namespace UtilityApp
 
     }
      
+}
+
+
+
+namespace UtilityApp
+{
+    class UtilityFunctions
+    {
+        public static void Save()
+        {
+            ExcelDefine.Save();
+
+        }
+    }
 }

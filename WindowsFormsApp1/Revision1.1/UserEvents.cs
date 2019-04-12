@@ -20,14 +20,18 @@ namespace UtilityApp
             if (e.Reason == SessionSwitchReason.SessionLock)
 
             {
+                ///  Form1.ContiApp
 
+                ECD.bEnableBreakTime = true;
+                ECD.bEnableOnlineTime = false;
 
             }
             // Save times when Lock and Unlock event happens
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
 
             {
-
+                ECD.bEnableBreakTime = false;
+                ECD.bEnableOnlineTime = true;
             }
 
         }

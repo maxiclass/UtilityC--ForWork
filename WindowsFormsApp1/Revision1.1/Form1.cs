@@ -174,6 +174,7 @@ namespace UtilityApp
         {
             if (BreakButton.Checked == true)
             {
+
                 ECD.bEnableBreakTime = true;
                 ECD.bEnableOnlineTime = false;
             }
@@ -197,7 +198,41 @@ namespace UtilityApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            SCD.IntPlannedWorkingTime = Convert.ToInt32(numericUpDown5.Value*60)+ Convert.ToInt32(numericUpDown6.Value);
             progressBar1.Maximum = SCD.IntPlannedWorkingTime;
+        }
+
+        private void Autosave_Tick(object sender, EventArgs e)
+        {
+            UtilityFunctions.Save();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {   
+            label1.Text = SCD.StrCurrentTaskStatus;
+            if (listBox1.Visible == true)
+            {
+                listBox1.Visible = false;
+            }
+            else { listBox1.Visible = true; }
+
+
+        }
+
+        private void listBox1_Enter(object sender, EventArgs e)
+        {
+            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
+
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            //label1.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Text = listBox1.SelectedItem.ToString();
         }
     }
 }
