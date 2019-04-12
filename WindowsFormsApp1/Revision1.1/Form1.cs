@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace UtilityApp
 {
-    public partial class Form1 : Form
+    public partial class ContiApp : Form
     {
-        public Form1()
+        public ContiApp()
         {
             InitializeComponent();
         }
@@ -117,6 +117,87 @@ namespace UtilityApp
         private void Debug_Click(object sender, EventArgs e)
         {
             Debug.Text = "debug = " + SCD.IntRecordNumber + SCD.IntEntryNumber + SCD.IntOnlineTime + SCD.IntPlannedWorkingTime + " " ;
+
+        }
+
+        private void timer1_minute1_Tick(object sender, EventArgs e)
+        {
+            ++SCD.IntTotalTimeInDay;
+            TotalTimeNr.Text = SCD.IntTotalTimeInDay.ToString();
+        }
+
+        private void timer1offline_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckTimer_Tick(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void timer1Watch_Tick(object sender, EventArgs e)
+        {
+            if (progressBar1.Value >= (progressBar1.Maximum - 1))
+            {
+                ECD.bEnableOvertime = true;
+                ModifyProgressBarColor.SetState(progressBar1, 2); //Red
+               
+            }
+            if (ECD.bEnableOvertime != true)
+            {
+                progressBar1.Value = SCD.IntTotalTimeInDay;
+            }
+            else if (ECD.bEnableOvertime == true)
+            {
+                
+                   ++SCD.IntOvertime;
+                Overtime.Text= "Overtime: " + SCD.IntOvertime.ToString();
+            }
+
+            ++SCD.IntTotalTimeInDay;
+            TotalTimeNr.Text = SCD.IntTotalTimeInDay.ToString();
+
+            if (ECD.bEnableOnlineTime == true)
+            {
+                ++SCD.IntOnlineTime;
+                ActiveTimeNr.Text = SCD.IntOnlineTime.ToString();
+            }
+            else if (ECD.bEnableBreakTime == true)
+            {
+                ++SCD.IntTotalOfflineTime;
+                OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
+            }
+        }
+
+        private void BreakButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BreakButton.Checked == true)
+            {
+                ECD.bEnableBreakTime = true;
+                ECD.bEnableOnlineTime = false;
+            }
+            else
+            {
+                ECD.bEnableBreakTime = false;
+                ECD.bEnableOnlineTime = true;
+            }
+        }
+
+        private void TimePassed_BalloonTipClicked(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void TimePassed_Click(object sender, EventArgs e)
+        {
+            //Make form visible again
+            this.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            progressBar1.Maximum = SCD.IntPlannedWorkingTime;
         }
     }
 }

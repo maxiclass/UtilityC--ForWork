@@ -140,6 +140,7 @@
             this.ActiveTimeProcent.Size = new System.Drawing.Size(43, 13);
             this.ActiveTimeProcent.TabIndex = 29;
             this.ActiveTimeProcent.Text = "procent";
+            this.ActiveTimeProcent.Click += new System.EventHandler(this.ActiveTimeProcent_Click);
             // 
             // OfflineTotalTime
             // 

@@ -347,5 +347,10 @@ namespace Differentbranch
         {
             Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
         }
+
+        private void ActiveTimeProcent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

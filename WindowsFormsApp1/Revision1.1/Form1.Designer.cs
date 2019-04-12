@@ -1,6 +1,6 @@
 namespace UtilityApp
 {
-    partial class Form1
+    partial class ContiApp
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,16 @@ namespace UtilityApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiApp));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.OfflineTotalTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Testbutton = new System.Windows.Forms.Button();
             this.OpenExcel = new System.Windows.Forms.Button();
             this.OpenTools = new System.Windows.Forms.Button();
             this.CommentBox = new System.Windows.Forms.RichTextBox();
-            this.OfflineTotalTime = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.sadsa = new System.Windows.Forms.Label();
+            this.ActiveTimeNr = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
@@ -52,6 +52,14 @@ namespace UtilityApp
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentTaskLink = new System.Windows.Forms.LinkLabel();
             this.Debug = new System.Windows.Forms.Label();
+            this.timer1_minute1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1offline = new System.Windows.Forms.Timer(this.components);
+            this.timer1Watch = new System.Windows.Forms.Timer(this.components);
+            this.TotalTime = new System.Windows.Forms.Label();
+            this.TotalTimeNr = new System.Windows.Forms.Label();
+            this.CheckTimer = new System.Windows.Forms.Timer(this.components);
+            this.BreakButton = new System.Windows.Forms.CheckBox();
+            this.Overtime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -60,18 +68,19 @@ namespace UtilityApp
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(-3, 170);
+            this.progressBar1.Maximum = 480;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(439, 10);
             this.progressBar1.TabIndex = 2;
             // 
-            // label1
+            // OfflineTotalTime
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.OfflineTotalTime.AutoSize = true;
+            this.OfflineTotalTime.Location = new System.Drawing.Point(110, 45);
+            this.OfflineTotalTime.Name = "OfflineTotalTime";
+            this.OfflineTotalTime.Size = new System.Drawing.Size(60, 13);
+            this.OfflineTotalTime.TabIndex = 7;
+            this.OfflineTotalTime.Text = "OfflineTime";
             // 
             // label2
             // 
@@ -131,26 +140,26 @@ namespace UtilityApp
             this.CommentBox.TabIndex = 39;
             this.CommentBox.Text = "";
             // 
-            // OfflineTotalTime
+            // sadsa
             // 
-            this.OfflineTotalTime.AutoSize = true;
-            this.OfflineTotalTime.BackColor = System.Drawing.Color.Transparent;
-            this.OfflineTotalTime.Location = new System.Drawing.Point(109, 93);
-            this.OfflineTotalTime.Name = "OfflineTotalTime";
-            this.OfflineTotalTime.Size = new System.Drawing.Size(37, 13);
-            this.OfflineTotalTime.TabIndex = 41;
-            this.OfflineTotalTime.Text = "Status";
-            this.OfflineTotalTime.Click += new System.EventHandler(this.OfflineTotalTime_Click);
+            this.sadsa.AutoSize = true;
+            this.sadsa.BackColor = System.Drawing.Color.Transparent;
+            this.sadsa.Location = new System.Drawing.Point(109, 93);
+            this.sadsa.Name = "sadsa";
+            this.sadsa.Size = new System.Drawing.Size(37, 13);
+            this.sadsa.TabIndex = 41;
+            this.sadsa.Text = "Status";
+            this.sadsa.Click += new System.EventHandler(this.OfflineTotalTime_Click);
             // 
-            // label5
+            // ActiveTimeNr
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(108, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "procent";
+            this.ActiveTimeNr.AutoSize = true;
+            this.ActiveTimeNr.BackColor = System.Drawing.Color.Transparent;
+            this.ActiveTimeNr.Location = new System.Drawing.Point(108, 20);
+            this.ActiveTimeNr.Name = "ActiveTimeNr";
+            this.ActiveTimeNr.Size = new System.Drawing.Size(60, 13);
+            this.ActiveTimeNr.TabIndex = 43;
+            this.ActiveTimeNr.Text = "ActiveTime";
             // 
             // label6
             // 
@@ -239,11 +248,11 @@ namespace UtilityApp
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.OfflineTotalTime);
+            this.groupBox1.Controls.Add(this.sadsa);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.OfflineTotalTime);
+            this.groupBox1.Controls.Add(this.ActiveTimeNr);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(255, 28);
@@ -285,6 +294,7 @@ namespace UtilityApp
             this.button1.TabIndex = 55;
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TimePassed
             // 
@@ -293,6 +303,8 @@ namespace UtilityApp
             this.TimePassed.BalloonTipTitle = "Info";
             this.TimePassed.Icon = ((System.Drawing.Icon)(resources.GetObject("TimePassed.Icon")));
             this.TimePassed.Visible = true;
+            this.TimePassed.BalloonTipClicked += new System.EventHandler(this.TimePassed_BalloonTipClicked);
+            this.TimePassed.Click += new System.EventHandler(this.TimePassed_Click);
             this.TimePassed.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TimePassed_MouseDoubleClick);
             // 
             // CurrentTaskLink
@@ -320,12 +332,78 @@ namespace UtilityApp
             this.Debug.Text = "Debug";
             this.Debug.Click += new System.EventHandler(this.Debug_Click);
             // 
-            // Form1
+            // timer1_minute1
+            // 
+            this.timer1_minute1.Interval = 5000;
+            this.timer1_minute1.Tick += new System.EventHandler(this.timer1_minute1_Tick);
+            // 
+            // timer1offline
+            // 
+            this.timer1offline.Enabled = true;
+            this.timer1offline.Interval = 5000;
+            this.timer1offline.Tick += new System.EventHandler(this.timer1offline_Tick);
+            // 
+            // timer1Watch
+            // 
+            this.timer1Watch.Enabled = true;
+            this.timer1Watch.Tick += new System.EventHandler(this.timer1Watch_Tick);
+            // 
+            // TotalTime
+            // 
+            this.TotalTime.AutoSize = true;
+            this.TotalTime.BackColor = System.Drawing.Color.Transparent;
+            this.TotalTime.Location = new System.Drawing.Point(262, 9);
+            this.TotalTime.Name = "TotalTime";
+            this.TotalTime.Size = new System.Drawing.Size(57, 13);
+            this.TotalTime.TabIndex = 58;
+            this.TotalTime.Text = "Total Time";
+            // 
+            // TotalTimeNr
+            // 
+            this.TotalTimeNr.AutoSize = true;
+            this.TotalTimeNr.BackColor = System.Drawing.Color.Transparent;
+            this.TotalTimeNr.Location = new System.Drawing.Point(363, 9);
+            this.TotalTimeNr.Name = "TotalTimeNr";
+            this.TotalTimeNr.Size = new System.Drawing.Size(54, 13);
+            this.TotalTimeNr.TabIndex = 59;
+            this.TotalTimeNr.Text = "TotalTime";
+            // 
+            // CheckTimer
+            // 
+            this.CheckTimer.Enabled = true;
+            this.CheckTimer.Interval = 1000;
+            this.CheckTimer.Tick += new System.EventHandler(this.CheckTimer_Tick);
+            // 
+            // BreakButton
+            // 
+            this.BreakButton.AutoSize = true;
+            this.BreakButton.Location = new System.Drawing.Point(149, 11);
+            this.BreakButton.Name = "BreakButton";
+            this.BreakButton.Size = new System.Drawing.Size(85, 17);
+            this.BreakButton.TabIndex = 60;
+            this.BreakButton.Text = "BreakButton";
+            this.BreakButton.UseVisualStyleBackColor = true;
+            this.BreakButton.CheckedChanged += new System.EventHandler(this.BreakButton_CheckedChanged);
+            // 
+            // Overtime
+            // 
+            this.Overtime.AutoSize = true;
+            this.Overtime.BackColor = System.Drawing.Color.Transparent;
+            this.Overtime.Location = new System.Drawing.Point(252, 149);
+            this.Overtime.Name = "Overtime";
+            this.Overtime.Size = new System.Drawing.Size(0, 13);
+            this.Overtime.TabIndex = 61;
+            // 
+            // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(436, 180);
+            this.Controls.Add(this.Overtime);
+            this.Controls.Add(this.BreakButton);
+            this.Controls.Add(this.TotalTimeNr);
+            this.Controls.Add(this.TotalTime);
             this.Controls.Add(this.Debug);
             this.Controls.Add(this.CurrentTaskLink);
             this.Controls.Add(this.button1);
@@ -340,7 +418,7 @@ namespace UtilityApp
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Name = "Form1";
+            this.Name = "ContiApp";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
@@ -354,14 +432,14 @@ namespace UtilityApp
 
         #endregion
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label OfflineTotalTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Testbutton;
         private System.Windows.Forms.Button OpenExcel;
         private System.Windows.Forms.Button OpenTools;
         public System.Windows.Forms.RichTextBox CommentBox;
-        private System.Windows.Forms.Label OfflineTotalTime;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label sadsa;
+        private System.Windows.Forms.Label ActiveTimeNr;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
@@ -375,6 +453,14 @@ namespace UtilityApp
         private System.Windows.Forms.NotifyIcon TimePassed;
         private System.Windows.Forms.LinkLabel CurrentTaskLink;
         private System.Windows.Forms.Label Debug;
+        private System.Windows.Forms.Timer timer1_minute1;
+        private System.Windows.Forms.Timer timer1offline;
+        private System.Windows.Forms.Timer timer1Watch;
+        private System.Windows.Forms.Label TotalTime;
+        private System.Windows.Forms.Label TotalTimeNr;
+        private System.Windows.Forms.Timer CheckTimer;
+        private System.Windows.Forms.CheckBox BreakButton;
+        private System.Windows.Forms.Label Overtime;
     }
 }
 

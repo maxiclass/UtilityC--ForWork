@@ -19,18 +19,20 @@ namespace UtilityApp
         {
             InitFunctions.InitFunctionStep1();
 
+            InitFunctions.InitFunctionStep2();
+
             SystemEvents.SessionSwitch += new SessionSwitchEventHandler(UserEvents.SystemEvents_SessionSwitch);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ContiApp());
         }
     }
 }
 
 
 
-
+//Convert.ToDateTime("")
 
 
 
@@ -41,6 +43,7 @@ namespace UtilityApp
 {
      class InitFunctions
     {
+        /* Load all esential variables */
         public static void InitFunctionStep1()
         {
         SCD.IntRecordNumber = Convert.ToInt32(ExcelDefine.Sheet2.Cells[9, 4].Value());
@@ -63,10 +66,11 @@ namespace UtilityApp
         SCD.IntCurrentTaskPercent = Convert.ToInt32(ExcelDefine.Sheet2.Cells[26, 4].Value());
 
         }
-
+        /* Set the active configuration */
         public static void InitFunctionStep2()
         {
-
+            ECD.bEnableOnlineTime = true;
+            ECD.bEnableBreakTime = false;
         }
 
         public static void InitFunctionStep3()

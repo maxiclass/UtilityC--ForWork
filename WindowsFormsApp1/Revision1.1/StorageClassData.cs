@@ -16,6 +16,8 @@ namespace UtilityApp
 
         public static int IntTotalOnlineTime { get; set; }
         public static int IntTotalOfflineTime { get; set; }
+        public static int IntTotalTimeInDay { get; set; }
+        public static int IntOvertime{ get; set; }
 
         public static string StrTodayDate { get; set; }
         public static string StrDayOfTheWeek { get; set; }
