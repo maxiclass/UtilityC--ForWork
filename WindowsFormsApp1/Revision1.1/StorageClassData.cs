@@ -21,6 +21,7 @@ namespace UtilityApp
 
         public static string StrTodayDate { get; set; }
         public static string StrDayOfTheWeek { get; set; }
+        public static string StrHourNow { get; set; }
 
         public static int IntPlannedWorkingTime { get; set; }
         public static int IntPlannedBreakTime { get; set; }

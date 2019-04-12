@@ -22,7 +22,7 @@ namespace UtilityApp
             InitFunctions.InitFunctionStep1();
 
             InitFunctions.InitFunctionStep2();
-
+            InitFunctions.InitFunctionStep3();
             SystemEvents.SessionSwitch += new SessionSwitchEventHandler(UserEvents.SystemEvents_SessionSwitch);
 
             Application.EnableVisualStyles();
@@ -74,11 +74,13 @@ namespace UtilityApp
             ECD.bEnableOnlineTime = true;
             ECD.bEnableBreakTime = false;
             ECD.bWinEventLock = false;
+            
         }
 
         public static void InitFunctionStep3()
         {
-
+            SCD.StrTodayDate = DateTime.Today.ToString("dd/MM/yyyy");
+            SCD.StrHourNow = DateTime.Now.ToString("HH:mm");
         }
 
     }
@@ -96,5 +98,17 @@ namespace UtilityApp
             ExcelDefine.Save();
 
         }
+        public static void Record()
+        {
+            SCD.IntRecordNumber++;
+            ExcelDefine.Sheet2.Cells[9, 4] = SCD.IntRecordNumber;
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 3] = SCD.IntRecordNumber;
+
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = SCD.StrTodayDate;
+
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 5] = SCD.StrHourNow;
+
+        }
+
     }
 }

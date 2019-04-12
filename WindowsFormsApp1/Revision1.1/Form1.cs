@@ -91,7 +91,7 @@ namespace UtilityApp
             Process.Start("chrome.exe", "http://collab-p:4500/ui#");
             Process.Start("outlook.exe");
             Process.Start("lync.exe");
-            Process.Start("TOTALCMD64.EXE");
+ 
         }
 
         private void OpenExcel_Click(object sender, EventArgs e)
@@ -199,6 +199,7 @@ namespace UtilityApp
         private void button1_Click(object sender, EventArgs e)
         {
             SCD.IntPlannedWorkingTime = Convert.ToInt32(numericUpDown5.Value*60)+ Convert.ToInt32(numericUpDown6.Value);
+            ExcelDefine.Sheet2.Cells[21, 4] = SCD.IntPlannedWorkingTime.ToString();
             progressBar1.Maximum = SCD.IntPlannedWorkingTime;
         }
 
@@ -209,7 +210,7 @@ namespace UtilityApp
 
         private void label1_Click(object sender, EventArgs e)
         {   
-            label1.Text = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
             if (listBox1.Visible == true)
             {
                 listBox1.Visible = false;
@@ -219,11 +220,7 @@ namespace UtilityApp
 
         }
 
-        private void listBox1_Enter(object sender, EventArgs e)
-        {
-            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
 
-        }
 
         private void listBox1_Click(object sender, EventArgs e)
         {
@@ -232,7 +229,55 @@ namespace UtilityApp
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label1.Text = listBox1.SelectedItem.ToString();
+            ExcelDefine.Sheet2.Cells[25, 4] = listBox1.SelectedItem.ToString();
+            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
+            TaskStatus.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void listBox1_TabStopChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_TabIndexChanged(object sender, EventArgs e)
+        {
+            ExcelDefine.Sheet2.Cells[25, 4] = listBox1.SelectedItem.ToString();
+            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
+            TaskStatus.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void InitTimer_Tick(object sender, EventArgs e)
+        {
+            TaskStatus.Text = SCD.StrCurrentTaskStatus.ToString();
+            ActiveTimeNr.Text = "";
+            OfflineTotalTime.Text = "";
+            InitTimer.Enabled = false;
+        }
+
+        private void TaskStatus_MouseHover(object sender, EventArgs e)
+        {
+            listBox1.Visible = true;
+        }
+
+        private void listBox1_MouseHover(object sender, EventArgs e)
+        {
+            listBox1.Visible = true;
+        }
+
+        private void listBox1_MouseLeave(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
+        }
+
+        private void TaskStatus_MouseLeave(object sender, EventArgs e)
+        {
+            listBox1.Visible = false;
+        }
+
+        private void Record_Click(object sender, EventArgs e)
+        {
+            UtilityFunctions.Record();
+
         }
     }
 }

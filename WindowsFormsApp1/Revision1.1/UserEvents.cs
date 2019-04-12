@@ -24,6 +24,8 @@ namespace UtilityApp
 
                 ECD.bEnableBreakTime = true;
                 ECD.bEnableOnlineTime = false;
+                SCD.IntRecordNumber++;
+
 
             }
             // Save times when Lock and Unlock event happens

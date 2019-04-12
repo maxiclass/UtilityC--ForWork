@@ -47,6 +47,7 @@ namespace UtilityApp
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.TaskStatus = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentTaskLink = new System.Windows.Forms.LinkLabel();
@@ -61,7 +62,8 @@ namespace UtilityApp
             this.Overtime = new System.Windows.Forms.Label();
             this.Autosave = new System.Windows.Forms.Timer(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.InitTimer = new System.Windows.Forms.Timer(this.components);
+            this.Record = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -157,7 +159,7 @@ namespace UtilityApp
             // 
             this.ActiveTimeNr.AutoSize = true;
             this.ActiveTimeNr.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveTimeNr.Location = new System.Drawing.Point(108, 20);
+            this.ActiveTimeNr.Location = new System.Drawing.Point(111, 20);
             this.ActiveTimeNr.Name = "ActiveTimeNr";
             this.ActiveTimeNr.Size = new System.Drawing.Size(21, 13);
             this.ActiveTimeNr.TabIndex = 43;
@@ -249,7 +251,7 @@ namespace UtilityApp
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.TaskStatus);
             this.groupBox1.Controls.Add(this.sadsa);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
@@ -257,9 +259,9 @@ namespace UtilityApp
             this.groupBox1.Controls.Add(this.ActiveTimeNr);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(255, 28);
+            this.groupBox1.Location = new System.Drawing.Point(255, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(171, 109);
+            this.groupBox1.Size = new System.Drawing.Size(171, 112);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
             // 
@@ -273,6 +275,18 @@ namespace UtilityApp
             this.label4.TabIndex = 51;
             this.label4.Text = "Task Status";
             this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // TaskStatus
+            // 
+            this.TaskStatus.AutoSize = true;
+            this.TaskStatus.Location = new System.Drawing.Point(111, 70);
+            this.TaskStatus.Name = "TaskStatus";
+            this.TaskStatus.Size = new System.Drawing.Size(35, 13);
+            this.TaskStatus.TabIndex = 62;
+            this.TaskStatus.Text = "label1";
+            this.TaskStatus.ContextMenuStripChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.TaskStatus.Click += new System.EventHandler(this.label1_Click);
+            this.TaskStatus.MouseHover += new System.EventHandler(this.TaskStatus_MouseHover);
             // 
             // button1
             // 
@@ -403,33 +417,44 @@ namespace UtilityApp
             "Review",
             "Rework",
             "Done"});
-            this.listBox1.Location = new System.Drawing.Point(432, 94);
+            this.listBox1.Location = new System.Drawing.Point(407, 95);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(70, 56);
+            this.listBox1.Size = new System.Drawing.Size(70, 43);
             this.listBox1.TabIndex = 52;
             this.listBox1.Tag = "StrCurrentTaskStatus";
             this.listBox1.Visible = false;
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.Enter += new System.EventHandler(this.listBox1_Enter);
+            this.listBox1.TabIndexChanged += new System.EventHandler(this.listBox1_TabIndexChanged);
+            this.listBox1.TabStopChanged += new System.EventHandler(this.listBox1_TabStopChanged);
+            this.listBox1.MouseLeave += new System.EventHandler(this.listBox1_MouseLeave);
+            this.listBox1.MouseHover += new System.EventHandler(this.listBox1_MouseHover);
             // 
-            // label1
+            // InitTimer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(111, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 62;
-            this.label1.Text = "label1";
-            this.label1.ContextMenuStripChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.InitTimer.Enabled = true;
+            this.InitTimer.Tick += new System.EventHandler(this.InitTimer_Tick);
+            // 
+            // Record
+            // 
+            this.Record.BackColor = System.Drawing.SystemColors.MenuText;
+            this.Record.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Record.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.Record.Location = new System.Drawing.Point(13, 90);
+            this.Record.Name = "Record";
+            this.Record.Size = new System.Drawing.Size(89, 21);
+            this.Record.TabIndex = 62;
+            this.Record.Text = "Record";
+            this.Record.UseVisualStyleBackColor = false;
+            this.Record.Click += new System.EventHandler(this.Record_Click);
             // 
             // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(536, 180);
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ClientSize = new System.Drawing.Size(478, 180);
+            this.Controls.Add(this.Record);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Overtime);
             this.Controls.Add(this.BreakButton);
@@ -450,6 +475,7 @@ namespace UtilityApp
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "ContiApp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
@@ -492,8 +518,10 @@ namespace UtilityApp
         private System.Windows.Forms.CheckBox BreakButton;
         private System.Windows.Forms.Label Overtime;
         private System.Windows.Forms.Timer Autosave;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TaskStatus;
         public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Timer InitTimer;
+        private System.Windows.Forms.Button Record;
     }
 }
 
