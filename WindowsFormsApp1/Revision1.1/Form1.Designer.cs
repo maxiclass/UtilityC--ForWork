@@ -37,13 +37,11 @@ namespace UtilityApp
             this.OpenExcel = new System.Windows.Forms.Button();
             this.OpenTools = new System.Windows.Forms.Button();
             this.CommentBox = new System.Windows.Forms.RichTextBox();
-            this.sadsa = new System.Windows.Forms.Label();
             this.ActiveTimeNr = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +49,9 @@ namespace UtilityApp
             this.button1 = new System.Windows.Forms.Button();
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentTaskLink = new System.Windows.Forms.LinkLabel();
+            this.CurrentTaskMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.changeLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangeLinkTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.Debug = new System.Windows.Forms.Label();
             this.timer1_minute1 = new System.Windows.Forms.Timer(this.components);
             this.timer1offline = new System.Windows.Forms.Timer(this.components);
@@ -64,9 +65,16 @@ namespace UtilityApp
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.InitTimer = new System.Windows.Forms.Timer(this.components);
             this.Record = new System.Windows.Forms.Button();
+            this.OpenToolsMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectToolsListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.CurrentTaskMenuStrip1.SuspendLayout();
+            this.OpenToolsMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -76,15 +84,17 @@ namespace UtilityApp
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(439, 10);
             this.progressBar1.TabIndex = 2;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // OfflineTotalTime
             // 
             this.OfflineTotalTime.AutoSize = true;
-            this.OfflineTotalTime.Location = new System.Drawing.Point(110, 45);
+            this.OfflineTotalTime.Location = new System.Drawing.Point(110, 40);
             this.OfflineTotalTime.Name = "OfflineTotalTime";
             this.OfflineTotalTime.Size = new System.Drawing.Size(22, 13);
             this.OfflineTotalTime.TabIndex = 7;
             this.OfflineTotalTime.Text = "OT";
+            this.OfflineTotalTime.Click += new System.EventHandler(this.OfflineTotalTime_Click_1);
             // 
             // label2
             // 
@@ -126,6 +136,7 @@ namespace UtilityApp
             // OpenTools
             // 
             this.OpenTools.BackColor = System.Drawing.SystemColors.MenuText;
+            this.OpenTools.ContextMenuStrip = this.OpenToolsMenuStrip1;
             this.OpenTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OpenTools.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.OpenTools.Location = new System.Drawing.Point(134, 90);
@@ -135,31 +146,25 @@ namespace UtilityApp
             this.OpenTools.Text = "Open Tools";
             this.OpenTools.UseVisualStyleBackColor = false;
             this.OpenTools.Click += new System.EventHandler(this.OpenTools_Click);
+            this.OpenTools.MouseEnter += new System.EventHandler(this.OpenTools_MouseEnter);
             // 
             // CommentBox
             // 
+            this.CommentBox.AutoWordSelection = true;
             this.CommentBox.Location = new System.Drawing.Point(12, 115);
+            this.CommentBox.Multiline = false;
             this.CommentBox.Name = "CommentBox";
+            this.CommentBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.CommentBox.Size = new System.Drawing.Size(237, 22);
             this.CommentBox.TabIndex = 39;
             this.CommentBox.Text = "";
-            // 
-            // sadsa
-            // 
-            this.sadsa.AutoSize = true;
-            this.sadsa.BackColor = System.Drawing.Color.Transparent;
-            this.sadsa.Location = new System.Drawing.Point(109, 93);
-            this.sadsa.Name = "sadsa";
-            this.sadsa.Size = new System.Drawing.Size(37, 13);
-            this.sadsa.TabIndex = 41;
-            this.sadsa.Text = "Status";
-            this.sadsa.Click += new System.EventHandler(this.OfflineTotalTime_Click);
+            this.CommentBox.Validated += new System.EventHandler(this.CommentBox_Validated);
             // 
             // ActiveTimeNr
             // 
             this.ActiveTimeNr.AutoSize = true;
             this.ActiveTimeNr.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveTimeNr.Location = new System.Drawing.Point(111, 20);
+            this.ActiveTimeNr.Location = new System.Drawing.Point(111, 15);
             this.ActiveTimeNr.Name = "ActiveTimeNr";
             this.ActiveTimeNr.Size = new System.Drawing.Size(21, 13);
             this.ActiveTimeNr.TabIndex = 43;
@@ -169,7 +174,7 @@ namespace UtilityApp
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(19, 45);
+            this.label6.Location = new System.Drawing.Point(19, 40);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 42;
@@ -180,7 +185,7 @@ namespace UtilityApp
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(19, 20);
+            this.label7.Location = new System.Drawing.Point(19, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 45;
@@ -223,17 +228,6 @@ namespace UtilityApp
             this.numericUpDown6.TabIndex = 47;
             this.numericUpDown6.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(18, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Task Status";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Black;
@@ -252,8 +246,6 @@ namespace UtilityApp
             this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.TaskStatus);
-            this.groupBox1.Controls.Add(this.sadsa);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.OfflineTotalTime);
             this.groupBox1.Controls.Add(this.ActiveTimeNr);
@@ -269,7 +261,7 @@ namespace UtilityApp
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(17, 70);
+            this.label4.Location = new System.Drawing.Point(18, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 51;
@@ -279,7 +271,7 @@ namespace UtilityApp
             // TaskStatus
             // 
             this.TaskStatus.AutoSize = true;
-            this.TaskStatus.Location = new System.Drawing.Point(111, 70);
+            this.TaskStatus.Location = new System.Drawing.Point(108, 65);
             this.TaskStatus.Name = "TaskStatus";
             this.TaskStatus.Size = new System.Drawing.Size(35, 13);
             this.TaskStatus.TabIndex = 62;
@@ -314,8 +306,11 @@ namespace UtilityApp
             // 
             // CurrentTaskLink
             // 
+            this.CurrentTaskLink.AllowDrop = true;
+            this.CurrentTaskLink.AutoEllipsis = true;
             this.CurrentTaskLink.AutoSize = true;
             this.CurrentTaskLink.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.CurrentTaskLink.ContextMenuStrip = this.CurrentTaskMenuStrip1;
             this.CurrentTaskLink.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.CurrentTaskLink.LinkColor = System.Drawing.Color.White;
             this.CurrentTaskLink.Location = new System.Drawing.Point(17, 149);
@@ -324,7 +319,28 @@ namespace UtilityApp
             this.CurrentTaskLink.TabIndex = 56;
             this.CurrentTaskLink.TabStop = true;
             this.CurrentTaskLink.Text = "Current task";
-            this.CurrentTaskLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.CurrentTaskLink.DoubleClick += new System.EventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // CurrentTaskMenuStrip1
+            // 
+            this.CurrentTaskMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeLinkToolStripMenuItem});
+            this.CurrentTaskMenuStrip1.Name = "CurrentTaskMenuStrip1";
+            this.CurrentTaskMenuStrip1.Size = new System.Drawing.Size(141, 26);
+            // 
+            // changeLinkToolStripMenuItem
+            // 
+            this.changeLinkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ChangeLinkTextBox});
+            this.changeLinkToolStripMenuItem.Name = "changeLinkToolStripMenuItem";
+            this.changeLinkToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.changeLinkToolStripMenuItem.Text = "Change Link";
+            // 
+            // ChangeLinkTextBox
+            // 
+            this.ChangeLinkTextBox.Name = "ChangeLinkTextBox";
+            this.ChangeLinkTextBox.Size = new System.Drawing.Size(100, 23);
+            this.ChangeLinkTextBox.Validated += new System.EventHandler(this.ChangeLinkTextBox_Validated);
             // 
             // Debug
             // 
@@ -448,12 +464,67 @@ namespace UtilityApp
             this.Record.UseVisualStyleBackColor = false;
             this.Record.Click += new System.EventHandler(this.Record_Click);
             // 
+            // OpenToolsMenuStrip1
+            // 
+            this.OpenToolsMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox1,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem1});
+            this.OpenToolsMenuStrip1.Name = "OpenToolsMenuStrip1";
+            this.OpenToolsMenuStrip1.Size = new System.Drawing.Size(182, 59);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Items.AddRange(new object[] {
+            "Tool1 ",
+            "Tool2",
+            "Tool3",
+            "Tool4"});
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // SelectToolsListBox1
+            // 
+            this.SelectToolsListBox1.AllowDrop = true;
+            this.SelectToolsListBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.SelectToolsListBox1.CheckOnClick = true;
+            this.SelectToolsListBox1.FormattingEnabled = true;
+            this.SelectToolsListBox1.IntegralHeight = false;
+            this.SelectToolsListBox1.Items.AddRange(new object[] {
+            "Tool1",
+            "Tool2",
+            "Tool3",
+            "Tool4",
+            "Tool5",
+            "Tool6"});
+            this.SelectToolsListBox1.Location = new System.Drawing.Point(219, 93);
+            this.SelectToolsListBox1.Name = "SelectToolsListBox1";
+            this.SelectToolsListBox1.ScrollAlwaysVisible = true;
+            this.SelectToolsListBox1.Size = new System.Drawing.Size(120, 53);
+            this.SelectToolsListBox1.TabIndex = 64;
+            this.SelectToolsListBox1.Visible = false;
+            this.SelectToolsListBox1.MouseEnter += new System.EventHandler(this.SelectToolsListBox1_MouseEnter);
+            this.SelectToolsListBox1.MouseLeave += new System.EventHandler(this.SelectToolsListBox1_MouseLeave);
+            // 
             // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(478, 180);
+            this.ClientSize = new System.Drawing.Size(478, 179);
+            this.Controls.Add(this.SelectToolsListBox1);
+            this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.Record);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Overtime);
@@ -466,7 +537,6 @@ namespace UtilityApp
             this.Controls.Add(this.button5);
             this.Controls.Add(this.numericUpDown5);
             this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.Testbutton);
             this.Controls.Add(this.OpenExcel);
             this.Controls.Add(this.OpenTools);
@@ -477,11 +547,14 @@ namespace UtilityApp
             this.Name = "ContiApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.Color.Aqua;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.CurrentTaskMenuStrip1.ResumeLayout(false);
+            this.OpenToolsMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,19 +568,16 @@ namespace UtilityApp
         private System.Windows.Forms.Button OpenExcel;
         private System.Windows.Forms.Button OpenTools;
         public System.Windows.Forms.RichTextBox CommentBox;
-        private System.Windows.Forms.Label sadsa;
         private System.Windows.Forms.Label ActiveTimeNr;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NotifyIcon TimePassed;
-        private System.Windows.Forms.LinkLabel CurrentTaskLink;
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Timer timer1_minute1;
         private System.Windows.Forms.Timer timer1offline;
@@ -522,6 +592,15 @@ namespace UtilityApp
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer InitTimer;
         private System.Windows.Forms.Button Record;
+        private System.Windows.Forms.ContextMenuStrip CurrentTaskMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem changeLinkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox ChangeLinkTextBox;
+        public System.Windows.Forms.LinkLabel CurrentTaskLink;
+        private System.Windows.Forms.ContextMenuStrip OpenToolsMenuStrip1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        public System.Windows.Forms.CheckedListBox SelectToolsListBox1;
     }
 }
 

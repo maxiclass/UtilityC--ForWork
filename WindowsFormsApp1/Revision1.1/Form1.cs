@@ -86,11 +86,17 @@ namespace UtilityApp
 
         private void OpenTools_Click(object sender, EventArgs e)
         {
-            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
-            Process.Start("chrome.exe", "http://gerrit-p-eu:8080/#/q/status:open");
-            Process.Start("chrome.exe", "http://collab-p:4500/ui#");
-            Process.Start("outlook.exe");
-            Process.Start("lync.exe");
+            try
+            {
+                Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/browse/HD-1660?filter=-1");
+                Process.Start("chrome.exe", "http://gerrit-p-eu:8080/#/q/status:open");
+                Process.Start("chrome.exe", "http://collab-p:4500/ui#");
+                Process.Start("outlook.exe");
+                Process.Start("lync.exe");
+            }
+            catch
+            {
+            }
  
         }
 
@@ -107,7 +113,7 @@ namespace UtilityApp
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
+  
         }
 
         private void TestButton_Click(object sender, EventArgs e)
@@ -166,6 +172,7 @@ namespace UtilityApp
             }
             else if (ECD.bEnableBreakTime == true)
             {
+                ++SCD.IntLockTimeStart;
                 ++SCD.IntTotalOfflineTime;
                 OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
             }
@@ -233,6 +240,8 @@ namespace UtilityApp
             ExcelDefine.Sheet2.Cells[25, 4] = listBox1.SelectedItem.ToString();
             SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
             TaskStatus.Text = listBox1.SelectedItem.ToString();
+            UtilityFunctions.Record("Task Status", TaskStatus.Text);
+
         }
 
         private void listBox1_TabStopChanged(object sender, EventArgs e)
@@ -250,8 +259,8 @@ namespace UtilityApp
         private void InitTimer_Tick(object sender, EventArgs e)
         {
             TaskStatus.Text = SCD.StrCurrentTaskStatus.ToString();
-            ActiveTimeNr.Text = "";
-            OfflineTotalTime.Text = "";
+            ActiveTimeNr.Text = "0";
+            OfflineTotalTime.Text = "0";
             InitTimer.Enabled = false;
         }
 
@@ -279,6 +288,55 @@ namespace UtilityApp
         {
             UtilityFunctions.Record(" Manual Record" , "Button" ); // no event // no comment
 
+        }
+
+
+
+        private void CommentBox_Validated(object sender, EventArgs e)
+        {
+            UtilityFunctions.Record("Comment", CommentBox.Text);
+            CommentBox.Text = "";
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OfflineTotalTime_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
+        }
+
+        private void ChangeLinkTextBox_Validated(object sender, EventArgs e)
+        {
+            SCD.StrCurrentTaskLink = ChangeLinkTextBox.Text;
+            ExcelDefine.Sheet2.Cells[24, 4] = ChangeLinkTextBox.Text;
+        }
+
+        private void OpenTools_MouseEnter(object sender, EventArgs e)
+        {
+            SelectToolsListBox1.Visible = true;
+        }
+
+        private void SelectToolsListBox1_MouseEnter(object sender, EventArgs e)
+        {
+            SelectToolsListBox1.Visible = true;
+        }
+
+        private void SelectToolsListBox1_MouseLeave(object sender, EventArgs e)
+        {
+            SelectToolsListBox1.Visible = false;
         }
     }
 }

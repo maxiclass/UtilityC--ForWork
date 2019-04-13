@@ -23,10 +23,10 @@ namespace UtilityApp
 
             {
                 ///  Form1.ContiApp
-                UtilityFunctions.Record("LOCK", " "); //LOCK event , no comment 
+                UtilityFunctions.Record("LOCK", ""); //LOCK event , no comment 
                 ECD.bEnableBreakTime = true;
                 ECD.bEnableOnlineTime = false;
-
+                SCD.IntLockTimeStart = 0;
 
 
             }
@@ -34,7 +34,7 @@ namespace UtilityApp
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
 
             {
-                UtilityFunctions.Record("UNLOCK", " "); //LOCK event , no comment 
+                UtilityFunctions.Record("UNLOCK", SCD.IntLockTimeStart.ToString()+ " min break"); //LOCK event , time of the break
                 ECD.bEnableBreakTime = false;
                 ECD.bEnableOnlineTime = true;
             }

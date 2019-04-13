@@ -79,8 +79,10 @@ namespace UtilityApp
 
         public static void InitFunctionStep3()
         {
+            SCD.StrHourNow = DateTime.Now.ToString("HH:mm");
             SCD.StrTodayDate = DateTime.Today.ToString("dd/MM/yyyy");
             string tempDate = ExcelDefine.Sheet2.Cells[18, 4].Value.ToString();
+            //string tempDate = "test";
             if (tempDate != SCD.StrTodayDate)
             {
                 ExcelDefine.Sheet2.Cells[18, 4] = SCD.StrTodayDate;
@@ -93,7 +95,7 @@ namespace UtilityApp
             }
 
 
-            SCD.StrHourNow = DateTime.Now.ToString("HH:mm");
+           
         }
 
     }

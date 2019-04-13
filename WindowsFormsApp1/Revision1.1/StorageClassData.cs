@@ -30,6 +30,8 @@ namespace UtilityApp
         public static string StrCurrentTaskStatus { get; set; }
         public static int IntCurrentTaskPercent { get; set; }
 
+        public static int IntLockTimeStart { get; set; }
+        public static int IntLockTimeFinish { get; set; }
     }
     /* class used to create and store online data about user activity */
     public class ECD // EnableClassData
