@@ -49,6 +49,5 @@ namespace UtilityApp
         public static double BreakTime { get; set; }
         public static double TaskTime { get; set; }
     }
-
 }
 

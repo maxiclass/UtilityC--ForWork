@@ -100,8 +100,9 @@ namespace UtilityApp
             ExcelDefine.Workbooks.Close();
             ExcelDefine.Exit();
             CloseExcelProcess.CloseExcel();
-            Application.Exit();
             Process.Start(ExcelDefine.ExcelLocation());
+            Application.Exit();
+            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -276,7 +277,7 @@ namespace UtilityApp
 
         private void Record_Click(object sender, EventArgs e)
         {
-            UtilityFunctions.Record();
+            UtilityFunctions.Record(" Manual Record" , "Button" ); // no event // no comment
 
         }
     }

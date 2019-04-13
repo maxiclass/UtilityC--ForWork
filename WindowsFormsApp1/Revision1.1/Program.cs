@@ -80,6 +80,19 @@ namespace UtilityApp
         public static void InitFunctionStep3()
         {
             SCD.StrTodayDate = DateTime.Today.ToString("dd/MM/yyyy");
+            string tempDate = ExcelDefine.Sheet2.Cells[18, 4].Value.ToString();
+            if (tempDate != SCD.StrTodayDate)
+            {
+                ExcelDefine.Sheet2.Cells[18, 4] = SCD.StrTodayDate;
+                UtilityFunctions.Record("New Day", " New Day");
+                ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = SCD.StrTodayDate;
+            }
+            else
+            {
+                // do nothing
+            }
+
+
             SCD.StrHourNow = DateTime.Now.ToString("HH:mm");
         }
 
@@ -98,16 +111,20 @@ namespace UtilityApp
             ExcelDefine.Save();
 
         }
-        public static void Record()
+        public static void Record(string Event, string Comment)
         {
-            SCD.IntRecordNumber++;
-            ExcelDefine.Sheet2.Cells[9, 4] = SCD.IntRecordNumber;
-            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 3] = SCD.IntRecordNumber;
+            SCD.IntRecordNumber++; // COUNTER FOR RECORD ENTRY NUMBER
+            ExcelDefine.Sheet2.Cells[9, 4] = SCD.IntRecordNumber;// STORE NEW RECORD ENTRY NUMBER
 
-            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = SCD.StrTodayDate;
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 3] = SCD.IntRecordNumber; // RECORD NUMBER
 
-            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 5] = SCD.StrHourNow;
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = "----";
+           
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 5] = SCD.StrHourNow; // TIME WHEN EVENT WAS RECORDED
 
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 6] = Event; // NAME OF THE EVENT
+
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 7] = Comment; // COMMENT
         }
 
     }

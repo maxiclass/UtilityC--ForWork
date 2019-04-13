@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
 
+
+
 namespace UtilityApp
 {
     // Class used to define behavior in user event situations
@@ -21,10 +23,10 @@ namespace UtilityApp
 
             {
                 ///  Form1.ContiApp
-
+                UtilityFunctions.Record("LOCK", " "); //LOCK event , no comment 
                 ECD.bEnableBreakTime = true;
                 ECD.bEnableOnlineTime = false;
-                SCD.IntRecordNumber++;
+
 
 
             }
@@ -32,6 +34,7 @@ namespace UtilityApp
             else if (e.Reason == SessionSwitchReason.SessionUnlock)
 
             {
+                UtilityFunctions.Record("UNLOCK", " "); //LOCK event , no comment 
                 ECD.bEnableBreakTime = false;
                 ECD.bEnableOnlineTime = true;
             }
