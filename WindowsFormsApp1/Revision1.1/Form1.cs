@@ -60,19 +60,19 @@ namespace UtilityApp
 
         private void button5_Click(object sender, EventArgs e)
         {
-                try
-                {
-                    ExcelDefine.Workbooks.Save();
-                    ExcelDefine.Workbooks.Close();
-                    ExcelDefine.Exit();
-                    CloseExcelProcess.CloseExcel();
-                    Application.Exit();
-                }
-                catch
-                {
-                    MessageBox.Show("Excel file is in used. Close Excel file first");
-                }
-           }
+            try
+            {
+                ExcelDefine.Workbooks.Save();
+                ExcelDefine.Workbooks.Close();
+                ExcelDefine.Exit();
+                CloseExcelProcess.CloseExcel();
+                Application.Exit();
+            }
+            catch
+            {
+                MessageBox.Show("Excel file is in used. Close Excel file first");
+            }
+        }
 
         private void numericUpDown6_ValueChanged(object sender, EventArgs e)
         {
@@ -97,7 +97,7 @@ namespace UtilityApp
             catch
             {
             }
- 
+
         }
 
         private void OpenExcel_Click(object sender, EventArgs e)
@@ -108,22 +108,18 @@ namespace UtilityApp
             CloseExcelProcess.CloseExcel();
             Process.Start(ExcelDefine.ExcelLocation());
             Application.Exit();
-            
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-  
+
         }
 
-        private void TestButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
 
         private void Debug_Click(object sender, EventArgs e)
         {
-            Debug.Text = "debug = " + SCD.IntRecordNumber + SCD.IntEntryNumber + SCD.IntOnlineTime + SCD.IntPlannedWorkingTime + " " ;
+            Debug.Text = "debug = " + SCD.IntRecordNumber + SCD.IntEntryNumber + SCD.IntOnlineTime + SCD.IntPlannedWorkingTime + " ";
 
         }
 
@@ -140,7 +136,7 @@ namespace UtilityApp
 
         private void CheckTimer_Tick(object sender, EventArgs e)
         {
-        
+
         }
 
         private void timer1Watch_Tick(object sender, EventArgs e)
@@ -149,7 +145,7 @@ namespace UtilityApp
             {
                 ECD.bEnableOvertime = true;
                 ModifyProgressBarColor.SetState(progressBar1, 2); //Red
-               
+
             }
             if (ECD.bEnableOvertime != true)
             {
@@ -157,9 +153,9 @@ namespace UtilityApp
             }
             else if (ECD.bEnableOvertime == true)
             {
-                
-                   ++SCD.IntOvertime;
-                Overtime.Text= "Overtime: " + SCD.IntOvertime.ToString();
+
+                ++SCD.IntOvertime;
+                Overtime.Text = "Overtime: " + SCD.IntOvertime.ToString();
             }
 
             ++SCD.IntTotalTimeInDay;
@@ -206,7 +202,7 @@ namespace UtilityApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SCD.IntPlannedWorkingTime = Convert.ToInt32(numericUpDown5.Value*60)+ Convert.ToInt32(numericUpDown6.Value);
+            SCD.IntPlannedWorkingTime = Convert.ToInt32(numericUpDown5.Value * 60) + Convert.ToInt32(numericUpDown6.Value);
             ExcelDefine.Sheet2.Cells[21, 4] = SCD.IntPlannedWorkingTime.ToString();
             progressBar1.Maximum = SCD.IntPlannedWorkingTime;
         }
@@ -216,17 +212,6 @@ namespace UtilityApp
             UtilityFunctions.Save();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {   
-            TaskStatus.Text = SCD.StrCurrentTaskStatus;
-            if (listBox1.Visible == true)
-            {
-                listBox1.Visible = false;
-            }
-            else { listBox1.Visible = true; }
-
-
-        }
 
 
 
@@ -235,25 +220,11 @@ namespace UtilityApp
             //label1.Text = listBox1.SelectedItem.ToString();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExcelDefine.Sheet2.Cells[25, 4] = listBox1.SelectedItem.ToString();
-            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
-            TaskStatus.Text = listBox1.SelectedItem.ToString();
-            UtilityFunctions.Record("Task Status", TaskStatus.Text);
 
-        }
 
         private void listBox1_TabStopChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void listBox1_TabIndexChanged(object sender, EventArgs e)
-        {
-            ExcelDefine.Sheet2.Cells[25, 4] = listBox1.SelectedItem.ToString();
-            SCD.StrCurrentTaskStatus = listBox1.SelectedItem.ToString();
-            TaskStatus.Text = listBox1.SelectedItem.ToString();
         }
 
         private void InitTimer_Tick(object sender, EventArgs e)
@@ -264,29 +235,12 @@ namespace UtilityApp
             InitTimer.Enabled = false;
         }
 
-        private void TaskStatus_MouseHover(object sender, EventArgs e)
-        {
-            listBox1.Visible = true;
-        }
 
-        private void listBox1_MouseHover(object sender, EventArgs e)
-        {
-            listBox1.Visible = true;
-        }
 
-        private void listBox1_MouseLeave(object sender, EventArgs e)
-        {
-            listBox1.Visible = false;
-        }
-
-        private void TaskStatus_MouseLeave(object sender, EventArgs e)
-        {
-            listBox1.Visible = false;
-        }
 
         private void Record_Click(object sender, EventArgs e)
         {
-            UtilityFunctions.Record(" Manual Record" , "Button" ); // no event // no comment
+            UtilityFunctions.Record(" Manual Record", "Button"); // no event // no comment
 
         }
 
@@ -294,8 +248,16 @@ namespace UtilityApp
 
         private void CommentBox_Validated(object sender, EventArgs e)
         {
-            UtilityFunctions.Record("Comment", CommentBox.Text);
-            CommentBox.Text = "";
+            if(CommentBox.Text == "" || CommentBox.Text == " ")
+            {
+
+            }
+            else
+            {
+                UtilityFunctions.Record("Comment", CommentBox.Text);
+                CommentBox.Text = "";
+            }
+            
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -324,19 +286,83 @@ namespace UtilityApp
             ExcelDefine.Sheet2.Cells[24, 4] = ChangeLinkTextBox.Text;
         }
 
-        private void OpenTools_MouseEnter(object sender, EventArgs e)
+        private void To_do_Click(object sender, EventArgs e)
         {
-            SelectToolsListBox1.Visible = true;
+            SCD.StrCurrentTaskStatus = To_do.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
         }
 
-        private void SelectToolsListBox1_MouseEnter(object sender, EventArgs e)
+        private void In_progress_Click(object sender, EventArgs e)
         {
-            SelectToolsListBox1.Visible = true;
+            SCD.StrCurrentTaskStatus = In_progress.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
         }
 
-        private void SelectToolsListBox1_MouseLeave(object sender, EventArgs e)
+        private void Commit_Click(object sender, EventArgs e)
         {
-            SelectToolsListBox1.Visible = false;
+            SCD.StrCurrentTaskStatus = Commit.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
+        }
+
+        private void Review_Click(object sender, EventArgs e)
+        {
+            SCD.StrCurrentTaskStatus = Review.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
+        }
+
+        private void Rework_Click(object sender, EventArgs e)
+        {
+            SCD.StrCurrentTaskStatus = Rework.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
+        }
+
+        private void Done_Click(object sender, EventArgs e)
+        {
+            SCD.StrCurrentTaskStatus = Done.Text;
+            ExcelDefine.Sheet2.Cells[25, 4] = SCD.StrCurrentTaskStatus;
+            TaskStatus.Text = SCD.StrCurrentTaskStatus;
+            UtilityFunctions.Record(" Task Status Changed", SCD.StrCurrentTaskStatus); // Task Status Changed //  new status
+        }
+
+        private void CurrentTaskLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void MainMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void ExitStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ExcelDefine.Workbooks.Save();
+                ExcelDefine.Workbooks.Close();
+                ExcelDefine.Exit();
+                CloseExcelProcess.CloseExcel();
+                Application.Exit();
+            }
+            catch
+            {
+                MessageBox.Show("Excel file is in used. Close Excel file first");
+            }
         }
     }
 }
