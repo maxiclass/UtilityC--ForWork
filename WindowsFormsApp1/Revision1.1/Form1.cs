@@ -111,11 +111,6 @@ namespace UtilityApp
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
 
         private void Debug_Click(object sender, EventArgs e)
         {
@@ -364,5 +359,52 @@ namespace UtilityApp
                 MessageBox.Show("Excel file is in used. Close Excel file first");
             }
         }
+
+        private void ChangeLinkTextBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurrentTaskLink_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void ChangeLinkConfirmStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ChangeLinkTextBox.Text == "" || ChangeLinkTextBox.Text == " ")
+            {
+
+            }
+            else
+            {
+                SCD.StrCurrentTaskLink = ChangeLinkTextBox.Text;
+                ExcelDefine.Sheet2.Cells[24, 4] = SCD.StrCurrentTaskLink;
+            }
+        }
+
+        private void ChangeLinkConfirmStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.MenuHighlight;
+
+
+        }
+
+        private void ChangeLinkConfirmStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+        }
+
+        private void OpenExcelMenuItem_Click(object sender, EventArgs e)
+        {
+            ExcelDefine.Workbooks.Save();
+            ExcelDefine.Workbooks.Close();
+            ExcelDefine.Exit();
+            CloseExcelProcess.CloseExcel();
+            Process.Start(ExcelDefine.ExcelLocation());
+            Application.Exit();
+
+        }
+
     }
 }

@@ -58,9 +58,10 @@ namespace UtilityApp
             this.button1 = new System.Windows.Forms.Button();
             this.TimePassed = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentTaskLink = new System.Windows.Forms.LinkLabel();
-            this.CurrentTaskMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ChangeListMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.changeLinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeLinkTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.ChangeLinkConfirmStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Debug = new System.Windows.Forms.Label();
             this.timer1_minute1 = new System.Windows.Forms.Timer(this.components);
             this.timer1offline = new System.Windows.Forms.Timer(this.components);
@@ -75,6 +76,8 @@ namespace UtilityApp
             this.Record = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.MainMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.OpenExcelMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +86,7 @@ namespace UtilityApp
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.TaskStatusMenuStrip.SuspendLayout();
-            this.CurrentTaskMenuStrip1.SuspendLayout();
+            this.ChangeListMenuStrip.SuspendLayout();
             this.MainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -397,7 +400,7 @@ namespace UtilityApp
             this.CurrentTaskLink.AutoEllipsis = true;
             this.CurrentTaskLink.AutoSize = true;
             this.CurrentTaskLink.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.CurrentTaskLink.ContextMenuStrip = this.CurrentTaskMenuStrip1;
+            this.CurrentTaskLink.ContextMenuStrip = this.ChangeListMenuStrip;
             this.CurrentTaskLink.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.CurrentTaskLink.LinkColor = System.Drawing.Color.White;
             this.CurrentTaskLink.Location = new System.Drawing.Point(17, 149);
@@ -406,20 +409,21 @@ namespace UtilityApp
             this.CurrentTaskLink.TabIndex = 56;
             this.CurrentTaskLink.TabStop = true;
             this.CurrentTaskLink.Text = "Current task";
-            this.CurrentTaskLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CurrentTaskLink_LinkClicked);
+            this.CurrentTaskLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CurrentTaskLink_LinkClicked_1);
             this.CurrentTaskLink.DoubleClick += new System.EventHandler(this.linkLabel1_LinkClicked);
             // 
-            // CurrentTaskMenuStrip1
+            // ChangeListMenuStrip
             // 
-            this.CurrentTaskMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ChangeListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeLinkToolStripMenuItem});
-            this.CurrentTaskMenuStrip1.Name = "CurrentTaskMenuStrip1";
-            this.CurrentTaskMenuStrip1.Size = new System.Drawing.Size(141, 26);
+            this.ChangeListMenuStrip.Name = "CurrentTaskMenuStrip1";
+            this.ChangeListMenuStrip.Size = new System.Drawing.Size(141, 26);
             // 
             // changeLinkToolStripMenuItem
             // 
             this.changeLinkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ChangeLinkTextBox});
+            this.ChangeLinkTextBox,
+            this.ChangeLinkConfirmStripMenuItem});
             this.changeLinkToolStripMenuItem.Name = "changeLinkToolStripMenuItem";
             this.changeLinkToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.changeLinkToolStripMenuItem.Text = "Change Link";
@@ -429,6 +433,17 @@ namespace UtilityApp
             this.ChangeLinkTextBox.Name = "ChangeLinkTextBox";
             this.ChangeLinkTextBox.Size = new System.Drawing.Size(100, 23);
             this.ChangeLinkTextBox.Validated += new System.EventHandler(this.ChangeLinkTextBox_Validated);
+            this.ChangeLinkTextBox.Click += new System.EventHandler(this.ChangeLinkTextBox_Click);
+            // 
+            // ChangeLinkConfirmStripMenuItem
+            // 
+            this.ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.ChangeLinkConfirmStripMenuItem.Name = "ChangeLinkConfirmStripMenuItem";
+            this.ChangeLinkConfirmStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ChangeLinkConfirmStripMenuItem.Text = "Ok";
+            this.ChangeLinkConfirmStripMenuItem.Click += new System.EventHandler(this.ChangeLinkConfirmStripMenuItem_Click);
+            this.ChangeLinkConfirmStripMenuItem.MouseEnter += new System.EventHandler(this.ChangeLinkConfirmStripMenuItem_MouseEnter);
+            this.ChangeLinkConfirmStripMenuItem.MouseLeave += new System.EventHandler(this.ChangeLinkConfirmStripMenuItem_MouseLeave);
             // 
             // Debug
             // 
@@ -530,28 +545,42 @@ namespace UtilityApp
             // MainMenuStrip
             // 
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenExcelMenuItem,
+            this.toolStripSeparator2,
             this.SaveToolStripMenuItem,
             this.toolStripSeparator1,
             this.ExitStripMenuItem1});
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(181, 76);
+            this.MainMenuStrip.Size = new System.Drawing.Size(152, 82);
             this.MainMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.MainMenuStrip_Opening);
+            // 
+            // OpenExcelMenuItem
+            // 
+            this.OpenExcelMenuItem.Name = "OpenExcelMenuItem";
+            this.OpenExcelMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.OpenExcelMenuItem.Text = "Open Excel file";
+            this.OpenExcelMenuItem.Click += new System.EventHandler(this.OpenExcelMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.SaveToolStripMenuItem.Text = "Save";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // ExitStripMenuItem1
             // 
             this.ExitStripMenuItem1.Name = "ExitStripMenuItem1";
-            this.ExitStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ExitStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.ExitStripMenuItem1.Text = "Exit";
             this.ExitStripMenuItem1.Click += new System.EventHandler(this.ExitStripMenuItem1_Click);
             // 
@@ -560,6 +589,7 @@ namespace UtilityApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(478, 179);
             this.ContextMenuStrip = this.MainMenuStrip;
             this.Controls.Add(this.CommentBox);
@@ -592,7 +622,7 @@ namespace UtilityApp
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.TaskStatusMenuStrip.ResumeLayout(false);
-            this.CurrentTaskMenuStrip1.ResumeLayout(false);
+            this.ChangeListMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -630,7 +660,7 @@ namespace UtilityApp
         private System.Windows.Forms.Label TaskStatus;
         private System.Windows.Forms.Timer InitTimer;
         private System.Windows.Forms.Button Record;
-        private System.Windows.Forms.ContextMenuStrip CurrentTaskMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip ChangeListMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem changeLinkToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox ChangeLinkTextBox;
         public System.Windows.Forms.LinkLabel CurrentTaskLink;
@@ -648,6 +678,9 @@ namespace UtilityApp
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ExitStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ChangeLinkConfirmStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenExcelMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
