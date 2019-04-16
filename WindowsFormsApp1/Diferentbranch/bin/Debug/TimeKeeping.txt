@@ -1,2 +1,0 @@
-
-IntOnlineTime = 0
