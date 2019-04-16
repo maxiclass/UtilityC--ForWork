@@ -337,10 +337,6 @@ namespace UtilityApp
             Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
         }
 
-        private void Minimize_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
 
         private void MainMenuStrip_Opening(object sender, CancelEventArgs e)
         {
@@ -349,18 +345,7 @@ namespace UtilityApp
 
         private void ExitStripMenuItem1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ExcelDefine.Workbooks.Save();
-                ExcelDefine.Workbooks.Close();
-                ExcelDefine.Exit();
-                CloseExcelProcess.CloseExcel();
-                Application.Exit();
-            }
-            catch
-            {
-                MessageBox.Show("Excel file is in used. Close Excel file first");
-            }
+            UtilityFunctions.Exit();
         }
 
         private void ChangeLinkTextBox_Click(object sender, EventArgs e)
@@ -526,9 +511,7 @@ namespace UtilityApp
 
         private void DeleteRecordMenuItem1_Click(object sender, EventArgs e)
         {
-            SCD.IntTotalTimeInDay = 0; ExcelDefine.Sheet2.Cells[15, 4] = 0;
-            SCD.IntTotalOfflineTime = 0; ExcelDefine.Sheet2.Cells[16, 4] = 0;
-            SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
+            UtilityFunctions.DeleteRecords();
         }
 
         private void ChangeTimeUpDown_ValueChanged(object sender, EventArgs e)
@@ -542,6 +525,42 @@ namespace UtilityApp
                 timer1Watch.Interval = 1000;
             }
           
+        }
+
+        private void ContiApp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UtilityFunctions.Exit();
+        }
+
+        private void MExitStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UtilityFunctions.Exit();
+        }
+
+        private void MSaveStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UtilityFunctions.Save();
+        }
+
+        private void MdeleteStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UtilityFunctions.DeleteRecords();
+        }
+
+        private void MopenExcelMenuItem1_Click(object sender, EventArgs e)
+        {
+            ExcelDefine.Workbooks.Save();
+            ExcelDefine.Workbooks.Close();
+            ExcelDefine.Exit();
+            CloseExcelProcess.CloseExcel();
+            Process.Start(ExcelDefine.ExcelLocation());
+            Application.Exit();
+
+        }
+
+        private void Current_TaskMenuItem1_Click(object sender, EventArgs e)
+        {
+            Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
         }
     }
 }

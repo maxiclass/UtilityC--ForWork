@@ -109,6 +109,21 @@ namespace UtilityApp
 {
     class UtilityFunctions
     {
+        public static void Exit()
+        {
+            try
+            {
+                ExcelDefine.Workbooks.Save();
+                ExcelDefine.Workbooks.Close();
+                ExcelDefine.Exit();
+                CloseExcelProcess.CloseExcel();
+                Application.Exit();
+            }
+            catch
+            {
+                MessageBox.Show("Excel file is in used. Close Excel file first");
+            }
+        }
         public static void Save()
         {
             ExcelDefine.Sheet2.Cells[15, 4] = SCD.IntTotalTimeInDay;
@@ -133,6 +148,12 @@ namespace UtilityApp
 
             ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 7] = Comment; // COMMENT
         }
+        public static void DeleteRecords()
+        {
+            SCD.IntTotalTimeInDay = 0; ExcelDefine.Sheet2.Cells[15, 4] = 0;
+            SCD.IntTotalOfflineTime = 0; ExcelDefine.Sheet2.Cells[16, 4] = 0;
+            SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
 
+        }
     }
 }
