@@ -389,13 +389,13 @@ namespace UtilityApp
         private void ChangeLinkConfirmStripMenuItem_MouseEnter(object sender, EventArgs e)
         {
             ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.MenuHighlight;
-
+            ChangeLinkConfirmStripMenuItem.Image = Revision1._1.Properties.Resources.accept;
 
         }
 
         private void ChangeLinkConfirmStripMenuItem_MouseLeave(object sender, EventArgs e)
         {
-            ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            ChangeLinkConfirmStripMenuItem.Image = null;
         }
 
         private void OpenExcelMenuItem_Click(object sender, EventArgs e)
@@ -529,6 +529,19 @@ namespace UtilityApp
             SCD.IntTotalTimeInDay = 0; ExcelDefine.Sheet2.Cells[15, 4] = 0;
             SCD.IntTotalOfflineTime = 0; ExcelDefine.Sheet2.Cells[16, 4] = 0;
             SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
+        }
+
+        private void ChangeTimeUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                timer1Watch.Interval = Convert.ToInt32(ChangeTimeUpDown.Value);
+            }
+            catch {
+                ChangeTimeUpDown.Value = 1000;
+                timer1Watch.Interval = 1000;
+            }
+          
         }
     }
 }

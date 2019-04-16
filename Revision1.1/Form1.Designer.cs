@@ -50,6 +50,7 @@ namespace UtilityApp
             this.TaskStatus = new System.Windows.Forms.Label();
             this.TaskStatusMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.To_do = new System.Windows.Forms.ToolStripMenuItem();
+            this.In_progress = new System.Windows.Forms.ToolStripMenuItem();
             this.Commit = new System.Windows.Forms.ToolStripMenuItem();
             this.Review = new System.Windows.Forms.ToolStripMenuItem();
             this.Rework = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,14 +75,14 @@ namespace UtilityApp
             this.Record = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.Main1MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenExcelMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteRecordMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.In_progress = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteRecordMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ChangeTimeUpDown = new System.Windows.Forms.NumericUpDown();
             this.OpenToolsMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
@@ -89,6 +90,7 @@ namespace UtilityApp
             this.TaskStatusMenuStrip.SuspendLayout();
             this.ChangeListMenuStrip.SuspendLayout();
             this.Main1MenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeTimeUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -334,6 +336,17 @@ namespace UtilityApp
             this.To_do.MouseEnter += new System.EventHandler(this.To_do_MouseEnter);
             this.To_do.MouseLeave += new System.EventHandler(this.To_do_MouseLeave);
             // 
+            // In_progress
+            // 
+            this.In_progress.AutoSize = false;
+            this.In_progress.Name = "In_progress";
+            this.In_progress.Size = new System.Drawing.Size(130, 22);
+            this.In_progress.Text = "In progress";
+            this.In_progress.ToolTipText = "Change current task status in : In Progress";
+            this.In_progress.Click += new System.EventHandler(this.In_progress_Click);
+            this.In_progress.MouseEnter += new System.EventHandler(this.In_progress_MouseEnter);
+            this.In_progress.MouseLeave += new System.EventHandler(this.In_progress_MouseLeave);
+            // 
             // Commit
             // 
             this.Commit.AutoSize = false;
@@ -425,7 +438,7 @@ namespace UtilityApp
             this.ChangeListMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeLinkToolStripMenuItem});
             this.ChangeListMenuStrip.Name = "CurrentTaskMenuStrip1";
-            this.ChangeListMenuStrip.Size = new System.Drawing.Size(141, 26);
+            this.ChangeListMenuStrip.Size = new System.Drawing.Size(181, 48);
             // 
             // changeLinkToolStripMenuItem
             // 
@@ -433,7 +446,7 @@ namespace UtilityApp
             this.ChangeLinkTextBox,
             this.ChangeLinkConfirmStripMenuItem});
             this.changeLinkToolStripMenuItem.Name = "changeLinkToolStripMenuItem";
-            this.changeLinkToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.changeLinkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeLinkToolStripMenuItem.Text = "Change Link";
             this.changeLinkToolStripMenuItem.ToolTipText = "Change current task link";
             // 
@@ -449,8 +462,8 @@ namespace UtilityApp
             // 
             this.ChangeLinkConfirmStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.ChangeLinkConfirmStripMenuItem.Name = "ChangeLinkConfirmStripMenuItem";
-            this.ChangeLinkConfirmStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.ChangeLinkConfirmStripMenuItem.Text = "Ok";
+            this.ChangeLinkConfirmStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ChangeLinkConfirmStripMenuItem.Text = "   Confirm";
             this.ChangeLinkConfirmStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.ChangeLinkConfirmStripMenuItem.ToolTipText = "Confirm new link";
             this.ChangeLinkConfirmStripMenuItem.Click += new System.EventHandler(this.ChangeLinkConfirmStripMenuItem_Click);
@@ -554,8 +567,13 @@ namespace UtilityApp
             this.toolStripSeparator1,
             this.ExitStripMenuItem1});
             this.Main1MenuStrip.Name = "MainMenuStrip";
-            this.Main1MenuStrip.Size = new System.Drawing.Size(153, 132);
+            this.Main1MenuStrip.Size = new System.Drawing.Size(153, 110);
             this.Main1MenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.MainMenuStrip_Opening);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // OpenExcelMenuItem
             // 
@@ -566,6 +584,15 @@ namespace UtilityApp
             this.OpenExcelMenuItem.Click += new System.EventHandler(this.OpenExcelMenuItem_Click);
             this.OpenExcelMenuItem.MouseEnter += new System.EventHandler(this.OpenExcelMenuItem_MouseEnter);
             this.OpenExcelMenuItem.MouseLeave += new System.EventHandler(this.OpenExcelMenuItem_MouseLeave);
+            // 
+            // DeleteRecordMenuItem
+            // 
+            this.DeleteRecordMenuItem.Name = "DeleteRecordMenuItem";
+            this.DeleteRecordMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteRecordMenuItem.Text = "Delete Records";
+            this.DeleteRecordMenuItem.Click += new System.EventHandler(this.DeleteRecordMenuItem1_Click);
+            this.DeleteRecordMenuItem.MouseEnter += new System.EventHandler(this.toolStripMenuItem1_MouseEnter);
+            this.DeleteRecordMenuItem.MouseLeave += new System.EventHandler(this.toolStripMenuItem1_MouseLeave);
             // 
             // toolStripSeparator2
             // 
@@ -597,30 +624,31 @@ namespace UtilityApp
             this.ExitStripMenuItem1.MouseEnter += new System.EventHandler(this.ExitStripMenuItem1_MouseEnter);
             this.ExitStripMenuItem1.MouseLeave += new System.EventHandler(this.ExitStripMenuItem1_MouseLeave);
             // 
-            // In_progress
+            // ChangeTimeUpDown
             // 
-            this.In_progress.AutoSize = false;
-            this.In_progress.Name = "In_progress";
-            this.In_progress.Size = new System.Drawing.Size(130, 22);
-            this.In_progress.Text = "In progress";
-            this.In_progress.ToolTipText = "Change current task status in : In Progress";
-            this.In_progress.Click += new System.EventHandler(this.In_progress_Click);
-            this.In_progress.MouseEnter += new System.EventHandler(this.In_progress_MouseEnter);
-            this.In_progress.MouseLeave += new System.EventHandler(this.In_progress_MouseLeave);
-            // 
-            // DeleteRecordMenuItem
-            // 
-            this.DeleteRecordMenuItem.Name = "DeleteRecordMenuItem";
-            this.DeleteRecordMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.DeleteRecordMenuItem.Text = "Delete Records";
-            this.DeleteRecordMenuItem.Click += new System.EventHandler(this.DeleteRecordMenuItem1_Click);
-            this.DeleteRecordMenuItem.MouseEnter += new System.EventHandler(this.toolStripMenuItem1_MouseEnter);
-            this.DeleteRecordMenuItem.MouseLeave += new System.EventHandler(this.toolStripMenuItem1_MouseLeave);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.ChangeTimeUpDown.AllowDrop = true;
+            this.ChangeTimeUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeTimeUpDown.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+            this.ChangeTimeUpDown.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.ChangeTimeUpDown.Location = new System.Drawing.Point(20, 9);
+            this.ChangeTimeUpDown.Maximum = new decimal(new int[] {
+            6000000,
+            0,
+            0,
+            0});
+            this.ChangeTimeUpDown.Name = "ChangeTimeUpDown";
+            this.ChangeTimeUpDown.Size = new System.Drawing.Size(82, 22);
+            this.ChangeTimeUpDown.TabIndex = 63;
+            this.ChangeTimeUpDown.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.ChangeTimeUpDown.ValueChanged += new System.EventHandler(this.ChangeTimeUpDown_ValueChanged);
             // 
             // ContiApp
             // 
@@ -630,6 +658,7 @@ namespace UtilityApp
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(478, 179);
             this.ContextMenuStrip = this.Main1MenuStrip;
+            this.Controls.Add(this.ChangeTimeUpDown);
             this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.Record);
             this.Controls.Add(this.Overtime);
@@ -661,6 +690,7 @@ namespace UtilityApp
             this.TaskStatusMenuStrip.ResumeLayout(false);
             this.ChangeListMenuStrip.ResumeLayout(false);
             this.Main1MenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeTimeUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -719,6 +749,7 @@ namespace UtilityApp
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem DeleteRecordMenuItem;
+        private System.Windows.Forms.NumericUpDown ChangeTimeUpDown;
     }
 }
 
