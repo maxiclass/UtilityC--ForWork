@@ -62,6 +62,7 @@ namespace UtilityApp
         {
             try
             {
+                UtilityFunctions.Save();
                 ExcelDefine.Workbooks.Save();
                 ExcelDefine.Workbooks.Close();
                 ExcelDefine.Exit();
@@ -71,6 +72,7 @@ namespace UtilityApp
             catch
             {
                 MessageBox.Show("Excel file is in used. Close Excel file first");
+                Application.Exit();
             }
         }
 
@@ -111,13 +113,6 @@ namespace UtilityApp
 
         }
 
-
-        private void Debug_Click(object sender, EventArgs e)
-        {
-            Debug.Text = "debug = " + SCD.IntRecordNumber + SCD.IntEntryNumber + SCD.IntOnlineTime + SCD.IntPlannedWorkingTime + " ";
-
-        }
-
         private void timer1_minute1_Tick(object sender, EventArgs e)
         {
             ++SCD.IntTotalTimeInDay;
@@ -144,7 +139,15 @@ namespace UtilityApp
             }
             if (ECD.bEnableOvertime != true)
             {
-                progressBar1.Value = SCD.IntTotalTimeInDay;
+                try
+                {
+                    progressBar1.Value = SCD.IntTotalTimeInDay;
+                }
+                catch
+                {
+                    progressBar1.Value = progressBar1.Maximum;
+                }
+
             }
             else if (ECD.bEnableOvertime == true)
             {
@@ -225,8 +228,8 @@ namespace UtilityApp
         private void InitTimer_Tick(object sender, EventArgs e)
         {
             TaskStatus.Text = SCD.StrCurrentTaskStatus.ToString();
-            ActiveTimeNr.Text = "0";
-            OfflineTotalTime.Text = "0";
+            ActiveTimeNr.Text = SCD.IntOnlineTime.ToString();
+            OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
             InitTimer.Enabled = false;
         }
 
@@ -406,5 +409,126 @@ namespace UtilityApp
 
         }
 
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UtilityFunctions.Save();
+        }
+
+        private void To_do_MouseEnter(object sender, EventArgs e)
+        {
+            To_do.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void To_do_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "To do")
+            { To_do.Image = null; }
+
+        }
+
+        private void In_progress_MouseEnter(object sender, EventArgs e)
+        {
+            In_progress.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void In_progress_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "In progress")
+            { In_progress.Image = null; }
+        }
+
+        private void Commit_MouseEnter(object sender, EventArgs e)
+        {
+            Commit.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void Commit_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "Commit")
+            { Commit.Image = null; }
+        }
+
+        private void Review_MouseEnter(object sender, EventArgs e)
+        {
+            Review.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void Review_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "Review")
+            { Review.Image = null; }
+        }
+
+        private void Rework_MouseEnter(object sender, EventArgs e)
+        {
+            Rework.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void Rework_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "Rework")
+            { Rework.Image = null; }
+        }
+
+        private void Done_MouseEnter(object sender, EventArgs e)
+        {
+            Done.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void Done_MouseLeave(object sender, EventArgs e)
+        {
+            if (TaskStatus.Text != "Done")
+            { Done.Image = null; }
+
+         
+        }
+
+
+        private void OpenExcelMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            OpenExcelMenuItem.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void OpenExcelMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            OpenExcelMenuItem.Image = null;
+        }
+
+        private void toolStripMenuItem1_MouseEnter(object sender, EventArgs e)
+        {
+            DeleteRecordMenuItem.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void toolStripMenuItem1_MouseLeave(object sender, EventArgs e)
+        {
+            DeleteRecordMenuItem.Image = null;
+        }
+
+        private void SaveToolStripMenuItem_MouseEnter(object sender, EventArgs e)
+        {
+            SaveToolStripMenuItem.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void SaveToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            SaveToolStripMenuItem.Image = null;
+        }
+
+        private void ExitStripMenuItem1_MouseEnter(object sender, EventArgs e)
+        {
+            ExitStripMenuItem1.Image = Revision1._1.Properties.Resources.accept;
+        }
+
+        private void ExitStripMenuItem1_MouseLeave(object sender, EventArgs e)
+        {
+            ExitStripMenuItem1.Image = null;
+        }
+
+        private void DeleteRecordMenuItem1_Click(object sender, EventArgs e)
+        {
+            SCD.IntTotalTimeInDay = 0; ExcelDefine.Sheet2.Cells[15, 4] = 0;
+            SCD.IntTotalOfflineTime = 0; ExcelDefine.Sheet2.Cells[16, 4] = 0;
+            SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
+        }
     }
 }

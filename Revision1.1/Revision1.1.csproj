@@ -120,5 +120,8 @@
   <ItemGroup>
     <None Include="Resources\2000px-Continental-Logo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\accept.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
