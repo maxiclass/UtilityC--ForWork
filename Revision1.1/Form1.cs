@@ -71,7 +71,8 @@ namespace UtilityApp
             }
             catch
             {
-                MessageBox.Show("Excel file is in used. Close Excel file first");
+                //MessageBox.Show("Excel file is in used. Close Excel file first");
+                
                 Application.Exit();
             }
         }
@@ -126,14 +127,34 @@ namespace UtilityApp
 
         private void CheckTimer_Tick(object sender, EventArgs e)
         {
+            if (ECD.bClearPanel)
+            {
+                ActiveTimeNr.Text = SCD.IntOnlineTime.ToString();
+                TotalTimeNr.Text = SCD.IntTotalTimeInDay.ToString();
+                OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
+                progressBar1.Value = SCD.IntTotalOfflineTime;
+                
+                ModifyProgressBarColor.SetState(progressBar1, 1); //Green
+                ECD.bEnableOvertime = false;
+                OvertimeLabel.Visible = false;
+                OvertimeLabel.Text = "Overtime: " + SCD.IntOvertime.ToString();
+                SCD.IntOvertime = 0;
+                ECD.bClearPanel = false;
+            }
+            else
+            {
 
+            }
         }
 
         private void timer1Watch_Tick(object sender, EventArgs e)
         {
-            if (progressBar1.Value >= (progressBar1.Maximum - 1))
+            if (progressBar1.Value >= (progressBar1.Maximum - 3))
             {
                 ECD.bEnableOvertime = true;
+                OvertimeLabel.Visible = true;
+
+
                 ModifyProgressBarColor.SetState(progressBar1, 2); //Red
 
             }
@@ -151,9 +172,10 @@ namespace UtilityApp
             }
             else if (ECD.bEnableOvertime == true)
             {
-
+             
                 ++SCD.IntOvertime;
-                Overtime.Text = "Overtime: " + SCD.IntOvertime.ToString();
+                OvertimeLabel.Text = "Overtime: " + SCD.IntOvertime.ToString();
+                ModifyProgressBarColor.SetState(progressBar1, 2); //Red
             }
 
             ++SCD.IntTotalTimeInDay;

@@ -30,6 +30,14 @@ namespace UtilityApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiApp));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("TD4 14.5(17.5 )");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("TD4 14.2(17.2 )");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("TD4", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Notepad++");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Skype");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Outlook");
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.OfflineTotalTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,7 +84,7 @@ namespace UtilityApp
             this.TotalTimeNr = new System.Windows.Forms.Label();
             this.CheckTimer = new System.Windows.Forms.Timer(this.components);
             this.BreakButton = new System.Windows.Forms.CheckBox();
-            this.Overtime = new System.Windows.Forms.Label();
+            this.OvertimeLabel = new System.Windows.Forms.Label();
             this.Autosave = new System.Windows.Forms.Timer(this.components);
             this.InitTimer = new System.Windows.Forms.Timer(this.components);
             this.Record = new System.Windows.Forms.Button();
@@ -90,6 +98,7 @@ namespace UtilityApp
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeTimeUpDown = new System.Windows.Forms.NumericUpDown();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.OpenToolsMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
@@ -524,6 +533,7 @@ namespace UtilityApp
             // timer1Watch
             // 
             this.timer1Watch.Enabled = true;
+            this.timer1Watch.Interval = 200;
             this.timer1Watch.Tick += new System.EventHandler(this.timer1Watch_Tick);
             // 
             // TotalTime
@@ -549,7 +559,6 @@ namespace UtilityApp
             // CheckTimer
             // 
             this.CheckTimer.Enabled = true;
-            this.CheckTimer.Interval = 1000;
             this.CheckTimer.Tick += new System.EventHandler(this.CheckTimer_Tick);
             // 
             // BreakButton
@@ -563,19 +572,21 @@ namespace UtilityApp
             this.BreakButton.UseVisualStyleBackColor = true;
             this.BreakButton.CheckedChanged += new System.EventHandler(this.BreakButton_CheckedChanged);
             // 
-            // Overtime
+            // OvertimeLabel
             // 
-            this.Overtime.AutoSize = true;
-            this.Overtime.BackColor = System.Drawing.Color.Transparent;
-            this.Overtime.Location = new System.Drawing.Point(252, 149);
-            this.Overtime.Name = "Overtime";
-            this.Overtime.Size = new System.Drawing.Size(0, 13);
-            this.Overtime.TabIndex = 61;
+            this.OvertimeLabel.AutoSize = true;
+            this.OvertimeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.OvertimeLabel.Location = new System.Drawing.Point(252, 149);
+            this.OvertimeLabel.Name = "OvertimeLabel";
+            this.OvertimeLabel.Size = new System.Drawing.Size(49, 13);
+            this.OvertimeLabel.TabIndex = 61;
+            this.OvertimeLabel.Text = "Overtime";
+            this.OvertimeLabel.Visible = false;
             // 
             // Autosave
             // 
             this.Autosave.Enabled = true;
-            this.Autosave.Interval = 300000;
+            this.Autosave.Interval = 3000;
             this.Autosave.Tick += new System.EventHandler(this.Autosave_Tick);
             // 
             // InitTimer
@@ -684,11 +695,47 @@ namespace UtilityApp
             this.ChangeTimeUpDown.Size = new System.Drawing.Size(82, 22);
             this.ChangeTimeUpDown.TabIndex = 63;
             this.ChangeTimeUpDown.Value = new decimal(new int[] {
-            100,
+            200,
             0,
             0,
             0});
             this.ChangeTimeUpDown.ValueChanged += new System.EventHandler(this.ChangeTimeUpDown_ValueChanged);
+            // 
+            // treeView1
+            // 
+            this.treeView1.AllowDrop = true;
+            this.treeView1.BackColor = System.Drawing.Color.DarkGray;
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.HotTracking = true;
+            this.treeView1.LabelEdit = true;
+            this.treeView1.Location = new System.Drawing.Point(237, 88);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "TD4.14.5";
+            treeNode1.Text = "TD4 14.5(17.5 )";
+            treeNode1.ToolTipText = "TD4 14.5 Eclipse 17.5";
+            treeNode2.Name = "TD4.14.2";
+            treeNode2.Text = "TD4 14.2(17.2 )";
+            treeNode2.ToolTipText = "TD4 14.2 Eclipse 17.2";
+            treeNode3.Name = "TD4Node";
+            treeNode3.Text = "TD4";
+            treeNode3.ToolTipText = "TD4";
+            treeNode4.Name = "NotepadNode";
+            treeNode4.Text = "Notepad++";
+            treeNode4.ToolTipText = "Notepad++";
+            treeNode5.Name = "SkypeNode";
+            treeNode5.Text = "Skype";
+            treeNode5.ToolTipText = "Skype";
+            treeNode6.Name = "OutlookNode";
+            treeNode6.Text = "Outlook";
+            treeNode6.ToolTipText = "Outlook";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6});
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.Size = new System.Drawing.Size(121, 97);
+            this.treeView1.TabIndex = 64;
             // 
             // ContiApp
             // 
@@ -698,6 +745,7 @@ namespace UtilityApp
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(430, 179);
             this.ContextMenuStrip = this.Main1MenuStrip;
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TaskStatus);
             this.Controls.Add(this.label6);
@@ -707,7 +755,7 @@ namespace UtilityApp
             this.Controls.Add(this.ChangeTimeUpDown);
             this.Controls.Add(this.CommentBox);
             this.Controls.Add(this.Record);
-            this.Controls.Add(this.Overtime);
+            this.Controls.Add(this.OvertimeLabel);
             this.Controls.Add(this.BreakButton);
             this.Controls.Add(this.TotalTimeNr);
             this.Controls.Add(this.TotalTime);
@@ -747,7 +795,6 @@ namespace UtilityApp
         private System.Windows.Forms.Button OpenExcel;
         private System.Windows.Forms.Button OpenTools;
         public System.Windows.Forms.RichTextBox CommentBox;
-        private System.Windows.Forms.Label ActiveTimeNr;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
@@ -762,7 +809,7 @@ namespace UtilityApp
         private System.Windows.Forms.Label TotalTimeNr;
         private System.Windows.Forms.Timer CheckTimer;
         private System.Windows.Forms.CheckBox BreakButton;
-        private System.Windows.Forms.Label Overtime;
+        private System.Windows.Forms.Label OvertimeLabel;
         private System.Windows.Forms.Timer Autosave;
         private System.Windows.Forms.Label TaskStatus;
         private System.Windows.Forms.Timer InitTimer;
@@ -801,6 +848,8 @@ namespace UtilityApp
         private System.Windows.Forms.ToolStripMenuItem MExitStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem Current_TaskMenuItem1;
+        public System.Windows.Forms.Label ActiveTimeNr;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

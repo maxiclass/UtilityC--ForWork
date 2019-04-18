@@ -75,7 +75,7 @@ namespace UtilityApp
             ECD.bEnableOnlineTime = true;
             ECD.bEnableBreakTime = false;
             ECD.bWinEventLock = false;
-            
+            ECD.bClearPanel = false;
         }
 
         public static void InitFunctionStep3()
@@ -121,7 +121,8 @@ namespace UtilityApp
             }
             catch
             {
-                MessageBox.Show("Excel file is in used. Close Excel file first");
+                //MessageBox.Show("Excel file is in used. Close Excel file first");
+                Application.Exit();
             }
         }
         public static void Save()
@@ -153,7 +154,8 @@ namespace UtilityApp
             SCD.IntTotalTimeInDay = 0; ExcelDefine.Sheet2.Cells[15, 4] = 0;
             SCD.IntTotalOfflineTime = 0; ExcelDefine.Sheet2.Cells[16, 4] = 0;
             SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
-
+            SCD.IntOvertime = 0;
+            ECD.bClearPanel = true;
         }
     }
 }
