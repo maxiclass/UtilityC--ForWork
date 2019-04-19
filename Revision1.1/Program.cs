@@ -7,7 +7,8 @@ using System.IO;
 using System.Text;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
-
+using System.Net;
+using System.Xml;
 
 namespace UtilityApp
 {
@@ -156,6 +157,48 @@ namespace UtilityApp
             SCD.IntOnlineTime = 0; ExcelDefine.Sheet2.Cells[17, 4] = 0;
             SCD.IntOvertime = 0;
             ECD.bClearPanel = true;
+        }
+    }
+
+    class DownloadPageHttpWebRequest
+    {
+        public static void GetWebData()
+        {
+            string html = string.Empty;
+            string htmlline = string.Empty;
+            string url = "http://www.wikipedia.com";
+
+            try {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+               // htmlline = html.
+            }
+            SCD.StrHtmlResult = htmlline;
+                //  return html; Console.WriteLine(html);
+            }
+            catch
+            {
+                SCD.StrHtmlResult = "Operation failed";
+            }
+        }
+        public static void GetWebDatatoXML()
+        {
+            try
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load("http://buhev-jira.conti.de:7090/browse/BMF-2362");
+                string allText = document.InnerText;
+                SCD.StrHtmlResult = allText;
+            }
+            catch
+            {
+                SCD.StrHtmlResult = "Operation failed";
+            }
         }
     }
 }

@@ -25,7 +25,9 @@ namespace UtilityApp
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            //DownloadPageHttpWebRequest.GetWebData();
+            DownloadPageHttpWebRequest.GetWebDatatoXML();
+            label2.Text = SCD.StrHtmlResult;
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -583,6 +585,21 @@ namespace UtilityApp
         private void Current_TaskMenuItem1_Click(object sender, EventArgs e)
         {
             Process.Start("chrome.exe", "http://buhev-jira.conti.de:7090/issues/?filter=-1");
+        }
+
+        private void OpenTools_MouseEnter(object sender, EventArgs e)
+        {
+            treeView1.Visible = true;
+        }
+
+        private void treeView1_MouseLeave(object sender, EventArgs e)
+        {
+            treeView1.Visible = false;
+        }
+
+        private void treeView1_MouseEnter(object sender, EventArgs e)
+        {
+            treeView1.Visible = true;
         }
     }
 }
