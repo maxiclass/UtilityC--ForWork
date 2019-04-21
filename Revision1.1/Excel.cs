@@ -52,7 +52,13 @@ namespace UtilityApp
         }
         public static void Save()
         {
-            Workbooks.Save();
+            try {
+                Workbooks.Save();
+            }
+
+            catch {
+                //do nothing for 
+            }
         }
 
     }

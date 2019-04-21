@@ -68,7 +68,7 @@ namespace UtilityApp
         SCD.StrCurrentTaskLink = ExcelDefine.Sheet2.Cells[24, 4].Value.ToString();
         SCD.StrCurrentTaskStatus = ExcelDefine.Sheet2.Cells[25, 4].Value.ToString();
         SCD.IntCurrentTaskPercent = Convert.ToInt32(ExcelDefine.Sheet2.Cells[26, 4].Value());
-
+        SCD.StrCurrentTaskID = ExcelDefine.Sheet2.Cells[27, 4].Value.ToString();
         }
         /* Set the active configuration */
         public static void InitFunctionStep2()
@@ -89,7 +89,7 @@ namespace UtilityApp
             {
                 ExcelDefine.Sheet2.Cells[18, 4] = SCD.StrTodayDate;
                 UtilityFunctions.Record("New Day", " New Day");
-                ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = SCD.StrTodayDate;
+                
             }
             else
             {
@@ -142,13 +142,15 @@ namespace UtilityApp
 
             ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 3] = SCD.IntRecordNumber; // RECORD NUMBER
 
-            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = "----";
-           
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 4] = SCD.StrTodayDate;
+
             ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 5] = SCD.StrHourNow; // TIME WHEN EVENT WAS RECORDED
 
             ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 6] = Event; // NAME OF THE EVENT
 
             ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 7] = Comment; // COMMENT
+
+            ExcelDefine.Sheet.Cells[SCD.IntRecordNumber + 5, 8] = SCD.StrCurrentTaskID.ToString(); //TASK ID
         }
         public static void DeleteRecords()
         {

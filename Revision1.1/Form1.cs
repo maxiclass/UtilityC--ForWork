@@ -28,6 +28,8 @@ namespace UtilityApp
             //DownloadPageHttpWebRequest.GetWebData();
             DownloadPageHttpWebRequest.GetWebDatatoXML();
             label2.Text = SCD.StrHtmlResult;
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -181,18 +183,20 @@ namespace UtilityApp
             }
 
             ++SCD.IntTotalTimeInDay;
-            TotalTimeNr.Text = SCD.IntTotalTimeInDay.ToString();
+            TotalTimeNr.Text = (SCD.IntTotalTimeInDay / 60) + " h :" + (SCD.IntTotalTimeInDay % 60) + " m";
 
             if (ECD.bEnableOnlineTime == true)
             {
                 ++SCD.IntOnlineTime;
-                ActiveTimeNr.Text = SCD.IntOnlineTime.ToString();
+                ActiveTimeNr.Text =  (SCD.IntOnlineTime / 60) + " h :" + (SCD.IntOnlineTime % 60) + " m";
+
             }
             else if (ECD.bEnableBreakTime == true)
             {
                 ++SCD.IntLockTimeStart;
                 ++SCD.IntTotalOfflineTime;
-                OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
+                OfflineTotalTime.Text = (SCD.IntTotalOfflineTime / 60) + " h :" + (SCD.IntTotalOfflineTime % 60) + " m";
+
             }
         }
 
@@ -200,12 +204,14 @@ namespace UtilityApp
         {
             if (BreakButton.Checked == true)
             {
-
+                UtilityFunctions.Record("LOCK", ""); //LOCK event , no comment 
                 ECD.bEnableBreakTime = true;
                 ECD.bEnableOnlineTime = false;
+                SCD.IntLockTimeStart = 0;
             }
             else
             {
+                UtilityFunctions.Record("UNLOCK", SCD.IntLockTimeStart.ToString() + " min break"); //LOCK event , time of the break
                 ECD.bEnableBreakTime = false;
                 ECD.bEnableOnlineTime = true;
             }
@@ -252,8 +258,12 @@ namespace UtilityApp
         private void InitTimer_Tick(object sender, EventArgs e)
         {
             TaskStatus.Text = SCD.StrCurrentTaskStatus.ToString();
-            ActiveTimeNr.Text = SCD.IntOnlineTime.ToString();
-            OfflineTotalTime.Text = SCD.IntTotalOfflineTime.ToString();
+
+            ActiveTimeNr.Text =  (SCD.IntOnlineTime / 60) + " h :" + (SCD.IntOnlineTime % 60) + " m";
+
+            OfflineTotalTime.Text = (SCD.IntTotalOfflineTime / 60) + " h :" + (SCD.IntTotalOfflineTime % 60) + " m";
+            TaskIDStripTextBox1.Text = SCD.StrCurrentTaskID.ToString();
+            TaskIDlabel.Text = SCD.StrCurrentTaskID.ToString();
             InitTimer.Enabled = false;
         }
 
@@ -600,6 +610,65 @@ namespace UtilityApp
         private void treeView1_MouseEnter(object sender, EventArgs e)
         {
             treeView1.Visible = true;
+        }
+
+        private void CommentBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (CommentBox.Text == "" || CommentBox.Text == " ")
+            {
+
+            }
+            else
+            {
+                UtilityFunctions.Record("Comment", CommentBox.Text);
+                CommentBox.Text = "";
+            }
+
+        }
+
+        private void ConfirmTaskIDStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (TaskIDStripTextBox1.Text != "" && TaskIDStripTextBox1.Text != " ")
+            {
+                SCD.StrCurrentTaskID = TaskIDStripTextBox1.Text;
+                UtilityFunctions.Record("Task Changed", SCD.StrCurrentTaskID);
+                MessageBox.Show("Task id changed successfully");
+                ExcelDefine.Sheet2.Cells[27, 4] = SCD.StrCurrentTaskID;
+                TaskIDlabel.Text = SCD.StrCurrentTaskID;
+            }
+            else
+            { MessageBox.Show("Write new task id first"); }
+        }
+
+        private void treeView1_Leave(object sender, EventArgs e)
+        {
+            treeView1.Visible = false;
+        }
+
+        private void OpenTools_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OpenTools_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void OpenTools_MouseLeave(object sender, EventArgs e)
+        {
+           // treeView1.Visible = false;
+
+        }
+
+        private void TimerConversionLabel_Click(object sender, EventArgs e)
+        {
+            TimerConversionLabel.Text = (SCD.IntOnlineTime/60) + " h :" + (SCD.IntOnlineTime%60) + " m";
         }
     }
 }

@@ -33,6 +33,7 @@ namespace UtilityApp
         public static int IntLockTimeStart { get; set; }
         public static int IntLockTimeFinish { get; set; }
 
+        public static string StrCurrentTaskID { get; set; }
         public static string StrHtmlResult { get; set; }
     }
     /* class used to create and store online data about user activity */
