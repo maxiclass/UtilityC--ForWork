@@ -30,16 +30,16 @@ namespace UtilityApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiApp));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("TD4 14.5(17.5 )");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("TD4 14.2(17.2 )");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("TD4", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Notepad++");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Skype");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Outlook");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Jira");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Total Commander");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("TD4 14.5(17.5 )");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("TD4 14.2(17.2 )");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("TD4", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Notepad++");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Skype");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Outlook");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Jira");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Total Commander");
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.OfflineTotalTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -91,7 +91,6 @@ namespace UtilityApp
             this.Autosave = new System.Windows.Forms.Timer(this.components);
             this.InitTimer = new System.Windows.Forms.Timer(this.components);
             this.Record = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.Main1MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.OpenExcelMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -725,38 +724,38 @@ namespace UtilityApp
             this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(227, 93);
             this.treeView1.Name = "treeView1";
-            treeNode1.Checked = true;
-            treeNode1.Name = "TD4.14.5";
-            treeNode1.Text = "TD4 14.5(17.5 )";
-            treeNode1.ToolTipText = "TD4 14.5 Eclipse 17.5";
-            treeNode2.Name = "TD4.14.2";
-            treeNode2.Text = "TD4 14.2(17.2 )";
-            treeNode2.ToolTipText = "TD4 14.2 Eclipse 17.2";
-            treeNode3.Name = "TD4Node";
-            treeNode3.Text = "TD4";
-            treeNode3.ToolTipText = "TD4";
-            treeNode4.Name = "NotepadNode";
-            treeNode4.Text = "Notepad++";
-            treeNode4.ToolTipText = "Notepad++";
-            treeNode5.Checked = true;
-            treeNode5.Name = "SkypeNode";
-            treeNode5.Text = "Skype";
-            treeNode5.ToolTipText = "Skype";
-            treeNode6.Checked = true;
-            treeNode6.Name = "OutlookNode";
-            treeNode6.Text = "Outlook";
-            treeNode6.ToolTipText = "Outlook";
-            treeNode7.Name = "JiraNode";
-            treeNode7.Text = "Jira";
-            treeNode8.Name = "TotalCommanderNode";
-            treeNode8.Text = "Total Commander";
+            treeNode9.Checked = true;
+            treeNode9.Name = "TD4.14.5";
+            treeNode9.Text = "TD4 14.5(17.5 )";
+            treeNode9.ToolTipText = "TD4 14.5 Eclipse 17.5";
+            treeNode10.Name = "TD4.14.2";
+            treeNode10.Text = "TD4 14.2(17.2 )";
+            treeNode10.ToolTipText = "TD4 14.2 Eclipse 17.2";
+            treeNode11.Name = "TD4Node";
+            treeNode11.Text = "TD4";
+            treeNode11.ToolTipText = "TD4";
+            treeNode12.Name = "NotepadNode";
+            treeNode12.Text = "Notepad++";
+            treeNode12.ToolTipText = "Notepad++";
+            treeNode13.Checked = true;
+            treeNode13.Name = "SkypeNode";
+            treeNode13.Text = "Skype";
+            treeNode13.ToolTipText = "Skype";
+            treeNode14.Checked = true;
+            treeNode14.Name = "OutlookNode";
+            treeNode14.Text = "Outlook";
+            treeNode14.ToolTipText = "Outlook";
+            treeNode15.Name = "JiraNode";
+            treeNode15.Text = "Jira";
+            treeNode16.Name = "TotalCommanderNode";
+            treeNode16.Text = "Total Commander";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16});
             this.treeView1.ShowNodeToolTips = true;
             this.treeView1.Size = new System.Drawing.Size(121, 97);
             this.treeView1.TabIndex = 64;
@@ -827,6 +826,7 @@ namespace UtilityApp
             this.TransparencyKey = System.Drawing.Color.Aqua;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ContiApp_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ContiApp_MouseDoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.TaskStatusMenuStrip.ResumeLayout(false);
@@ -876,7 +876,6 @@ namespace UtilityApp
         private System.Windows.Forms.ToolStripMenuItem Review;
         private System.Windows.Forms.ToolStripMenuItem Rework;
         private System.Windows.Forms.ToolStripMenuItem Done;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ContextMenuStrip Main1MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

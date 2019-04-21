@@ -670,5 +670,10 @@ namespace UtilityApp
         {
             TimerConversionLabel.Text = (SCD.IntOnlineTime/60) + " h :" + (SCD.IntOnlineTime%60) + " m";
         }
+
+        private void ContiApp_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
