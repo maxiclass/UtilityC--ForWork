@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Revision1._1;
 namespace UtilityApp
 {
     public partial class ContiApp : Form
@@ -599,17 +599,17 @@ namespace UtilityApp
 
         private void OpenTools_MouseEnter(object sender, EventArgs e)
         {
-            treeView1.Visible = true;
+       
         }
 
         private void treeView1_MouseLeave(object sender, EventArgs e)
         {
-            treeView1.Visible = false;
+          
         }
 
         private void treeView1_MouseEnter(object sender, EventArgs e)
         {
-            treeView1.Visible = true;
+      
         }
 
         private void CommentBox_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -640,10 +640,6 @@ namespace UtilityApp
             { MessageBox.Show("Write new task id first"); }
         }
 
-        private void treeView1_Leave(object sender, EventArgs e)
-        {
-            treeView1.Visible = false;
-        }
 
         private void OpenTools_MouseHover(object sender, EventArgs e)
         {
@@ -674,6 +670,17 @@ namespace UtilityApp
         private void ContiApp_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Hide();
+        }
+
+        private void ButtonTest1_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+        }
+
+        private void ChangeTools_Click(object sender, EventArgs e)
+        {
+            ToolsForm toolsform = new ToolsForm();
+            toolsform.ShowDialog();
         }
     }
 }

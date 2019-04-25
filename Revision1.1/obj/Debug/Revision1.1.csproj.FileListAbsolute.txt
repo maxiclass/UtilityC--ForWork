@@ -42,3 +42,7 @@ C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\obj\Debug\Revision1.1.csproj
 C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\obj\Debug\Revision1.1.csproj.CoreCompileInputs.cache
 C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\obj\Debug\Revision1.1.exe
 C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\obj\Debug\Revision1.1.pdb
+C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\obj\Debug\Revision1._1.ToolsForm.resources
+C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\bin\Debug\ToolsForm.resx
+C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\bin\Debug\ToolsForm.cs
+C:\Users\nazir\Desktop\UtilityC#ForWork\Revision1.1\bin\Debug\ToolsForm.Designer.cs

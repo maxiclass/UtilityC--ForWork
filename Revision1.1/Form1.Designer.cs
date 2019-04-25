@@ -30,16 +30,6 @@ namespace UtilityApp
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContiApp));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("TD4 14.5(17.5 )");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("TD4 14.2(17.2 )");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("TD4", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Notepad++");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Skype");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Outlook");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Jira");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Total Commander");
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.OfflineTotalTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -100,9 +90,12 @@ namespace UtilityApp
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ChangeTimeUpDown = new System.Windows.Forms.NumericUpDown();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.TaskIDlabel = new System.Windows.Forms.Label();
             this.TimerConversionLabel = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.ButtonTest1 = new System.Windows.Forms.Button();
+            this.ToolsMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ChangeTools = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.TaskStatusMenuStrip.SuspendLayout();
@@ -110,6 +103,7 @@ namespace UtilityApp
             this.ChangeListMenuStrip.SuspendLayout();
             this.Main1MenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChangeTimeUpDown)).BeginInit();
+            this.ToolsMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -158,6 +152,7 @@ namespace UtilityApp
             // OpenTools
             // 
             this.OpenTools.BackColor = System.Drawing.SystemColors.MenuText;
+            this.OpenTools.ContextMenuStrip = this.ToolsMenuStrip;
             this.OpenTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OpenTools.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.OpenTools.Location = new System.Drawing.Point(130, 90);
@@ -529,7 +524,7 @@ namespace UtilityApp
             // ConfirmTaskIDStripMenuItem1
             // 
             this.ConfirmTaskIDStripMenuItem1.Name = "ConfirmTaskIDStripMenuItem1";
-            this.ConfirmTaskIDStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ConfirmTaskIDStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.ConfirmTaskIDStripMenuItem1.Text = "Confirm";
             this.ConfirmTaskIDStripMenuItem1.Click += new System.EventHandler(this.ConfirmTaskIDStripMenuItem1_Click);
             // 
@@ -547,7 +542,7 @@ namespace UtilityApp
             // timer1Watch
             // 
             this.timer1Watch.Enabled = true;
-            this.timer1Watch.Interval = 500;
+            this.timer1Watch.Interval = 1000;
             this.timer1Watch.Tick += new System.EventHandler(this.timer1Watch_Tick);
             // 
             // TotalTime
@@ -709,61 +704,11 @@ namespace UtilityApp
             this.ChangeTimeUpDown.Size = new System.Drawing.Size(82, 22);
             this.ChangeTimeUpDown.TabIndex = 63;
             this.ChangeTimeUpDown.Value = new decimal(new int[] {
-            500,
+            1000,
             0,
             0,
             0});
             this.ChangeTimeUpDown.ValueChanged += new System.EventHandler(this.ChangeTimeUpDown_ValueChanged);
-            // 
-            // treeView1
-            // 
-            this.treeView1.AllowDrop = true;
-            this.treeView1.BackColor = System.Drawing.Color.DarkGray;
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.HotTracking = true;
-            this.treeView1.LabelEdit = true;
-            this.treeView1.Location = new System.Drawing.Point(227, 93);
-            this.treeView1.Name = "treeView1";
-            treeNode9.Checked = true;
-            treeNode9.Name = "TD4.14.5";
-            treeNode9.Text = "TD4 14.5(17.5 )";
-            treeNode9.ToolTipText = "TD4 14.5 Eclipse 17.5";
-            treeNode10.Name = "TD4.14.2";
-            treeNode10.Text = "TD4 14.2(17.2 )";
-            treeNode10.ToolTipText = "TD4 14.2 Eclipse 17.2";
-            treeNode11.Name = "TD4Node";
-            treeNode11.Text = "TD4";
-            treeNode11.ToolTipText = "TD4";
-            treeNode12.Name = "NotepadNode";
-            treeNode12.Text = "Notepad++";
-            treeNode12.ToolTipText = "Notepad++";
-            treeNode13.Checked = true;
-            treeNode13.Name = "SkypeNode";
-            treeNode13.Text = "Skype";
-            treeNode13.ToolTipText = "Skype";
-            treeNode14.Checked = true;
-            treeNode14.Name = "OutlookNode";
-            treeNode14.Text = "Outlook";
-            treeNode14.ToolTipText = "Outlook";
-            treeNode15.Name = "JiraNode";
-            treeNode15.Text = "Jira";
-            treeNode16.Name = "TotalCommanderNode";
-            treeNode16.Text = "Total Commander";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16});
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(121, 97);
-            this.treeView1.TabIndex = 64;
-            this.treeView1.Visible = false;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.Leave += new System.EventHandler(this.treeView1_Leave);
-            this.treeView1.MouseEnter += new System.EventHandler(this.treeView1_MouseEnter);
-            this.treeView1.MouseLeave += new System.EventHandler(this.treeView1_MouseLeave);
             // 
             // TaskIDlabel
             // 
@@ -786,6 +731,33 @@ namespace UtilityApp
             this.TimerConversionLabel.Text = "Time";
             this.TimerConversionLabel.Click += new System.EventHandler(this.TimerConversionLabel_Click);
             // 
+            // ButtonTest1
+            // 
+            this.ButtonTest1.BackColor = System.Drawing.Color.Black;
+            this.ButtonTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Bold);
+            this.ButtonTest1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonTest1.Location = new System.Drawing.Point(160, 140);
+            this.ButtonTest1.Name = "ButtonTest1";
+            this.ButtonTest1.Size = new System.Drawing.Size(74, 22);
+            this.ButtonTest1.TabIndex = 67;
+            this.ButtonTest1.Text = "Test";
+            this.ButtonTest1.UseVisualStyleBackColor = false;
+            this.ButtonTest1.Click += new System.EventHandler(this.ButtonTest1_Click);
+            // 
+            // ToolsMenuStrip
+            // 
+            this.ToolsMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ChangeTools});
+            this.ToolsMenuStrip.Name = "ToolsMenuStrip";
+            this.ToolsMenuStrip.Size = new System.Drawing.Size(224, 26);
+            // 
+            // ChangeTools
+            // 
+            this.ChangeTools.Name = "ChangeTools";
+            this.ChangeTools.Size = new System.Drawing.Size(223, 22);
+            this.ChangeTools.Text = "Change Tools Configuration";
+            this.ChangeTools.Click += new System.EventHandler(this.ChangeTools_Click);
+            // 
             // ContiApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -794,9 +766,9 @@ namespace UtilityApp
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(430, 179);
             this.ContextMenuStrip = this.Main1MenuStrip;
+            this.Controls.Add(this.ButtonTest1);
             this.Controls.Add(this.TimerConversionLabel);
             this.Controls.Add(this.TaskIDlabel);
-            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TaskStatus);
             this.Controls.Add(this.label6);
@@ -834,6 +806,7 @@ namespace UtilityApp
             this.ChangeListMenuStrip.ResumeLayout(false);
             this.Main1MenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ChangeTimeUpDown)).EndInit();
+            this.ToolsMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -897,12 +870,15 @@ namespace UtilityApp
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem Current_TaskMenuItem1;
         public System.Windows.Forms.Label ActiveTimeNr;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripMenuItem changeTaskIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox TaskIDStripTextBox1;
         private System.Windows.Forms.ToolStripMenuItem ConfirmTaskIDStripMenuItem1;
         private System.Windows.Forms.Label TaskIDlabel;
         private System.Windows.Forms.Label TimerConversionLabel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button ButtonTest1;
+        private System.Windows.Forms.ContextMenuStrip ToolsMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem ChangeTools;
     }
 }
 

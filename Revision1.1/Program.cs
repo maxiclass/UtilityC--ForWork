@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Net;
 using System.Xml;
+using Revision1._1;
 
 namespace UtilityApp
 {
@@ -29,6 +30,7 @@ namespace UtilityApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ContiApp());
+            Application.Run(new ToolsForm());
         }
     }
 }
@@ -128,12 +130,18 @@ namespace UtilityApp
         }
         public static void Save()
         {
-            ExcelDefine.Sheet2.Cells[15, 4] = SCD.IntTotalTimeInDay;
-            ExcelDefine.Sheet2.Cells[16, 4] = SCD.IntTotalOfflineTime;
-            ExcelDefine.Sheet2.Cells[17, 4] = SCD.IntOnlineTime;
+            try
+            {
+                ExcelDefine.Sheet2.Cells[15, 4] = SCD.IntTotalTimeInDay;
+                ExcelDefine.Sheet2.Cells[16, 4] = SCD.IntTotalOfflineTime;
+                ExcelDefine.Sheet2.Cells[17, 4] = SCD.IntOnlineTime;
 
-            ExcelDefine.Save();
-
+                ExcelDefine.Save();
+            }
+            catch
+            {
+                MessageBox.Show("Error saving data into Excel");
+            }
         }
         public static void Record(string Event, string Comment)
         {
